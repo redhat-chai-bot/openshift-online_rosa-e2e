@@ -1,7 +1,7 @@
 generated_at: "2026-07-29T14:43:15Z"
 thread_reference:
   channel_id: "C0ADGRNAT8U"
-  thread_ts: ""
+  thread_ts: "pending"
 overall_pass_rate: 72
 job_registry_url: "https://raw.githubusercontent.com/openshift-online/rosa-e2e/main/configs/ci-status-jobs.yaml"
 categories:
