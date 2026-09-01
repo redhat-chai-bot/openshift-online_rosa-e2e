@@ -354,6 +354,8 @@ categories:
         prow_job: periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-hcp-ovn
       - name: HCP 5.0
         prow_job: periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn
+      - name: HCP 5.1
+        prow_job: periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn
 
   - id: classic-conformance
     scope: upstream
@@ -366,6 +368,8 @@ categories:
     labels: [ci-failure, conformance]
     prow_filter: "https://prow.ci.openshift.org/?type=periodic&job=*main-nightly-*e2e-rosa-sts-ovn"
     jobs:
+      - name: STS 4.18
+        prow_job: periodic-ci-openshift-release-main-nightly-4.18-e2e-rosa-sts-ovn
       - name: STS 4.19
         prow_job: periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn
       - name: STS 4.20
