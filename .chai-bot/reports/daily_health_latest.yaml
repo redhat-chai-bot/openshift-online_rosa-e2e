@@ -1,5 +1,5 @@
-report_date: '2026-09-09'
-generated_at: '2026-09-09T14:55:53Z'
+report_date: '2026-09-10'
+generated_at: '2026-09-10T14:55:53Z'
 overall_pass_rate: 70
 job_registry_url: https://raw.githubusercontent.com/openshift-online/rosa-e2e/main/configs/ci-status-jobs.yaml
 categories:
