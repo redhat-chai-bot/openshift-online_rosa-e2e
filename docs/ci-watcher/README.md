@@ -4,9 +4,9 @@ The CI Watcher is a weekly rotating role where one person monitors ROSA CI job h
 
 ## Getting Started
 
-1. Join Slack: [#wg-rosa-cicd](https://redhat-internal.slack.com/archives/C0ADGRNAT8U), [#rosa-prow-info](https://redhat-internal.slack.com/archives/C0AT31ERJLS), and [#wg-hcm-ocp-release-enablement](https://redhat-internal.slack.com/archives/C07QEA1PDFX)
+1. Join Slack: [#wg-rosa-cicd](https://redhat-internal.slack.com/archives/C0ADGRNAT8U), [#rosa-prow-info](https://redhat-internal.slack.com/archives/C0AT31ERJLS), and [#wg-rosa-ocp-release](https://redhat-internal.slack.com/archives/C07QEA1PDFX)
 2. Verify `@rosa-ci-watcher` includes you among the current three ICs during your week (check the schedule in `data/teams/sd-sre/schedules/rosa-ci-watcher.yml` in app-interface)
-3. Set up the `/ci-triage` skill in Claude Code — see the [rosa-claude-plugins](https://github.com/bmeng/rosa-claude-plugins) repo
+3. Set up the `/ci-triage` skill in Claude Code — see the [rosa-claude-plugins](https://github.com/openshift-online/rosa-claude-plugins) repo
 4. Check the [CI Health dashboard](https://rosa-eng-dashboard.apps.engineering.openshift.org/executive#ci-health) triage states for any in-progress investigations from the previous watcher
 
 ## Key Tools

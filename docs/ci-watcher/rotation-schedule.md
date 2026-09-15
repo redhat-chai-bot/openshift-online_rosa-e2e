@@ -2,27 +2,20 @@
 
 ## Schedule
 
-The rotation is weekly (Monday 09:00 UTC to Monday 09:00 UTC), managed via a YAML schedule in app-interface following the same pattern as `ocm-rosa-ic`.
+The rotation is weekly (Monday 09:00 UTC to Monday 09:00 UTC), managed via a YAML schedule in app-interface.
 
 - Schedule file: `data/teams/sd-sre/schedules/rosa-ci-watcher.yml` in app-interface
-- Generated quarterly by a Claude Code cron, submitted as a GitLab MR
+- Pool: all ICs in the ROSA org, excluding PMs, HyperFleet, and GovCloud/FedRAMP members. Source of truth: `config/structures/hybrid_platforms/rosa/` in [hybrid-platforms/org](https://gitlab.cee.redhat.com/hybrid-platforms/org)
+- **Maintained monthly** by the CI Watcher weekly handover task (first Monday of each month). The handover checks for org changes and opens a GitLab MR against app-interface if the pool has changed
 - No PagerDuty schedule is needed
 
 ## Rotation Structure
 
-Each week has **3 ICs**, one drawn from each Service Engineering sub-pillar:
-
-| Sub-Pillar | Pool |
-|------------|------|
-| Trust Engineering | Trust Engineering ICs |
-| Production Engineering | Production Engineering ICs |
-| Service Engineering | Service Engineering ICs |
-
-The schedule is generated quarterly using FIFO priority rules (same logic as `ocm-rosa-ic`): people who haven't appeared recently go first, geographic diversity is considered, and new members are paired with experienced ones.
+Each week has **1 IC** from the eligible pool, assigned in round-robin order. The pool covers the full ROSA org (excluding HyperFleet, GovCloud/FedRAMP, and PM roles), so the full rotation cycle spans as many weeks as there are eligible ICs.
 
 ## Slack
 
-- **`@rosa-ci-watcher`**: Slack alias pointing to the current 3 ICs, auto-synced from the app-interface schedule. Anyone can `@rosa-ci-watcher` in Slack to reach the current shift
+- **`@rosa-ci-watcher`**: Slack alias pointing to the current IC, auto-synced from the app-interface schedule. Anyone can `@rosa-ci-watcher` in Slack to reach the current shift
 - **`@rosa-ci-team`**: Slack handle that includes all rotation members
 
 ## When You Are Not Available
@@ -36,6 +29,6 @@ The schedule is generated quarterly using FIFO priority rules (same logic as `oc
 
 ### Absent for More Than 2 Days
 
-- You **must** swap your shift with someone else **in your sub-pillar**
+- You **must** swap your shift with someone else
 - Ping `@rosa-ci-team` in [#wg-rosa-cicd](https://redhat-internal.slack.com/archives/C0ADGRNAT8U) to find your replacement
 - Submit an app-interface MR to update the schedule YAML with the swap
