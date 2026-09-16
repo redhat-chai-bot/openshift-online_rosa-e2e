@@ -1,24 +1,24 @@
-report_date: '2026-09-15'
-generated_at: '2026-09-15T14:50:54Z'
-overall_pass_rate: 64
+report_date: '2026-09-16'
+generated_at: '2026-09-16T14:45:00Z'
+overall_pass_rate: 60
 job_registry_url: https://raw.githubusercontent.com/openshift-online/rosa-e2e/main/configs/ci-status-jobs.yaml
 categories:
 - id: rosa-e2e-stg
   name: ROSA E2E STG
-  pass_rate: 95
+  pass_rate: 83
   trend: stable
   health: green
   jobs:
   - name: HCP 4.19
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-19
     pass_count: 5
-    fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    fail_count: 2
+    total: 7
+    pass_rate: 71
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -27,410 +27,459 @@ categories:
       name: ROSA CI
       slack_channel: wg-rosa-ci-enhancement
       slack_alias: rosa-ci-team
-    labels: &id002
+    labels:
     - ci-failure
     - rosa-e2e
   - name: HCP 4.20
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20
     pass_count: 5
-    fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    fail_count: 2
+    total: 7
+    pass_rate: 71
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP 4.21
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-21
     pass_count: 5
-    fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    fail_count: 2
+    total: 7
+    pass_rate: 71
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-22
     pass_count: 6
+    fail_count: 1
+    total: 7
+    pass_rate: 86
+    last_failure_url: ''
+    last_failure_date: '2026-09-15'
+    failure_classification: ''
+    consecutive_failures: 1
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id001
+    labels:
+    - ci-failure
+    - rosa-e2e
+  - name: HCP 5.0
+    prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-nightly-5-0
+    pass_count: 0
     fail_count: 0
-    total: 6
-    pass_rate: 100
-    consecutive_failures: 0
+    total: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id001
-    labels: *id002
-  - name: HCP 5.0
-    prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-nightly-5-0
-    pass_count: -1
-    fail_count: -1
-    total: 0
-    pass_rate: -1
     consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: fetch_error
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
+    diagnosis: No Sippy run data for this job in the 14-day window.
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP FIPS 4.19
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-19
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP FIPS 4.20
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-20
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP FIPS 4.21
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-21
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP FIPS 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-22
     pass_count: 0
-    fail_count: 0
-    total: 0
+    fail_count: 1
+    total: 1
     pass_rate: 0
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-08-11'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP FIPS 5.0
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-nightly-5-0
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS 4.19
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-19
     pass_count: 6
-    fail_count: 0
-    total: 6
-    pass_rate: 100
-    consecutive_failures: 0
+    fail_count: 1
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS 4.20
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-20
-    pass_count: 6
+    pass_count: 7
     fail_count: 0
-    total: 6
+    total: 7
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS 4.21
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-21
-    pass_count: 6
-    fail_count: 0
+    pass_count: 5
+    fail_count: 1
     total: 6
-    pass_rate: 100
-    consecutive_failures: 0
+    pass_rate: 83
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-22
-    pass_count: 6
-    fail_count: 0
+    pass_count: 5
+    fail_count: 1
     total: 6
-    pass_rate: 100
-    consecutive_failures: 0
+    pass_rate: 83
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS FIPS 4.19
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-19
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS FIPS 4.20
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-20
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS FIPS 4.21
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-21
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS FIPS 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-22
     pass_count: 0
-    fail_count: 0
-    total: 0
+    fail_count: 1
+    total: 1
     pass_rate: 0
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-08-31'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: OSD GCP 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-e2e-staging-stable-4-22
     pass_count: 6
     fail_count: 0
     total: 6
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: OSD GCP FIPS 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-fips-e2e-staging-stable-4-22
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP Upgrade Y-3
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-3
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-11'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP Upgrade Y-2
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-2
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: HCP Upgrade Y-1
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-1
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS Upgrade Y-3
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-3
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS Upgrade Y-2
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-2
     pass_count: 0
-    fail_count: 0
-    total: 0
+    fail_count: 1
+    total: 1
     pass_rate: 0
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-08'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
   - name: STS Upgrade Y-1
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-1
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-13'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
     team: *id001
-    labels: *id002
+    labels:
+    - ci-failure
+    - rosa-e2e
 - id: capa-e2e-stg
   name: CAPA E2E STG
-  pass_rate: 29
+  pass_rate: 14
   trend: degrading
   health: red
   jobs:
   - name: CAPA E2E Smoke
     prow_job: periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e
-    pass_count: 2
-    fail_count: 4
+    pass_count: 1
+    fail_count: 5
     total: 6
-    pass_rate: 33
-    consecutive_failures: 4
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e/2099770695436210176
-    last_failure_date: '2026-09-15'
-    failure_classification: env/config issue
-    failing_tests:
-    - ROSARoleConfig wait timeout
-    failure_summary: ROSARoleConfig CR timeout during HCP cluster provisioning — 15min wait exceeded
-    diagnosis: oc wait for ROSARoleConfig Ready condition times out after 900s. Stuck finalizer on cleanup.
-    team: &id003
+    pass_rate: 17
+    last_failure_url: ''
+    last_failure_date: '2026-09-10'
+    failure_classification: ''
+    consecutive_failures: 1
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: &id002
       id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
       name: '[ROSA] CAPA'
       slack_channel: team-rosa-capa
       slack_alias: rosa-capa-team
-    labels: &id004
+    labels:
     - ci-failure
     - capa-e2e
   - name: CAPA E2E Full Lifecycle
@@ -439,344 +488,399 @@ categories:
     fail_count: 1
     total: 1
     pass_rate: 0
+    last_failure_url: ''
+    last_failure_date: '2026-09-07'
+    failure_classification: ''
     consecutive_failures: 1
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-full/2099408405788626944
-    last_failure_date: '2026-09-14'
-    failure_classification: env/config issue
     failing_tests: []
-    failure_summary: Missing ocmClientID secret — test pod crashes immediately, 0 tests run
-    diagnosis: 'cat: /var/run/rosa-hcp-e2e-secrets/ocmClientID: No such file or directory. Secret not mounted in step.'
-    team: *id003
-    labels: *id004
+    failure_summary: ''
+    diagnosis: ''
+    team: *id002
+    labels:
+    - ci-failure
+    - capa-e2e
 - id: rosa-gap-analysis
   name: GAP E2E
-  pass_rate: 45
+  pass_rate: 44
   trend: improving
   health: yellow
   jobs:
   - name: GAP 4.19
     prow_job: periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19
-    pass_count: 0
+    pass_count: 1
     fail_count: 6
-    total: 6
-    pass_rate: 0
-    consecutive_failures: 6
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19/2099740230142660608
-    last_failure_date: '2026-09-15'
-    failure_classification: env/config issue
-    failing_tests: []
-    failure_summary: OCP 4.19.47 not enabled for ROSA Classic/OSD GCP in staging OCM — pre-test abort
-    diagnosis: 'Gap analysis framework aborts immediately: Target 4.19.47 not enabled for ROSA Classic and OSD GCP. No actual
-      tests run.'
-    team: &id005
+    total: 7
+    pass_rate: 14
+    last_failure_url: ''
+    last_failure_date: '2026-09-16'
+    failure_classification: Env/config issue
+    consecutive_failures: 1
+    failing_tests: &id003 []
+    failure_summary: Target version not enabled in staging (version gate gap)
+    diagnosis: GAP e2e amd64 fails because the tested OCP version is not enabled/available in the staging environment. Version
+      enablement gap.
+    team: &id004
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
       slack_channel: wg-rosa-ci-enhancement
       slack_alias: rosa-ci-team
-    labels: &id006
+    labels:
     - ci-failure
     - gap-analysis
   - name: GAP 4.20
     prow_job: periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20
-    pass_count: 2
-    fail_count: 4
+    pass_count: 1
+    fail_count: 5
     total: 6
-    pass_rate: 33
-    consecutive_failures: 0
+    pass_rate: 17
     last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id005
-    labels: *id006
+    last_failure_date: '2026-09-10'
+    failure_classification: Env/config issue
+    consecutive_failures: 1
+    failing_tests: *id003
+    failure_summary: Target version not enabled in staging (version gate gap)
+    diagnosis: GAP e2e amd64 fails because the tested OCP version is not enabled/available in the staging environment. Version
+      enablement gap.
+    team: *id004
+    labels:
+    - ci-failure
+    - gap-analysis
   - name: GAP 4.21
     prow_job: periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21
-    pass_count: 2
-    fail_count: 4
+    pass_count: 1
+    fail_count: 5
     total: 6
-    pass_rate: 33
-    consecutive_failures: 0
+    pass_rate: 17
     last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id005
-    labels: *id006
+    last_failure_date: '2026-09-10'
+    failure_classification: Env/config issue
+    consecutive_failures: 1
+    failing_tests: *id003
+    failure_summary: Target version not enabled in staging (version gate gap)
+    diagnosis: GAP e2e amd64 fails because the tested OCP version is not enabled/available in the staging environment. Version
+      enablement gap.
+    team: *id004
+    labels:
+    - ci-failure
+    - gap-analysis
   - name: GAP 4.22
     prow_job: periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22
     pass_count: 6
     fail_count: 0
     total: 6
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id005
-    labels: *id006
+    team: *id004
+    labels:
+    - ci-failure
+    - gap-analysis
   - name: GAP 5.0
     prow_job: periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0
-    pass_count: 4
-    fail_count: 3
+    pass_count: 5
+    fail_count: 2
     total: 7
-    pass_rate: 57
-    consecutive_failures: 0
+    pass_rate: 71
     last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id005
-    labels: *id006
+    last_failure_date: '2026-09-15'
+    failure_classification: Env/config issue
+    consecutive_failures: 1
+    failing_tests: *id003
+    failure_summary: Target version not enabled in staging (version gate gap)
+    diagnosis: GAP e2e amd64 fails because the tested OCP version is not enabled/available in the staging environment. Version
+      enablement gap.
+    team: *id004
+    labels:
+    - ci-failure
+    - gap-analysis
 - id: ocm-fvt-hcp-stg
   name: OCM FVT HCP STG
-  pass_rate: 58
+  pass_rate: 69
   trend: degrading
   health: yellow
   jobs:
   - name: HCP AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main
-    pass_count: 4
-    fail_count: 3
-    total: 7
-    pass_rate: 57
-    consecutive_failures: 3
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main/2098245352296550400
-    last_failure_date: '2026-09-11'
-    failure_classification: env/config issue
+    pass_count: 6
+    fail_count: 2
+    total: 8
+    pass_rate: 75
+    last_failure_url: ''
+    last_failure_date: '2026-09-16'
+    failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
-    failure_summary: OCM token expired — all 945 tests skipped
-    diagnosis: 'BeforeSuite fails: access and refresh tokens unavailable or expired. No test execution.'
-    team: &id007
+    failure_summary: ''
+    diagnosis: ''
+    team: &id005
       id: ec74d716-af36-4b3c-950f-f79213d08f71-3174
       name: ROSA Coffee Focaccia
       slack_channel: rosa-coffee-focaccia
       slack_alias: team-rosa-coffee-focaccia
-    labels: &id008
+    labels:
     - ci-failure
     - ocm-fvt
     - clusters-service
   - name: HCP Adobe
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-staging-main
-    pass_count: 3
-    fail_count: 3
-    total: 6
-    pass_rate: 50
-    consecutive_failures: 0
+    pass_count: 5
+    fail_count: 2
+    total: 7
+    pass_rate: 71
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP AMD64
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main
-    pass_count: 2
-    fail_count: 4
-    total: 6
-    pass_rate: 33
-    consecutive_failures: 0
+    pass_count: 4
+    fail_count: 3
+    total: 7
+    pass_rate: 57
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP AMD64 Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-upgrade-staging-main
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP ARM
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-staging-main
-    pass_count: 3
-    fail_count: 3
-    total: 6
-    pass_rate: 50
-    consecutive_failures: 0
+    pass_count: 5
+    fail_count: 2
+    total: 7
+    pass_rate: 71
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Autonode
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP E2E
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main
-    pass_count: 3
-    fail_count: 3
-    total: 6
-    pass_rate: 50
-    consecutive_failures: 0
+    pass_count: 5
+    fail_count: 2
+    total: 7
+    pass_rate: 71
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP PL
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-staging-main
-    pass_count: 1
+    pass_count: 2
     fail_count: 5
-    total: 6
-    pass_rate: 17
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 29
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Shared VPC
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main
-    pass_count: 2
-    fail_count: 4
-    total: 6
-    pass_rate: 33
-    consecutive_failures: 0
+    pass_count: 4
+    fail_count: 3
+    total: 7
+    pass_rate: 57
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-upgrade-staging-main
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Y-Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-y-upgrade-staging-main
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP n-X Y-Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upgrade-staging-main
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id007
-    labels: *id008
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Zero Egress
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-staging-main
-    pass_count: 1
+    pass_count: 2
     fail_count: 5
-    total: 6
-    pass_rate: 17
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 29
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Zero Egress Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-upgrade-staging-main
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Access Request
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-access-request-staging-main
     pass_count: 5
     fail_count: 1
     total: 6
     pass_rate: 83
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id007
-    labels: *id008
+    team: *id005
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
 - id: ocm-fvt-hcp-int
   name: OCM FVT HCP INT
-  pass_rate: 69
+  pass_rate: 67
   trend: stable
   health: yellow
   jobs:
@@ -786,19 +890,19 @@ categories:
     fail_count: 1
     total: 6
     pass_rate: 83
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id009
+    team: &id006
       id: ec74d716-af36-4b3c-950f-f79213d08f71-3174
       name: ROSA Coffee Focaccia
       slack_channel: rosa-coffee-focaccia
       slack_alias: team-rosa-coffee-focaccia
-    labels: &id010
+    labels:
     - ci-failure
     - ocm-fvt
     - clusters-service
@@ -808,77 +912,90 @@ categories:
     fail_count: 1
     total: 6
     pass_rate: 83
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id009
-    labels: *id010
+    team: *id006
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Backup Scale
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-scale-integration-main
-    pass_count: 5
+    pass_count: 4
     fail_count: 2
-    total: 7
-    pass_rate: 71
-    consecutive_failures: 0
+    total: 6
+    pass_rate: 67
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id009
-    labels: *id010
+    team: *id006
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Backup CP Up
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main
     pass_count: 5
     fail_count: 1
     total: 6
     pass_rate: 83
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id009
-    labels: *id010
+    team: *id006
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP Backup CP In Progress
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cpupzfin-integration-main
     pass_count: 5
     fail_count: 1
     total: 6
     pass_rate: 83
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id009
-    labels: *id010
+    team: *id006
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: HCP AD Regional
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main
     pass_count: 0
-    fail_count: 5
-    total: 5
+    fail_count: 6
+    total: 6
     pass_rate: 0
-    consecutive_failures: 5
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main/2099770669599297536
-    last_failure_date: '2026-09-15'
-    failure_classification: product bug
-    failing_tests:
-    - ROSAENG-62409 classic v5 bypass @id_88335
-    - Edit node pool on HCP cluster @id_56107
-    failure_summary: OCP v5 provision policy test fails (v5 bypass not working) + 502 Bad Gateway on node pool edit
-    diagnosis: v5 bypass test is 100% failure (7/7 runs). Node pool edit gets HTML 502 instead of JSON. v5 linked to ROSAENG-62409.
-    team: *id009
-    labels: *id010
+    last_failure_url: ''
+    last_failure_date: '2026-09-04'
+    failure_classification: ''
+    consecutive_failures: 6
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id006
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
 - id: ocm-fvt-hcp-prd
   name: OCM FVT HCP PROD
   pass_rate: 100
@@ -891,10 +1008,10 @@ categories:
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -909,178 +1026,201 @@ categories:
     - clusters-service
 - id: ocm-fvt-classic-stg
   name: OCM FVT Classic STG
-  pass_rate: 50
+  pass_rate: 54
   trend: degrading
   health: yellow
   jobs:
   - name: ROSA AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main
-    pass_count: 0
+    pass_count: 1
     fail_count: 8
-    total: 8
-    pass_rate: 0
-    consecutive_failures: 8
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main/2099689738574237696
-    last_failure_date: '2026-09-15'
-    failure_classification: env/config issue
-    failing_tests:
-    - CMSTesting IDP actions @id_46990 — HTPasswd login timeout
-    failure_summary: OAuth server returning InternalError, HTPasswd IDP user login timeout after 1800s
-    diagnosis: Staging OAuth backend issue — login attempts fail with exit status 1. 6/8 runs affected.
-    team: &id011
+    total: 9
+    pass_rate: 11
+    last_failure_url: ''
+    last_failure_date: '2026-09-16'
+    failure_classification: ''
+    consecutive_failures: 1
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: &id007
       id: ec74d716-af36-4b3c-950f-f79213d08f71-3174
       name: ROSA Coffee Focaccia
       slack_channel: rosa-coffee-focaccia
       slack_alias: team-rosa-coffee-focaccia
-    labels: &id012
+    labels:
     - ci-failure
     - ocm-fvt
     - clusters-service
   - name: STS AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-staging-main
-    pass_count: 2
+    pass_count: 3
     fail_count: 6
-    total: 8
-    pass_rate: 25
-    consecutive_failures: 0
+    total: 9
+    pass_rate: 33
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id011
-    labels: *id012
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: STS PL
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-staging-main
     pass_count: 3
-    fail_count: 3
-    total: 6
-    pass_rate: 50
-    consecutive_failures: 0
+    fail_count: 4
+    total: 7
+    pass_rate: 43
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id011
-    labels: *id012
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: STS Shared VPC
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shared-vpc-staging-main
-    pass_count: 3
+    pass_count: 4
     fail_count: 3
-    total: 6
-    pass_rate: 50
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 57
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id011
-    labels: *id012
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: STS Custom Channel
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-classic-cust-chan-staging-main
     pass_count: 5
     fail_count: 1
     total: 6
     pass_rate: 83
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id011
-    labels: *id012
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: STS Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-upgrade-staging-main
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id011
-    labels: *id012
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: STS n-X Y-Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-nx-y-upgrade-staging-main
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id011
-    labels: *id012
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: OCM Resources
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-ocm-resources-staging-main
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id011
-    labels: *id012
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: OSD RH AWS
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-staging-main
-    pass_count: 3
+    pass_count: 4
     fail_count: 3
-    total: 6
-    pass_rate: 50
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 57
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id011
-    labels: *id012
+    team: *id007
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
 - id: ocm-fvt-classic-int
   name: OCM FVT Classic INT
-  pass_rate: 44
-  trend: degrading
+  pass_rate: 58
+  trend: stable
   health: yellow
   jobs:
   - name: STS AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main
-    pass_count: 1
-    fail_count: 4
-    total: 5
-    pass_rate: 20
-    consecutive_failures: 0
+    pass_count: 3
+    fail_count: 3
+    total: 6
+    pass_rate: 50
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id013
+    team: &id008
       id: ec74d716-af36-4b3c-950f-f79213d08f71-3174
       name: ROSA Coffee Focaccia
       slack_channel: rosa-coffee-focaccia
       slack_alias: team-rosa-coffee-focaccia
-    labels: &id014
+    labels:
     - ci-failure
     - ocm-fvt
     - clusters-service
@@ -1090,55 +1230,61 @@ categories:
     fail_count: 1
     total: 6
     pass_rate: 83
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id013
-    labels: *id014
+    team: *id008
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: OSD CCS AWS AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-aws-integration-ocm-fvt-periodic-cs-osd-ccs-aws-ad-integration-main
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
-    consecutive_failures: 0
+    pass_rate: 43
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id013
-    labels: *id014
+    team: *id008
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
 - id: ocm-fvt-gcp-stg
   name: OCM FVT GCP STG
-  pass_rate: 31
+  pass_rate: 43
   trend: degrading
-  health: red
+  health: yellow
   jobs:
   - name: GCP CCS AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main
-    pass_count: 1
+    pass_count: 2
     fail_count: 4
-    total: 5
-    pass_rate: 20
-    consecutive_failures: 0
+    total: 6
+    pass_rate: 33
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id015
+    team: &id009
       id: ec74d716-af36-4b3c-950f-f79213d08f71-3174
       name: ROSA Coffee Focaccia
       slack_channel: rosa-coffee-focaccia
       slack_alias: team-rosa-coffee-focaccia
-    labels: &id016
+    labels:
     - ci-failure
     - ocm-fvt
     - clusters-service
@@ -1148,87 +1294,97 @@ categories:
     fail_count: 3
     total: 6
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id015
-    labels: *id016
+    team: *id009
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: GCP Non-Cross-Proj WIF
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-non-cross-proj-wif-staging-main
-    pass_count: 1
-    fail_count: 4
-    total: 5
-    pass_rate: 20
-    consecutive_failures: 0
+    pass_count: 3
+    fail_count: 3
+    total: 6
+    pass_rate: 50
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id015
-    labels: *id016
+    team: *id009
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: GCP Root Disk
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main
-    pass_count: 3
-    fail_count: 2
-    total: 5
-    pass_rate: 60
-    consecutive_failures: 0
+    pass_count: 5
+    fail_count: 1
+    total: 6
+    pass_rate: 83
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id015
-    labels: *id016
+    team: *id009
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
   - name: GCP WIF SV
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main
     pass_count: 0
-    fail_count: 5
-    total: 5
+    fail_count: 6
+    total: 6
     pass_rate: 0
-    consecutive_failures: 5
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main/2099785471231004672
-    last_failure_date: '2026-09-15'
-    failure_classification: env/config issue
-    failing_tests:
-    - CreateClusterByYAMLProfile — cluster stuck in installing
-    failure_summary: GCP control-plane provisioning timeout — CAPI provider killed after 15m, cluster never reaches ready
-    diagnosis: Cluster stays in installing state. Control-plane machines fail to provision within 15m timeout. CAPI provider
-      process killed. 4/4 runs affected.
-    team: *id015
-    labels: *id016
+    last_failure_url: ''
+    last_failure_date: '2026-09-08'
+    failure_classification: ''
+    consecutive_failures: 6
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id009
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - clusters-service
 - id: ocm-fvt-osdfm-int
   name: OCM FVT OSDFM INT
   pass_rate: 80
-  trend: improving
+  trend: stable
   health: green
   jobs:
   - name: OSDFM Basic Periodic
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-basic-periodic-integration
-    pass_count: 2
+    pass_count: 3
     fail_count: 1
-    total: 3
-    pass_rate: 67
-    consecutive_failures: 0
+    total: 4
+    pass_rate: 75
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id017
+    team: &id010
       id: bd8a0aae-863d-4ea3-a697-028b5043fc08
       name: ROSA Fleet Manager
       slack_channel: team-rosa-fleet-manager
       slack_alias: team-rosa-fleet-manager
-    labels: &id018
+    labels:
     - ci-failure
     - ocm-fvt
     - osd-fleet-manager
@@ -1238,49 +1394,55 @@ categories:
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id017
-    labels: *id018
+    team: *id010
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - osd-fleet-manager
   - name: OSDFM SC Autoscaling
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-sc-autoscaling-integration
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
-    consecutive_failures: 0
+    total: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id017
-    labels: *id018
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id010
+    labels:
+    - ci-failure
+    - ocm-fvt
+    - osd-fleet-manager
 - id: ocm-fvt-osdfm-stg
   name: OCM FVT OSDFM STG
-  pass_rate: -1
-  trend: no_data
-  health: no_data
+  pass_rate: 0
+  trend: degrading
+  health: red
   jobs:
   - name: OSDFM Basic Periodic
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage
     pass_count: 0
-    fail_count: 0
-    total: 0
+    fail_count: 1
+    total: 1
     pass_rate: 0
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
+    last_failure_date: '2026-09-07'
+    failure_classification: Product bug
+    consecutive_failures: 1
     failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
+    failure_summary: OSDFM placement/gating test failure in staging
+    diagnosis: Single OSDFM staging run failed a placement/gating assertion. Needs CS-side (OSDFM) investigation.
     team:
       id: bd8a0aae-863d-4ea3-a697-028b5043fc08
       name: ROSA Fleet Manager
@@ -1292,223 +1454,241 @@ categories:
     - osd-fleet-manager
 - id: hypershift-ci
   name: HyperShift CI
-  pass_rate: 92
+  pass_rate: 93
   trend: improving
   health: green
   jobs:
   - name: INT HCP 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-integration-stable-4-22
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id019
+    team: &id011
       id: a5267ed5-eaa8-4cd6-90e3-d0ce145dbfbf
       name: ROSA HCP Platform
       slack_channel: team-rosa-hcp-platform
       slack_alias: team-rosa-hcp-platform
-    labels: &id020
+    labels:
     - ci-failure
     - hypershift-ci
   - name: STG HCP 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22
-    pass_count: 6
+    pass_count: 7
     fail_count: 0
-    total: 6
+    total: 7
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id019
-    labels: *id020
+    team: *id011
+    labels:
+    - ci-failure
+    - hypershift-ci
 - id: hcp-conformance
   name: HCP Conformance
-  pass_rate: 50
-  trend: degrading
+  pass_rate: 52
+  trend: stable
   health: yellow
   jobs:
   - name: HCP 4.19
     prow_job: periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-hcp-ovn
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id021
+    team: &id012
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
       slack_channel: wg-rosa-ci-enhancement
       slack_alias: rosa-ci-team
-    labels: &id022
+    labels:
     - ci-failure
     - conformance
   - name: HCP 4.20
     prow_job: periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn
-    pass_count: 2
+    pass_count: 3
     fail_count: 4
-    total: 6
-    pass_rate: 33
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 43
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id021
-    labels: *id022
+    team: *id012
+    labels:
+    - ci-failure
+    - conformance
   - name: HCP 4.21
     prow_job: periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn
-    pass_count: 1
+    pass_count: 2
     fail_count: 5
-    total: 6
-    pass_rate: 17
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 29
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id021
-    labels: *id022
+    team: *id012
+    labels:
+    - ci-failure
+    - conformance
   - name: HCP 4.22
     prow_job: periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-hcp-ovn
-    pass_count: 3
+    pass_count: 4
     fail_count: 3
-    total: 6
-    pass_rate: 50
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 57
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id021
-    labels: *id022
+    team: *id012
+    labels:
+    - ci-failure
+    - conformance
   - name: HCP 5.0
     prow_job: periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn
-    pass_count: 2
+    pass_count: 3
     fail_count: 4
-    total: 6
-    pass_rate: 33
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 43
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id021
-    labels: *id022
+    team: *id012
+    labels:
+    - ci-failure
+    - conformance
   - name: HCP 5.1
     prow_job: periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn
-    pass_count: 5
-    fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    pass_count: 4
+    fail_count: 3
+    total: 7
+    pass_rate: 57
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id021
-    labels: *id022
+    team: *id012
+    labels:
+    - ci-failure
+    - conformance
 - id: classic-conformance
   name: Classic STS Conformance
-  pass_rate: 75
-  trend: stable
+  pass_rate: 79
+  trend: improving
   health: yellow
   jobs:
   - name: STS 4.19
     prow_job: periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn
-    pass_count: 5
+    pass_count: 6
     fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id023
+    team: &id013
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
       slack_channel: wg-rosa-ci-enhancement
       slack_alias: rosa-ci-team
-    labels: &id024
+    labels:
     - ci-failure
     - conformance
   - name: STS 4.20
     prow_job: periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-sts-ovn
-    pass_count: 5
-    fail_count: 1
-    total: 6
-    pass_rate: 83
-    consecutive_failures: 0
+    pass_count: 7
+    fail_count: 0
+    total: 7
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id023
-    labels: *id024
+    team: *id013
+    labels:
+    - ci-failure
+    - conformance
   - name: STS 4.21
     prow_job: periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn
-    pass_count: 4
-    fail_count: 2
-    total: 6
-    pass_rate: 67
-    consecutive_failures: 0
+    pass_count: 6
+    fail_count: 1
+    total: 7
+    pass_rate: 86
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id023
-    labels: *id024
+    team: *id013
+    labels:
+    - ci-failure
+    - conformance
   - name: STS 4.22
     prow_job: periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn
-    pass_count: 4
-    fail_count: 2
-    total: 6
-    pass_rate: 67
-    consecutive_failures: 0
+    pass_count: 3
+    fail_count: 4
+    total: 7
+    pass_rate: 43
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id023
-    labels: *id024
+    team: *id013
+    labels:
+    - ci-failure
+    - conformance
 - id: rosa-cli-jobs
   name: ROSA CLI E2E
-  pass_rate: 69
+  pass_rate: 65
   trend: improving
   health: yellow
   jobs:
@@ -1518,326 +1698,366 @@ categories:
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-13'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id025
+    team: &id014
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CLI/Terraform
       slack_channel: ocm-qe-prow-ci-jobs
       slack_alias: rosa-cli-tf-team
-    labels: &id026
+    labels:
     - ci-failure
     - rosa-cli
   - name: Day-1 Supplemental
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-day1-supplemental-f3
     pass_count: 1
-    fail_count: 1
-    total: 2
-    pass_rate: 50
-    consecutive_failures: 0
+    fail_count: 2
+    total: 3
+    pass_rate: 33
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-12'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: HCP ARM
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-arm-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: HCP Advanced
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-f3
     pass_count: 1
     fail_count: 1
     total: 2
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-13'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: HCP Advanced Regional
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-regional-f3
     pass_count: 0
     fail_count: 2
     total: 2
     pass_rate: 0
-    consecutive_failures: 2
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: HCP External Auth
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-external-auth-f3
     pass_count: 1
     fail_count: 1
     total: 2
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-13'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: HCP Private Link
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-private-link-f3
-    pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id025
-    labels: *id026
-  - name: HCP Shared VPC
-    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-shared-vpc-f3
-    pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id025
-    labels: *id026
-  - name: HCP Upgrade Y-Stream
-    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-y-stream-f3
     pass_count: 1
     fail_count: 1
     total: 2
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-11'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
+  - name: HCP Shared VPC
+    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-shared-vpc-f3
+    pass_count: 2
+    fail_count: 1
+    total: 3
+    pass_rate: 67
+    last_failure_url: ''
+    last_failure_date: '2026-09-13'
+    failure_classification: ''
+    consecutive_failures: 1
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
+  - name: HCP Upgrade Y-Stream
+    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-y-stream-f3
+    pass_count: 2
+    fail_count: 1
+    total: 3
+    pass_rate: 67
+    last_failure_url: ''
+    last_failure_date: '2026-09-16'
+    failure_classification: ''
+    consecutive_failures: 1
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: HCP Upgrade Z-Stream
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-z-stream-f3
-    pass_count: 2
-    fail_count: 0
+    pass_count: 1
+    fail_count: 1
     total: 2
-    pass_rate: 100
-    consecutive_failures: 0
+    pass_rate: 50
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-12'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: Non-STS Advanced (Critical/High)
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-advanced-critical-high-f3
     pass_count: 1
     fail_count: 1
     total: 2
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-12'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: Non-STS Upgrade Y-Stream
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-upgrade-y-stream-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-13'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: OCM Resources
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-ocm-resources-f3
     pass_count: 1
     fail_count: 1
     total: 2
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-11'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: STS Advanced
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-advanced-f3
     pass_count: 2
     fail_count: 0
     total: 2
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: STS Hibernation
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-hibernation-f14
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-13'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id025
-    labels: *id026
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
   - name: STS Private Link
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-private-link-f3
-    pass_count: 1
-    fail_count: 1
-    total: 2
-    pass_rate: 50
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id025
-    labels: *id026
-  - name: STS Shared VPC
-    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-f3
-    pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id025
-    labels: *id026
-  - name: STS Shared VPC Upgrade Y-Stream
-    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-upgrade-y-stream-f3
-    pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id025
-    labels: *id026
-  - name: STS Upgrade Y-Stream
-    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-y-stream-f3
-    pass_count: 1
-    fail_count: 1
-    total: 2
-    pass_rate: 50
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id025
-    labels: *id026
-  - name: STS Upgrade Z-Stream
-    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-z-stream-f3
-    pass_count: 1
-    fail_count: 1
-    total: 2
-    pass_rate: 50
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id025
-    labels: *id026
-- id: sre-operator-e2e
-  name: SRE Operator E2E
-  pass_rate: 79
-  trend: improving
-  health: yellow
-  jobs:
-  - name: RMO Promotion INT
-    prow_job: periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-int
     pass_count: 2
     fail_count: 1
     total: 3
     pass_rate: 67
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id027
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
+  - name: STS Shared VPC
+    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-f3
+    pass_count: 3
+    fail_count: 0
+    total: 3
+    pass_rate: 100
+    last_failure_url: ''
+    last_failure_date: '2026-09-16'
+    failure_classification: ''
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
+  - name: STS Shared VPC Upgrade Y-Stream
+    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-upgrade-y-stream-f3
+    pass_count: 2
+    fail_count: 1
+    total: 3
+    pass_rate: 67
+    last_failure_url: ''
+    last_failure_date: '2026-09-13'
+    failure_classification: ''
+    consecutive_failures: 1
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
+  - name: STS Upgrade Y-Stream
+    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-y-stream-f3
+    pass_count: 2
+    fail_count: 0
+    total: 2
+    pass_rate: 100
+    last_failure_url: ''
+    last_failure_date: '2026-09-14'
+    failure_classification: ''
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
+  - name: STS Upgrade Z-Stream
+    prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-z-stream-f3
+    pass_count: 2
+    fail_count: 1
+    total: 3
+    pass_rate: 67
+    last_failure_url: ''
+    last_failure_date: '2026-09-15'
+    failure_classification: ''
+    consecutive_failures: 1
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id014
+    labels:
+    - ci-failure
+    - rosa-cli
+- id: sre-operator-e2e
+  name: SRE Operator E2E
+  pass_rate: 27
+  trend: degrading
+  health: red
+  jobs:
+  - name: RMO Promotion INT
+    prow_job: periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-int
+    pass_count: 0
+    fail_count: 12
+    total: 12
+    pass_rate: 0
+    last_failure_url: ''
+    last_failure_date: '2026-09-08'
+    failure_classification: Test bug
+    consecutive_failures: 12
+    failing_tests:
+    - Route Monitor Operator has all of the required resources
+    failure_summary: e2e expects RouteMonitor CR 'console' that no longer exists
+    diagnosis: Test 'has all of the required resources' gets routemonitors.monitoring.openshift.io 'console' -> 404; operator
+      no longer auto-creates it. Bot PR openshift/route-monitor-operator#629 makes the spec self-contained.
+    team: &id015
       id: a0f44498-f22b-4cd4-a98f-f298cc375a94
       name: ROSA Rocket
       slack_channel: hcm-sre-team-rocket
@@ -1846,18 +2066,18 @@ categories:
     - route-monitor-operator
   - name: RMO Promotion STG
     prow_job: periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-stage
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
-    consecutive_failures: 0
+    total: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - route-monitor-operator
   - name: CAMO Promotion INT
@@ -1865,15 +2085,15 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - configure-alertmanager-operator
   - name: CAMO Promotion STG
@@ -1881,15 +2101,15 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - configure-alertmanager-operator
   - name: AVO Promotion INT
@@ -1898,14 +2118,14 @@ categories:
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - aws-vpce-operator
   - name: AVO Promotion STG
@@ -1914,14 +2134,14 @@ categories:
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - aws-vpce-operator
   - name: MUO Promotion INT
@@ -1929,159 +2149,160 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - managed-upgrade-operator
   - name: MUO Promotion STG
     prow_job: periodic-ci-openshift-managed-upgrade-operator-master-rosa-sts-e2e-promotion-stage
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
-    consecutive_failures: 0
+    total: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - managed-upgrade-operator
   - name: OAO Promotion INT
     prow_job: periodic-ci-openshift-ocm-agent-operator-master-rosa-sts-e2e-promotion-int
-    pass_count: 5
+    pass_count: 3
     fail_count: 0
-    total: 5
+    total: 3
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - ocm-agent-operator
   - name: OAO Promotion STG
     prow_job: periodic-ci-openshift-ocm-agent-operator-master-rosa-sts-e2e-promotion-stage
-    pass_count: 4
-    fail_count: 5
-    total: 9
-    pass_rate: 44
-    consecutive_failures: 0
+    pass_count: 2
+    fail_count: 6
+    total: 8
+    pass_rate: 25
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - ocm-agent-operator
   - name: SFO Promotion INT
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-int
-    pass_count: 2
-    fail_count: 1
-    total: 3
-    pass_rate: 67
-    consecutive_failures: 0
+    pass_count: 1
+    fail_count: 10
+    total: 11
+    pass_rate: 9
     last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
+    last_failure_date: '2026-09-15'
+    failure_classification: Env/config issue
+    consecutive_failures: 1
     failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    failure_summary: yq missing in old install step (already fixed on main via jq migration)
+    diagnosis: 'Failing runs hit ''yq: command not found'' in rosa-operator-install backup step. Current openshift/release
+      main migrated the backup to jq; fix already landed. Stale failing runs predate it.'
+    team: *id015
     labels:
     - splunk-forwarder-operator
   - name: SFO Promotion STG
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-stage
-    pass_count: 2
+    pass_count: 1
     fail_count: 0
-    total: 2
+    total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - splunk-forwarder-operator
   - name: Certman Promotion INT
     prow_job: periodic-ci-openshift-certman-operator-master-hive-e2e-promotion-int
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - certman-operator
   - name: Certman Promotion STG
     prow_job: periodic-ci-openshift-certman-operator-master-hive-e2e-promotion-stage
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - certman-operator
   - name: CIO Promotion INT
     prow_job: periodic-ci-openshift-cloud-ingress-operator-master-rosa-osd-aws-e2e-promotion-int
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - cloud-ingress-operator
   - name: CIO Promotion STG
     prow_job: periodic-ci-openshift-cloud-ingress-operator-master-rosa-osd-aws-e2e-promotion-stage
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - cloud-ingress-operator
   - name: RPO Promotion INT
@@ -2089,15 +2310,15 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - rbac-permissions-operator
   - name: RPO Promotion STG
@@ -2105,111 +2326,112 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - rbac-permissions-operator
   - name: AAO Promotion INT
     prow_job: periodic-ci-openshift-aws-account-operator-master-hive-e2e-promotion-int
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - aws-account-operator
   - name: AAO Promotion STG
     prow_job: periodic-ci-openshift-aws-account-operator-master-hive-e2e-promotion-stage
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - aws-account-operator
   - name: MCVW Promotion INT
     prow_job: periodic-ci-openshift-managed-cluster-validating-webhooks-master-rosa-sts-e2e-promotion-int
-    pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id027
-    labels:
-    - managed-cluster-validating-webhooks
-  - name: MCVW Promotion STG
-    prow_job: periodic-ci-openshift-managed-cluster-validating-webhooks-master-rosa-sts-e2e-promotion-stage
-    pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id027
-    labels:
-    - managed-cluster-validating-webhooks
-  - name: RMO GCP INT
-    prow_job: periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-int
-    pass_count: 3
-    fail_count: 0
-    total: 3
-    pass_rate: 100
-    consecutive_failures: 0
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team: *id027
-    labels:
-    - route-monitor-operator
-  - name: RMO GCP STG
-    prow_job: periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-stage
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-09'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
+    labels:
+    - managed-cluster-validating-webhooks
+  - name: MCVW Promotion STG
+    prow_job: periodic-ci-openshift-managed-cluster-validating-webhooks-master-rosa-sts-e2e-promotion-stage
+    pass_count: 1
+    fail_count: 0
+    total: 1
+    pass_rate: 100
+    last_failure_url: ''
+    last_failure_date: '2026-09-09'
+    failure_classification: ''
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
+    team: *id015
+    labels:
+    - managed-cluster-validating-webhooks
+  - name: RMO GCP INT
+    prow_job: periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-int
+    pass_count: 0
+    fail_count: 12
+    total: 12
+    pass_rate: 0
+    last_failure_url: ''
+    last_failure_date: '2026-09-08'
+    failure_classification: Test bug
+    consecutive_failures: 12
+    failing_tests:
+    - Route Monitor Operator has all of the required resources
+    failure_summary: e2e expects RouteMonitor CR 'console' that no longer exists
+    diagnosis: Same console RouteMonitor CR 404 as the STS variant. Covered by PR openshift/route-monitor-operator#629.
+    team: *id015
+    labels:
+    - route-monitor-operator
+  - name: RMO GCP STG
+    prow_job: periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-stage
+    pass_count: 0
+    fail_count: 0
+    total: 0
+    pass_rate: -1
+    last_failure_url: ''
+    last_failure_date: ''
+    failure_classification: ''
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - route-monitor-operator
   - name: CAMO GCP INT
@@ -2217,15 +2439,15 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - configure-alertmanager-operator
   - name: CAMO GCP STG
@@ -2233,15 +2455,15 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - configure-alertmanager-operator
   - name: MUO GCP INT
@@ -2249,15 +2471,15 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - managed-upgrade-operator
   - name: MUO GCP STG
@@ -2265,84 +2487,84 @@ categories:
     pass_count: 0
     fail_count: 0
     total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id027
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id015
     labels:
     - managed-upgrade-operator
   - name: OAO GCP INT
     prow_job: periodic-ci-openshift-ocm-agent-operator-master-osd-gcp-e2e-promotion-int
-    pass_count: 5
-    fail_count: 4
-    total: 9
-    pass_rate: 56
-    consecutive_failures: 0
+    pass_count: 3
+    fail_count: 1
+    total: 4
+    pass_rate: 75
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - ocm-agent-operator
   - name: OAO GCP STG
     prow_job: periodic-ci-openshift-ocm-agent-operator-master-osd-gcp-e2e-promotion-stage
-    pass_count: 5
+    pass_count: 3
     fail_count: 0
-    total: 5
+    total: 3
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-14'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - ocm-agent-operator
   - name: SFO GCP INT
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-int
-    pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    consecutive_failures: 0
+    pass_count: 1
+    fail_count: 10
+    total: 11
+    pass_rate: 9
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - splunk-forwarder-operator
   - name: SFO GCP STG
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-stage
-    pass_count: 2
+    pass_count: 1
     fail_count: 0
-    total: 2
+    total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id027
+    team: *id015
     labels:
     - splunk-forwarder-operator
 - id: terraform-provider-rhcs-jobs
   name: ROSA TF E2E
-  pass_rate: 68
+  pass_rate: 72
   trend: degrading
   health: yellow
   jobs:
@@ -2352,258 +2574,290 @@ categories:
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: &id028
+    team: &id016
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CLI/Terraform
       slack_channel: ocm-qe-prow-ci-jobs
       slack_alias: rosa-cli-tf-team
-    labels: &id029
+    labels:
     - ci-failure
     - terraform-provider-rhcs
   - name: HCP Advanced
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-advanced-f3
-    pass_count: -1
-    fail_count: -1
+    pass_count: 0
+    fail_count: 0
     total: 0
     pass_rate: -1
-    consecutive_failures: 0
     last_failure_url: ''
     last_failure_date: ''
-    failure_classification: fetch_error
+    failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id028
-    labels: *id029
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: HCP Arm
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-arm-f7
     pass_count: 0
     fail_count: 1
     total: 1
     pass_rate: 0
-    consecutive_failures: 1
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-02'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: HCP Encryption
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-encryption-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: HCP Full Resources
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-full-resource-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-09'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: HCP Network
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-network-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: HCP Private
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-private-f3
     pass_count: 0
     fail_count: 2
     total: 2
     pass_rate: 0
-    consecutive_failures: 2
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-07'
     failure_classification: ''
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: HCP Upgrade Y-Stream
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-upgrade-y-f7
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
-    consecutive_failures: 0
+    total: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id028
-    labels: *id029
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: HCP Upgrade Z-Stream
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-upgrade-z-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-09'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Advanced
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-advanced-f3
     pass_count: 2
     fail_count: 0
     total: 2
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Advanced (Day-1 Negative)
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-advanced-day1-negative-f7
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: 0
-    consecutive_failures: 0
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-15'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Classic Full Resources
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-classic-full-resource-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-09'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Private
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-private-f3
     pass_count: 1
     fail_count: 1
     total: 2
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-13'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Private (Day-1 Negative)
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-private-day1-negative-f7
-    pass_count: 0
-    fail_count: 1
+    pass_count: 1
+    fail_count: 0
     total: 1
-    pass_rate: 0
-    consecutive_failures: 1
+    pass_rate: 100
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-16'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Shared VPC
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-shared-vpc-f3
     pass_count: 1
     fail_count: 1
     total: 2
     pass_rate: 50
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-10'
     failure_classification: ''
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Upgrade Y-Stream
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-upgrade-y-f7
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
-    consecutive_failures: 0
+    total: 0
+    pass_rate: -1
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
-    team: *id028
-    labels: *id029
+    diagnosis: No Sippy run data for this job in the 14-day window.
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
   - name: STS Upgrade Z-Stream
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-upgrade-z-f7
     pass_count: 1
     fail_count: 0
     total: 1
     pass_rate: 100
-    consecutive_failures: 0
     last_failure_url: ''
-    last_failure_date: ''
+    last_failure_date: '2026-09-09'
     failure_classification: ''
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team: *id028
-    labels: *id029
+    team: *id016
+    labels:
+    - ci-failure
+    - terraform-provider-rhcs
