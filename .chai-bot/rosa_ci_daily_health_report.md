@@ -210,11 +210,11 @@ categories:
 - `team` and `labels`: from the job registry (`ci-status-jobs.yaml`). Include them verbatim. If a job overrides the category-level team/labels, use the job-level values.
 - If a job had a fetch error in step 2, set `pass_count` and `fail_count` to -1, `total` to 0, `pass_rate` to -1, `consecutive_failures` to 0, and `failure_classification` to "fetch_error". This signals that no valid data was retrieved — remediation follow-ups must skip these jobs entirely (they are not real failures).
 
-### 7. Remediation — one auto-fix PR
+### 7. Remediation — auto-fix PRs
 
-After posting the health report and writing the artifact, attempt **one** auto-fix PR for the highest-priority fixable failure.
+After posting the health report and writing the artifact, attempt a maximum 5 of auto-fix PRs for the highest-priority fixable failures.
 
-**Scope:** From the jobs analyzed in step 5, pick the single failure with the highest `consecutive_failures` that matches an auto-fixable pattern. Skip jobs that already have an open `[rosa-ci-fix]` PR.
+**Scope:** From the jobs analyzed in step 5, pick the top failures with the highest `consecutive_failures` that matches an auto-fixable pattern. Skip jobs that already have an open `[rosa-ci-fix]` PR.
 
 **Mandatory fallback (always runs if no PR was opened above):** Regardless of whether step 5 classified any failures, if no `[rosa-ci-fix]` PR was opened in the steps above, fetch the build log for the single highest `consecutive_failures` job that has an empty `failure_classification` in the artifact. Classify it using the 4-bucket system (product bug / env-config / test bug / resilience). If it matches any auto-fix pattern (1-8), open a `[rosa-ci-fix]` PR. Do NOT skip this step because classified failures exist — the point is to look beyond what step 5 analyzed.
 
@@ -249,7 +249,7 @@ After posting the health report and writing the artifact, attempt **one** auto-f
 **Bias to action:** Always attempt the fix. If the change is complex, open a smaller-scoped PR addressing the specific failure (a skip-list entry, a version gate, a timeout increase). Let PR reviewers judge safety — do not self-censor based on perceived risk or complexity. The PR review process (CodeRabbit + human `/approve`) is the safety net, not your judgment about whether a fix is "too risky."
 
 **Constraints:**
-- Maximum **1 PR per run** — if multiple failures are fixable, pick only the highest priority one
+- Maximum **5 PRs per run** — if multiple failures are fixable, pick only the 5 highest priority ones
 - Never modify production configs (`app-interface`)
 - PRs require human `/lgtm` and `/approve` before merge
 - PR title must start with `[rosa-ci-fix]` for tracking
