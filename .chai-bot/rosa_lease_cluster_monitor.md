@@ -80,7 +80,7 @@ For issues you can fix directly:
 
 ### 6. Escalation
 
-For issues you cannot fix automatically, notify the `rosa-ci` channel alias (resolves to `#wg-rosa-ci-enhancement`). Tag the CI watcher with a concise summary:
+For issues you cannot fix automatically, notify the `rosa-prow-info` channel alias (resolves to `#rosa-prow-info`). Tag the CI watcher with a concise summary:
 
 ```
 :warning: *Lease cluster issue requiring attention*
