@@ -1,0 +1,7 @@
+ocm_env: integration
+aws_region: us-east-1
+cluster_name_prefix: e2e
+compute_machine_type: m5.xlarge
+compute_nodes: 2
+channel_group: stable
+provision_shard_id: 710e97b8-381a-11f1-8907-0a580a811288
