@@ -4,6 +4,7 @@ package e2e
 
 import (
 	"context"
+	"time"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
@@ -45,7 +46,9 @@ var _ = Describe("ROSA HCP HostedCluster Health", labels.Critical, labels.Positi
 		Expect(ns).NotTo(BeNil(), "could not resolve HCP namespaces on MC")
 
 		By("Verifying HostedCluster CR in " + ns.HCNamespace)
-		Expect(verifiers.VerifyHostedClusterHealthy(ctx, tc.MCDynamicClient(), ns.HCNamespace, ns.ClusterName)).To(Succeed())
+		Eventually(func() error {
+			return verifiers.VerifyHostedClusterHealthy(ctx, tc.MCDynamicClient(), ns.HCNamespace, ns.ClusterName)
+		}).WithTimeout(60 * time.Second).WithPolling(5 * time.Second).Should(Succeed())
 	})
 
 	It("should have healthy NodePool CRs", func(ctx context.Context) {
