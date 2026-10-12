@@ -1,5 +1,5 @@
 report_date: '2026-10-12'
-generated_at: '2026-10-12T15:19:15Z'
+generated_at: '2026-10-12T17:51:00Z'
 history_cutoff_utc: '2026-10-12T14:30:00Z'
 pass_rate_unit: percent
 job_registry_url: https://raw.githubusercontent.com/openshift-online/rosa-e2e/main/configs/ci-status-jobs.yaml
@@ -167,10 +167,7 @@ non_gating:
       ERROR: 0
       FAILURE: 198
       SUCCESS: 334
-evidence_caveats:
-- For HCP STG n-X Y-Upgrade OCP5, the requested analyzed run is 2109594952609566720 (completed 10:45:13Z). The corrected source
-  records newer eligible failure 2109625866093858816 (completed 13:42:24Z); it is preserved as last_failure rather than incorrectly
-  labeling the analyzed run as latest.
+evidence_caveats: []
 categories:
 - id: rosa-e2e-stg
   name: ROSA E2E STG
@@ -5270,11 +5267,12 @@ categories:
     last_failure_build_id: '2109625866093858816'
     failure_classification: Env/config issue
     analysis_status: analysed
-    failing_tests: []
-    failure_summary: 'Authentication failed: invalid_grant: Invalid refresh token.'
-    diagnosis: 'The analyzed run reports invalid_grant: Invalid refresh token; cs-telemetry reports 0 events. Run 2109627964780974080
-      is excluded because it completed after the cutoff. Latest-failure evidence is retained from the corrected source, separately
-      from this analyzed run.'
+    failing_tests:
+    - N-X HCP Upgrade Testing for Y-stream
+    failure_summary: 'N-X HCP Upgrade Testing for Y-stream failed after 20m waiting for version 4.22.17 in available_upgrades.'
+    diagnosis: 'The latest completed in-window run finished at 2026-10-12T13:42:26Z. Exact log error: version 4.22.17 not in
+      cluster available_upgrades after 20m0s (last seen: [4.22.18]). The public cs-telemetry log records target=4.22.18.
+      The underlying cause of the version mismatch is not established.'
     fetch_error: null
     completion_cutoff_applied: true
     excluded_after_window_end:
@@ -5287,11 +5285,10 @@ categories:
         result: FAILURE
       previous: []
     analyzed_run:
-      build_id: '2109594952609566720'
-      url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upg-ocp5-lt-rc-staging-main/2109594952609566720
-      started_at: '2026-10-12T10:40:10Z'
-      duration_ns: 303000000000
-      completion_at: '2026-10-12T10:45:13Z'
+      build_id: '2109625866093858816'
+      url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upg-ocp5-lt-rc-staging-main/2109625866093858816
+      started_at: '2026-10-12T12:43:00Z'
+      completion_at: '2026-10-12T13:42:26Z'
       result: FAILURE
   - name: HCP PL OCP5
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-ocp5-latest-rc-staging-main
