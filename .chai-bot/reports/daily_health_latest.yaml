@@ -136,7 +136,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: green
   pass_rate: 85.71
   current:
     pass_count: 60
@@ -1292,7 +1292,7 @@ categories:
     fetch_error: 1
     incomplete: 0
     unfetched: 0
-  health: incomplete
+  health: yellow
   pass_rate: 56.52
   current:
     pass_count: 13
@@ -1640,7 +1640,7 @@ categories:
       direction: insufficient_data
     consecutive_failures: -1
     pending_excluded: 0
-    failure_classification: ''
+    failure_classification: fetch_error
     failure_summary: History fetch failed; run outcomes are unknown, not passing.
     diagnosis: ''
     analysis_status: not_applicable
@@ -1672,7 +1672,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: red
   pass_rate: 37.5
   current:
     pass_count: 12
@@ -1934,7 +1934,7 @@ categories:
     fetch_error: 1
     incomplete: 0
     unfetched: 0
-  health: incomplete
+  health: red
   pass_rate: 22.91
   current:
     pass_count: 52
@@ -2466,7 +2466,7 @@ categories:
       direction: insufficient_data
     consecutive_failures: -1
     pending_excluded: 0
-    failure_classification: ''
+    failure_classification: fetch_error
     failure_summary: History fetch failed; run outcomes are unknown, not passing.
     diagnosis: ''
     analysis_status: not_applicable
@@ -3522,7 +3522,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: red
   pass_rate: 23.81
   current:
     pass_count: 10
@@ -3833,7 +3833,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: red
   pass_rate: 0.0
   current:
     pass_count: 0
@@ -3917,7 +3917,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 51.85
   current:
     pass_count: 28
@@ -4352,7 +4352,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 42.86
   current:
     pass_count: 9
@@ -4523,7 +4523,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: red
   pass_rate: 16.67
   current:
     pass_count: 6
@@ -4787,7 +4787,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 50.0
   current:
     pass_count: 2
@@ -4958,7 +4958,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 50.0
   current:
     pass_count: 1
@@ -5040,7 +5040,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: green
   pass_rate: 83.33
   current:
     pass_count: 10
@@ -5162,7 +5162,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 52.63
   current:
     pass_count: 20
@@ -5456,7 +5456,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 69.23
   current:
     pass_count: 9
@@ -5666,7 +5666,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 42.86
   current:
     pass_count: 15
@@ -6575,7 +6575,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: green
   pass_rate: 92.59
   current:
     pass_count: 25
@@ -8041,7 +8041,7 @@ categories:
     fetch_error: 0
     incomplete: 0
     unfetched: 0
-  health: failing
+  health: yellow
   pass_rate: 55.56
   current:
     pass_count: 10
