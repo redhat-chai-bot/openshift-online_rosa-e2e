@@ -45,7 +45,9 @@ var _ = Describe("ROSA HCP HostedCluster Health", labels.Critical, labels.Positi
 		Expect(ns).NotTo(BeNil(), "could not resolve HCP namespaces on MC")
 
 		By("Verifying HostedCluster CR in " + ns.HCNamespace)
-		Expect(verifiers.VerifyHostedClusterHealthy(ctx, tc.MCDynamicClient(), ns.HCNamespace, ns.ClusterName)).To(Succeed())
+		Expect(verifiers.VerifyHostedClusterHealthyWithDiagnostics(ctx, tc.MCDynamicClient(), tc.MCKubeClient(), ns.HCNamespace, ns.ClusterName, ns.HCPNamespace, func(diagnostic string) {
+			GinkgoWriter.Printf("HostedCluster health failure diagnostics: %s\n", diagnostic)
+		})).To(Succeed())
 	})
 
 	It("should have healthy NodePool CRs", func(ctx context.Context) {
