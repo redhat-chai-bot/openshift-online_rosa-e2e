@@ -3,8 +3,6 @@ as_of_utc: '2026-10-19T14:31:57+00:00'
 registry_url: https://raw.githubusercontent.com/openshift-online/rosa-e2e/main/configs/ci-status-jobs.yaml
 registry_sha256: ea1b3ab92ffd65ec5268dedf649333b40854fe292823646727223614c60d9817
 methodology:
-  fetch_tool: mcp__manager.web_fetch
-  max_concurrency: 1
   window_basis: Started; start inclusive, end exclusive; results observed at collection
     time
   last_7d:
@@ -31,13 +29,11 @@ methodology:
   sanitization: Allowlisted schema excludes registry teams, contact fields, labels,
     raw logs and raw HTML; customer-identifying job-name portions replaced, related
     public URLs withheld; original identifier preserved only as SHA-256.
-  failure_evidence: Selected-job diagnoses use public artifact observations supplied
-    with this task, plus direct public JUnit confirmation for the selected STS Private
-    Link run. Empty failing_tests lists mean no exact testcase name was supplied or
-    established; descriptions are not invented testcase names. Existing failure_logs_retrieved
-    and failure_root_causes_supported audit counters describe the preserved original
-    collection phase, not this evidence-enrichment phase. A classification does not
-    imply that all failures in a run share that cause.
+  failure_evidence: Selected-job diagnoses summarize available public Prow logs, JUnit
+    results, and telemetry observations. Empty failing_tests lists mean that an exact
+    failing testcase name was not established. Observed symptoms are distinguished
+    from established causes; unsupported root causes remain Insufficient evidence.
+    A classification does not imply that all failures in a run share that cause.
 audit:
   registered_categories: 17
   registered_jobs: 185
@@ -45,7 +41,6 @@ audit:
   history_pages: 187
   complete_jobs: 184
   parse_errors: []
-  pending_requests: 0
   attempted_jobs: 185
   successful_jobs: 184
   successful_history_pages: 187
@@ -115,12 +110,6 @@ audit:
   - 185
   excluded_pending_last_14d: 2
   failure_evidence_selected_jobs: 21
-  failure_logs_retrieved: 0
-  failure_root_causes_supported: 0
-  local_save_error: One initial output-directory group-write failure, resolved before
-    collecting histories
-  programmatic_cli_probe: Generic mcp CLI unavailable due missing typer; approved
-    web_fetch direct calls succeeded
 overall:
   last_7d:
     pass: 361
@@ -186,10 +175,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-19
-      file: histories/001-0.html
       sha256: 6fd897fb0da16a18745c6b9daa534725caf240ef4029f1d14a3502c434ab051c
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -335,10 +322,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20
-      file: histories/002-0.html
       sha256: 24bf4242b74fa8e93a15a7c56ae7c793d55ea73e9bd0f75208946bafb5b27994
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -487,10 +472,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-21
-      file: histories/003-0.html
       sha256: 6e46b85dae554750ff66a96b91cb2600d4bdc0373ec52bd58ae9a53d8c56f496
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -639,10 +622,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-22
-      file: histories/004-0.html
       sha256: 097a5a4a868ca4c720e46a190a977939b1ffe238b3c257fb850bf238ea1d5945
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -788,10 +769,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-nightly-5-0
-      file: histories/005-0.html
       sha256: 3e2b28d67d2f38d1d76a887a2bd2f4d538207767207464b1c70db39898a14f12
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -937,10 +916,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-19
-      file: histories/006-0.html
       sha256: e437eb21bcb6aa1d677aec436926e2b2f5ffd69ecabc8a3526d4a9b945e6ce96
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -1088,10 +1065,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-20
-      file: histories/007-0.html
       sha256: 32fbe4d03014a994e957b36a19fdda1293b5fd25a70e9486657f2cd5b4be6dcf
       builds: 19
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -1234,10 +1209,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-21
-      file: histories/008-0.html
       sha256: 5b5e9c19ceec556cee5cbc6c92ddba801a3bb8554e48546a387730603e5c16c1
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -1385,10 +1358,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-stable-4-22
-      file: histories/009-0.html
       sha256: 0f5a1663993ed62ab59570f616f2ceb1a1e5845b2155bd3dfcd83cb6a1f63af8
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -1526,10 +1497,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-fips-e2e-staging-nightly-5-0
-      file: histories/010-0.html
       sha256: bfba4b97625e849bea75e4357121bff4d5b4bbb8d86054d3b071a971989aa51a
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -1677,10 +1646,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-19
-      file: histories/011-0.html
       sha256: cd8be2bbfbff5e49f5bd62063247b0813e94bb0955b3349acd0913ff2256f439
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -1830,10 +1797,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-20
-      file: histories/012-0.html
       sha256: 266184f8a563c80a62f670440217940e964afa98dd9978cc8c77ad2833484102
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -1981,10 +1946,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-21
-      file: histories/013-0.html
       sha256: 6047e16c9bfde69c05a14528c1980f284e96311bae5acd9fcec61bfac30ce6ed
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -2133,10 +2096,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-22
-      file: histories/014-0.html
       sha256: de8c2b3937ef6395763615147ae6df75fc526b9c7a852f282abd370d6ee0d00b
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -2285,10 +2246,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-19
-      file: histories/015-0.html
       sha256: 71d41afa5987dc32107cd1d5a2554bfe3ce46d7a76edc5f4bc9572ce5f594f2b
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -2421,10 +2380,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-20
-      file: histories/016-0.html
       sha256: e76da67672b2b581157a39bfc1005235913db6d7925e1aaea3062e665dd971ed
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -2562,10 +2519,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-21
-      file: histories/017-0.html
       sha256: 74cdf6cce0bd6bf13aadcf37565a89c6ce4798252b8a659719486e0e6f1fe57e
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -2698,10 +2653,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-fips-e2e-staging-stable-4-22
-      file: histories/018-0.html
       sha256: 4ea0344cdb92c2cce389b3e8399c6e541ad70224ef9bde8fad204c4905547224
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -2834,10 +2787,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-e2e-staging-stable-4-22
-      file: histories/019-0.html
       sha256: 96b15df3fdfe5adc5ccb1da9019fca2aa47ac2f11c2371aeb79b3a2b6b358103
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -2986,10 +2937,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-fips-e2e-staging-stable-4-22
-      file: histories/020-0.html
       sha256: fa5075a29839c77401994beedfe8d6e1546520a76f34c403e5a74413f36932a0
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -3122,10 +3071,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-3
-      file: histories/021-0.html
       sha256: 7e46685a0f8ba2c0a7e565757d312a9255d21267c06e6f4d68abc9cc81185923
       builds: 15
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -3247,10 +3194,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-2
-      file: histories/022-0.html
       sha256: bf95dac381f2a19f95b2a81dc3a97e458d87eb2649d2e262d0fcd2d5bd0f2531
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -3383,10 +3328,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-1
-      file: histories/023-0.html
       sha256: 3417f5b3fd313185e5d6b631de9970c2899d813b413c68bf0089e52398f4428d
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -3519,10 +3462,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-3
-      file: histories/024-0.html
       sha256: e16109ae385a72cdd7a135e4be53a069d3af80762f96ed5a6fb17ae73b645d1d
       builds: 16
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -3650,10 +3591,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-2
-      file: histories/025-0.html
       sha256: d9fcbe2342073256c04f41bea790eb28e7ed5c89c9e9d625bba796459d0068a9
       builds: 16
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -3780,10 +3719,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-1
-      file: histories/026-0.html
       sha256: 29e6fe679b0d1792d6577645e145ebc224f75a17f49b98613b7e11221f6783c1
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -3941,10 +3878,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e
-      file: histories/027-0.html
       sha256: f9f0e10821c2f2032dc2ada56301f304d12d66b58a9c2cc8bac69519cda15734
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -4094,10 +4029,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-full
-      file: histories/028-0.html
       sha256: d6e52f17b052ce8c72fbc84d77c01ee09c1814d33eb733ab479986d740062182
       builds: 15
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -4220,10 +4153,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-21
-      file: histories/029-0.html
       sha256: ce53b9c1fee77a66771d5de15df03c4f76b4f35ea2044fac97ea74ea31f98558
       builds: 10
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -4323,10 +4254,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-21-full
-      file: histories/030-0.html
       sha256: 744b8b7d009ef355ddada4fc0a1cf6d54601cfed23a4153976505cd60d513e6e
       builds: 1
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -4378,10 +4307,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-22
-      file: histories/031-0.html
       sha256: 0ddad7f220ca5699cfe513fe54018ff8bce6add8fb38187c58645aa245c25323
       builds: 10
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -4481,10 +4408,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-22-full
-      file: histories/032-0.html
       sha256: c7b1317008160687bd1715045c54287eddef4a8084c3e6dd549c71fb0f27f77b
       builds: 1
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -4536,10 +4461,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-candidate-5-0
-      file: histories/033-0.html
       sha256: 37c2cf18ecfa97d8191b7fb8fca91592252a638ee890090a0e814d68a9c87b49
       builds: 5
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -4612,10 +4535,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-candidate-5-0-full
-      file: histories/034-0.html
       sha256: 25566f029547a2c7269d84b755bf8b71ed1b626813fa99a588217aa459e08299
       builds: 1
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -4691,10 +4612,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19
-      file: histories/035-0.html
       sha256: 9a4b60894522031be049e4318cc82ba9b7a1b112eeb0ec9486016e1511921576
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -4843,10 +4762,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20
-      file: histories/036-0.html
       sha256: 14d5649574093188976088614bf1e0ffce1e10e3700d857d6f3db696063b19a7
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -4995,10 +4912,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21
-      file: histories/037-0.html
       sha256: fd65de33d3227930bf43166d81cfe6a2b1be5995aff8c0fe274accfafa3dcc11
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -5147,10 +5062,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22
-      file: histories/038-0.html
       sha256: 1a06892a05da64dde33b7b7331c886b56e745826e8126f666feb517078ba1a98
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -5300,10 +5213,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0
-      file: histories/039-0.html
       sha256: a2b3dbd5ad7d3f01432e85076dde83d945ad2b2538ec12bcc3947568b6339a27
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -5478,10 +5389,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main
-      file: histories/040-0.html
       sha256: ee18d20c1d17b362c35a1d136e36e99b30db6c878de5c2af0bf1f150c0927237
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -5631,10 +5540,8 @@ categories:
     effective_gating: true
     pages:
     - url: '[redacted customer-identifying public URL]'
-      file: histories/041-0.html
       sha256: 80e9e0a2d2841b90b8b3985603b7f6084aed68d9adc78e380fe29973561b0f9e
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -5784,10 +5691,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main
-      file: histories/042-0.html
       sha256: bdb49e39d97ad1ec2bff057a0b7ce0d88ec4736869443ef31880872af31dcf5b
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -5937,10 +5842,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-upgrade-staging-main
-      file: histories/043-0.html
       sha256: eb1825c0fc051dbdb005da30124548a80a4df35940787ebb765fb9a5bc3d649a
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -6090,10 +5993,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-staging-main
-      file: histories/044-0.html
       sha256: 708ace53f4952ddbe8156c314a0de1708f0b48c5357df8d68c392c94ddfda843
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -6243,10 +6144,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main
-      file: histories/045-0.html
       sha256: 62be4b42bffc10c5fab3b38e768b40a2c66658a3a88aec084a1dd7b9d4cdeda2
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -6396,10 +6295,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main
-      file: histories/046-0.html
       sha256: 43aef9937eabae5d7767643763e70a69d822008359e91cdea487b9281a3f0885
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -6548,10 +6445,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-staging-main
-      file: histories/047-0.html
       sha256: fdcfc5d83e5c219847203c718949f4da19212a4f6c9d9943b70cda2ae1c75661
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -6701,10 +6596,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main
-      file: histories/048-0.html
       sha256: e03e643a94eb88e42ef426f2c612127be9f3aee2745c26adcd61bd5771ffa8c4
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -6854,10 +6747,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-upgrade-staging-main
-      file: histories/049-0.html
       sha256: 8b19be57e2fb5061c1a7d039e74db781ea70e61750b0b10254aa2fbbc83e5e3b
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -7007,10 +6898,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-y-upgrade-staging-main
-      file: histories/050-0.html
       sha256: 09fa7b22995fe436366829e1f77abc92403e5b1098843e48db2310e62b72d5e6
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -7200,10 +7089,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-staging-main
-      file: histories/052-0.html
       sha256: 27ff544389ad1d836301e4bedf92d0f2b02bc908a7e337131998194c2a591516
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -7353,10 +7240,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-upgrade-staging-main
-      file: histories/053-0.html
       sha256: bdb42ac0be4789d04286db757f92a2eaf018e450c85f278c555dfe2d99ec55f7
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -7506,10 +7391,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-access-request-staging-main
-      file: histories/054-0.html
       sha256: 32e5c2fd7fc02d88e2946b4c99e27a3ee83fdc418c12b83fb05d6f0bb0aa97f9
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -7659,10 +7542,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-staging-main
-      file: histories/055-0.html
       sha256: 8e72609e252f9757f5e41db4f7a9b7c7ee5193b5097e934e5183962e706ef809
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -7812,10 +7693,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-jira-staging-main
-      file: histories/056-0.html
       sha256: ac1ba0eed950a014a4ff290157d9e1470b23194ec78d5049df46a9cec1ee759a
       builds: 12
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -7921,10 +7800,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-acc-req-ocp5-lt-rc-staging-main
-      file: histories/057-0.html
       sha256: 4dc35a77aaf7d13d690b2aa097185d4d4d8b1c04a0676b34193546252e613991
       builds: 19
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -8069,10 +7946,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-ocp5-latest-rc-staging-main
-      file: histories/058-0.html
       sha256: 0c03b603cf5f299ae9b0f6fc0ffacaa0d51af5ce7ded1e0b977e4088c48765d8
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -8207,10 +8082,8 @@ categories:
     effective_gating: true
     pages:
     - url: '[redacted customer-identifying public URL]'
-      file: histories/059-0.html
       sha256: 5af351d7aa9533a317d075e43f385d4ce68e563cd1ce52880161ce12b0ef59da
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -8348,10 +8221,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-ocp5-lt-rc-staging-main
-      file: histories/060-0.html
       sha256: 5608e674744e3fb69b023a8c29be56de361ec63eec216524a7ef52ef2bf71f54
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -8491,10 +8362,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-upg-ocp5-ltrc-staging-main
-      file: histories/061-0.html
       sha256: 96a224ab36d154c777248355ba85e9f27d51f1a79c9530200ddb2c47918a6660
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -8634,10 +8503,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-ocp5-latest-rc-staging-main
-      file: histories/062-0.html
       sha256: 9035f7ac3e99d7a1eb8dfa762cad99c9e398f4c01b1ddf5d827dc3b4bb12ff97
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -8787,10 +8654,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-ocp5-lt-rc-staging-main
-      file: histories/063-0.html
       sha256: 5bb664324596787f14abc2d7cc5a2479a28f988e898509c0fe045ef30f6753f7
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -8929,10 +8794,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-ocp5-latest-rc-staging-main
-      file: histories/064-0.html
       sha256: 0f1fc82cef5b729f1f48b7167abb90258a7e0b5444f4a38bd200462c1214add2
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -9082,15 +8945,11 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upg-ocp5-lt-rc-staging-main
-      file: histories/065-0.html
       sha256: e8229e6d5b2412c04f77abed2c6d84360da753eb13c2fdc81c0fabea3b7b0f3c
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upg-ocp5-lt-rc-staging-main?buildId=2108458076980908032
-      file: histories/065-1.html
       sha256: b6e75b443b659d7c6f60db3133aa432ef4411fb32c6fcbb0fce3c174811185ca
       builds: 14
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -9308,10 +9167,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-ocp5-latest-rc-staging-main
-      file: histories/066-0.html
       sha256: 90fd2d332e33acd2ce014471c143ac74cf920d9d09e17b6004b614e00f0415cd
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -9451,10 +9308,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-ocp5-latest-rc-staging-main
-      file: histories/067-0.html
       sha256: 9e913b51ba50af2073deee86822a4301854c313c6c9df49ce786edddf0c7070f
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -9594,10 +9449,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-jira-ocp5-staging-main
-      file: histories/068-0.html
       sha256: bf827a23b8dbd3a1df78af5c4e883c1b03cd61e581edcc0a4ef059013fbf182b
       builds: 1
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -9648,10 +9501,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-ocp5-resource-cleaner
-      file: histories/069-0.html
       sha256: ee0a255d4068ef0e98b040173ff409e62505dc63e9fc20757421e934b240735d
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -9797,10 +9648,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shvpc-ocp5-lt-rc-staging-main
-      file: histories/070-0.html
       sha256: 2bee191d792266a4aba5842cc56832bcda92a672f67c13a171f5ce22545597f5
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -9950,10 +9799,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-upg-ocp5-latest-rc-staging-main
-      file: histories/071-0.html
       sha256: c283f8bec4cd2e329fc114a1238a7fb32e270f348b6032db0391ca1242dbc03f
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -10086,10 +9933,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-y-upg-ocp5-lt-rc-staging-main
-      file: histories/072-0.html
       sha256: 2f02fe9553b7d353aa62a4f4aa99b6b27ec3b4a602b49626d3fea11c7a056d39
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -10224,10 +10069,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egr-ocp5-lt-rc-staging-main
-      file: histories/073-0.html
       sha256: 3f906cca945bc708bd74356bb558beca48872f21f158584905d107208508d112
       builds: 19
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -10372,10 +10215,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-z-egr-upg-ocp5-ltrc-staging-main
-      file: histories/074-0.html
       sha256: 6154739e8689aaae3fb24b9abb2f3c9552ed90c5351a02eda9d2b65c4eb11819
       builds: 18
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -10540,10 +10381,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-autonode-integration-main
-      file: histories/075-0.html
       sha256: 7913e0f3e977fd29b0c17836ab1ce55b0a98250b949c5cfbe813656a14526e11
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -10693,10 +10532,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-rest-integration-main
-      file: histories/076-0.html
       sha256: de64e0dab570ce4329bf78fb6d3987a34a4938c4eb37f2462a7f4261a3751b11
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -10846,10 +10683,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-scale-integration-main
-      file: histories/077-0.html
       sha256: c6557065b0471ac8be5171c6900582925d1c14fe9433e73eaca830b665410d12
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -10999,10 +10834,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main
-      file: histories/078-0.html
       sha256: 2db32f914c227efbef8a6d88eda22b5f17279e0e7f1541752cd85c5bedd1be52
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -11152,10 +10985,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cpupzfin-integration-main
-      file: histories/079-0.html
       sha256: 51449b256f9c75ec51881d942175906839206cce47492e9b3b38f1d84a8afbce
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -11305,10 +11136,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main
-      file: histories/080-0.html
       sha256: 3014c532778a7868de04b4862d33b430b55fc2b1f8926a28d3e28bb06a0c0c8e
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -11482,10 +11311,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-production-ocm-fvt-periodic-cs-rosa-hcp-ad-production-main
-      file: histories/081-0.html
       sha256: 1090766ebd19a4d1d4f8ce0db7053a656389285ea0ce829632451101a0edb063
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -11643,10 +11470,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main
-      file: histories/082-0.html
       sha256: 241a3b9d411dda1f398a142d1a1b8236242705896983080176771f141c2c19d0
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -11795,10 +11620,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-staging-main
-      file: histories/083-0.html
       sha256: 1f153ec4e417f683dff207fe607040b76e8c11aecc437111c22e797297511ddf
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -11947,10 +11770,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-staging-main
-      file: histories/084-0.html
       sha256: 8bff33bf660d7a370a1009454d1ee0a9a7d4d92d3d7e569162d99ed29d0855ef
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -12100,10 +11921,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shared-vpc-staging-main
-      file: histories/085-0.html
       sha256: d2b7c81ec17735de393a48e2aee2fadc21a739cdad906502f54d41fc9832d632
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -12252,10 +12071,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-classic-cust-chan-staging-main
-      file: histories/086-0.html
       sha256: b1f2fcf30e08874e27d05e9a39ef067a2e7b9c992f74d5950191d68ce02700e5
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -12405,10 +12222,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-upgrade-staging-main
-      file: histories/087-0.html
       sha256: 6cbadaa19ae4a5b8e59bdd4466ed535a7e9e04ac5ad120d95c8b25b2898b3bd6
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -12557,10 +12372,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-nx-y-upgrade-staging-main
-      file: histories/088-0.html
       sha256: a0ad7ad04c9fb669950212399c917305e66c9915ec1b0b1b1e7dd5253df221c3
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -12709,10 +12522,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-ocm-resources-staging-main
-      file: histories/089-0.html
       sha256: 86e75431e7da78a854866a0a2095519e7f73d8410c4b79ec44c27350eb6e1e8d
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -12861,10 +12672,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-staging-main
-      file: histories/090-0.html
       sha256: 2cdcbb8e9ccfcd77482004576a3424d8e7aaaed6d3236b69c1c58cd734229d1b
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -13039,10 +12848,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main
-      file: histories/091-0.html
       sha256: 3472b0aee25b6cf71d68f262aa26ad491d3cd67e28d15f0668bfb576b02f2a36
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -13192,10 +12999,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-classic-cust-chan-integration-main
-      file: histories/092-0.html
       sha256: 9b301280e0bf66ed58d67210c239ce239d0a1a5a898907b108aacb4ae6a90ed3
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -13344,10 +13149,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-aws-integration-ocm-fvt-periodic-cs-osd-ccs-aws-ad-integration-main
-      file: histories/093-0.html
       sha256: f31557f36fba4c958ffd893d2028c2d0a0e54eb3e74891dbd6c8a34fb93f9174
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -13522,10 +13325,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main
-      file: histories/094-0.html
       sha256: ad7ebb6d7879aab4cce30c8f035c2ae0eb7bc7919a5920b738b93b6b2b04c841
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -13675,10 +13476,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main
-      file: histories/095-0.html
       sha256: 826e428227daaa0e3d8d0cfa8874fed968904340d950fbd69209678d7d465817
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -13828,10 +13627,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-non-cross-proj-wif-staging-main
-      file: histories/096-0.html
       sha256: cdee071ee7edd4d5046121a84f4a1d09d7d0a9167cc2928deca9b4a5de40507f
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -13981,10 +13778,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main
-      file: histories/097-0.html
       sha256: 6ffaf25c03dca6bae9718caeacb265c4bd549b6d5e1bc3f095c6f01971d19549
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -14134,10 +13929,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main
-      file: histories/098-0.html
       sha256: ecfed8236750c2908d1114114e528ce84b5ea6142b05a085c4fcf1df15d51dc6
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -14312,10 +14105,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-basic-periodic-integration
-      file: histories/099-0.html
       sha256: c3eaf322f58e3d781dc67dca8c01fade35b3a661c2dcba0ddf73ba3ffb890bae
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -14464,10 +14255,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-mc-autoscaling-integration
-      file: histories/100-0.html
       sha256: 1a0f496e701965af12dada4568a892371991d64180eb31a0c07bb5fd4699a39a
       builds: 16
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -14595,10 +14384,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-sc-autoscaling-integration
-      file: histories/101-0.html
       sha256: b73f7e9ff0434edeb9c39e9f94dd71f5dc932a521c6180476b8fde298bb56aec
       builds: 17
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -14756,10 +14543,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage
-      file: histories/102-0.html
       sha256: d00e65a5ff113a42879da7165bcc2bd679cff7d7adb9e94fecfa52cef74ea087
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -14932,10 +14717,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-integration-stable-4-22
-      file: histories/103-0.html
       sha256: 384bb6ab2948ec0e43c4db3be4c2bec01c96cfdf09ac7460e400367ac9a03140
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -15084,10 +14867,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22
-      file: histories/104-0.html
       sha256: 0792ae27d11bab182795fb6b8ee9cf03ba36a553c476e0443c48dbae25eb4cb6
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -15260,10 +15041,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-hcp-ovn
-      file: histories/105-0.html
       sha256: 269cf50ed28bab2696262529dffd201adc8a24aaf8519a3e10e3f610e6961f4e
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -15409,10 +15188,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn
-      file: histories/106-0.html
       sha256: 2f9ea02f2f084dde494bdee572e5af8a798e4eb2ba0c59138649ab34bd8c3b3e
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -15561,10 +15338,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn
-      file: histories/107-0.html
       sha256: e57fd0ba7fc42cde6cd6a9c5ecc655b5e2af6be558b26cb74d4ec95663c2a52e
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -15714,10 +15489,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-hcp-ovn
-      file: histories/108-0.html
       sha256: 42f5e5d1cbb9545ca21d8217a39189bedc9408320d80a30d361d5979d154fa4f
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -15867,10 +15640,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn
-      file: histories/109-0.html
       sha256: 72db3c37653b17fd8f9f7ff9ed20747a4246396ad754f453545b642cc2ea23a9
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -16019,10 +15790,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn
-      file: histories/110-0.html
       sha256: 5f7943637e42fdda7eb4c877c1c59653abfd4ccd912a77b3aed78ed62c152780
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -16196,10 +15965,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn
-      file: histories/111-0.html
       sha256: 6279fabac14197685581de30d1c752ea1594157fcb9c204fac2fb2af839c2d8b
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -16345,10 +16112,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-sts-ovn
-      file: histories/112-0.html
       sha256: bcc54141e294cbf99d9d8a01d08c4e3123680033f4ec80981676605e383fa07b
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -16497,10 +16262,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn
-      file: histories/113-0.html
       sha256: 5135e2c71aaec8577e17f9d4bf1df6ced24341c07b4a68281d0cb7587a325656
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -16646,10 +16409,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn
-      file: histories/114-0.html
       sha256: 4434d3c92a71fde243527235afadaaf1edffb71b7ba59395192d06822f2d340d
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -16820,10 +16581,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-day1-negative-f7
-      file: histories/115-0.html
       sha256: f92d3ea2b626a4cf45fc464977d56db95e05f9a53771eaa4f7ace023946e3638
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -16971,10 +16730,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-day1-supplemental-f3
-      file: histories/116-0.html
       sha256: 63c235a86372dac212e1876e2db74df96bdc496122c1897249f10ff5846ffeb1
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -17123,10 +16880,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-arm-f7
-      file: histories/117-0.html
       sha256: eb65a5b5f013e54a0f32914e3d591c84cd977d9edc71af9ad383aac57fd84610
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -17273,10 +17028,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-f3
-      file: histories/118-0.html
       sha256: 564746ca54a874c7b3518950f8ea11bb2ac12dd65a6849de1a2587e2f997d5c8
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -17425,20 +17178,14 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-regional-f3
-      file: histories/119-0.html
       sha256: 454d15836479db19ef094ba45c14fd31f52c0a8c257d90dcd79c8b6ad1f76bbb
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-regional-f3?buildId=2079625895424823296
-      file: histories/119-1.html
       sha256: f5ac5754430a584cce37fe9f676be60878d632ee72e5f281189c8afb31e75267
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-regional-f3?buildId=2057520278900051968
-      file: histories/119-2.html
       sha256: 5091cbe4ffe8fdb0ecc8da81ad49f4039a5b0f2d2b7c3148b4885bd4957d260d
       builds: 10
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -17734,10 +17481,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-external-auth-f3
-      file: histories/120-0.html
       sha256: d59145063c28473a5a2091aa1ad558e35252a1bd1df62775eed565d518e69745
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -17886,10 +17631,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-private-link-f3
-      file: histories/121-0.html
       sha256: ea4caf39023a82cc107c5a161eddcebe493a52f3661ba7b4dc2a71041c8cc3db
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -18038,10 +17781,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-shared-vpc-f3
-      file: histories/122-0.html
       sha256: 58ca7b081ee87695beaa9d298f72754b27368a279034283af2f153c510bd9a75
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -18190,10 +17931,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-y-stream-f3
-      file: histories/123-0.html
       sha256: 0b7fc5238cd488e0464a39b9a2e7581dbc1d1c3c731890d8a4d8c6f16a237166
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -18341,10 +18080,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-z-stream-f3
-      file: histories/124-0.html
       sha256: f58f5e2f6fbc18101eb9acbc46400f6f90785c4e61ebbe3bc80e0fb0beca4553
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -18493,10 +18230,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-advanced-critical-high-f3
-      file: histories/125-0.html
       sha256: a2d1399f751940449b2aa02158180392ca1b33ead843776fac1b4aa255d17cd6
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -18645,10 +18380,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-upgrade-y-stream-f7
-      file: histories/126-0.html
       sha256: 51492e785f7e4376f788bd5a730fcd27e0352d9b72b6e3e52a1cdc1a05fd198f
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -18796,10 +18529,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-ocm-resources-f3
-      file: histories/127-0.html
       sha256: df5e05aa2294e9ce22de01a12014bb53f9d0ccb0b3e140037c86a97c34f53bb1
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -18948,10 +18679,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-advanced-f3
-      file: histories/128-0.html
       sha256: 117be23d96e08e9a79552e465af66d64c29d69909943a1c5789c3f993a518b95
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -19100,10 +18829,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-hibernation-f14
-      file: histories/129-0.html
       sha256: 27096cc7ba421b0761b66174e75cda5120ec39e897e18dcfbfbec39d879d3e3d
       builds: 12
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -19210,10 +18937,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-private-link-f3
-      file: histories/130-0.html
       sha256: d6d3059c3fea6e74266a49928d49f979f95c5bb7c17f218622423e23a1628e92
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -19362,10 +19087,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-f3
-      file: histories/131-0.html
       sha256: 1789a27e49d299676174d346f061bca00fec2241d2ffefd1710bff9fb47d57ec
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -19514,10 +19237,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-upgrade-y-stream-f3
-      file: histories/132-0.html
       sha256: 65504fa678a12cb4cb838a08be37a6051d14620299a0e058aa49cab3dbf909c0
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -19666,10 +19387,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-y-stream-f3
-      file: histories/133-0.html
       sha256: 22c5ee47d29b4e638809f53b406e4635dd3163b6e3b9b06890ea4f76f16d20a4
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -19818,10 +19537,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-z-stream-f3
-      file: histories/134-0.html
       sha256: d9ac6f01579eb6c8f537fc4f4c3c5afec6246616c236cbf4ec07d3a55a177606
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -20005,10 +19722,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-int
-      file: histories/135-0.html
       sha256: fdc1e6fca46f58c8a505a6064a8316064db2188daeb613dcd8e57d1a014234eb
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -20157,10 +19872,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-stage
-      file: histories/136-0.html
       sha256: 430995840237e86319c80e2d8e37349f0e3f7f31446a26b51f2cd6fb99a84081
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -20306,10 +20019,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-configure-alertmanager-operator-master-rosa-sts-e2e-promotion-int
-      file: histories/137-0.html
       sha256: c3525d0272b6ddb97742eff329600d595b88ef2a583d6c118a8c2635c1126ff6
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -20456,10 +20167,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-configure-alertmanager-operator-master-rosa-sts-e2e-promotion-stage
-      file: histories/138-0.html
       sha256: 49e81645a1437a4f5cc815ac930d0f8f397dc4108f2be16ace290193639ae426
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -20606,10 +20315,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-aws-vpce-operator-main-rosa-sts-e2e-promotion-int
-      file: histories/139-0.html
       sha256: 364a4afc5a2412651bc4c23e0aad036a2741e9d954ad60ebcfa9ea218693d9a3
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -20755,10 +20462,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-aws-vpce-operator-main-rosa-sts-e2e-promotion-stage
-      file: histories/140-0.html
       sha256: ba5c89344b88ba3f4c4450f3fddb78d2162fe0ba6f74f796a89831a221c6c774
       builds: 16
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -20884,10 +20589,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-managed-upgrade-operator-master-rosa-sts-e2e-promotion-int
-      file: histories/141-0.html
       sha256: 6c4766aec488ccb6c856dddedb788e4451fdb1301bfaad8a49709a556395e32a
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -21034,10 +20737,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-managed-upgrade-operator-master-rosa-sts-e2e-promotion-stage
-      file: histories/142-0.html
       sha256: 2c9b8c963fb48a1c0dff96dbf5e893e9010cfe69c00de99283ec3709c8e2efd9
       builds: 16
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -21162,10 +20863,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-ocm-agent-operator-master-rosa-sts-e2e-promotion-int
-      file: histories/143-0.html
       sha256: 386a90b7b10ef90b577037a8c89a5c719dce50847c498e4a073adc295bb1d087
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -21312,10 +21011,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-ocm-agent-operator-master-rosa-sts-e2e-promotion-stage
-      file: histories/144-0.html
       sha256: 8bce16b04824508b1b44141a4d3fb4678792f987c108f4313d8af92e1be9e372
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -21462,10 +21159,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-osd-metrics-exporter-main-rosa-sts-e2e-promotion-int
-      file: histories/145-0.html
       sha256: 3bd39ea43e442744f21340f21ea9d7023a811edfc5cae9ef195b0faf1e43bbbd
       builds: 3
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -21524,10 +21219,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-osd-metrics-exporter-main-rosa-sts-e2e-promotion-stage
-      file: histories/146-0.html
       sha256: 5b20d3e4c36a47728e4992d5af78dd78afa2fd02e5586e26fc31de6b8a8366a5
       builds: 3
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -21586,10 +21279,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-int
-      file: histories/147-0.html
       sha256: 9654a145f4e8a429d4405415a070353657611eb363c57bf1d5c1398405417fd0
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -21736,10 +21427,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-stage
-      file: histories/148-0.html
       sha256: fffff2008d4c39abc3c46d730aaaa3f543f08f2657e9a8f20737004063e92af1
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -21884,10 +21573,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-certman-operator-master-hive-e2e-promotion-int
-      file: histories/149-0.html
       sha256: ba7bfeca4688ff3f1877bc17452113e240aff04061a0744b573968c0da675c3d
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -22033,10 +21720,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-certman-operator-master-hive-e2e-promotion-stage
-      file: histories/150-0.html
       sha256: d13e14fb6ce586529dceea95b9861282446fa76c629c1234d859a9e5a62f137c
       builds: 8
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -22120,10 +21805,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-cloud-ingress-operator-master-rosa-osd-aws-e2e-promotion-int
-      file: histories/151-0.html
       sha256: 0851dbd0b33fc4b616ed72cf30d6f625cb5830844eb982df3a9f45d7653b8506
       builds: 8
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -22210,10 +21893,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-cloud-ingress-operator-master-rosa-osd-aws-e2e-promotion-stage
-      file: histories/152-0.html
       sha256: f0f1446c4f53d2ee2f44b481a03df49c3f7b9c9d9e195620ea63917bb78a8e89
       builds: 12
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -22321,10 +22002,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rbac-permissions-operator-master-rosa-sts-e2e-promotion-int
-      file: histories/153-0.html
       sha256: d6e50e9ab91d47ca71aef12f92d2f853365c9eefe979cabb6567706aa1709063
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -22474,10 +22153,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-rbac-permissions-operator-master-rosa-sts-e2e-promotion-stage
-      file: histories/154-0.html
       sha256: 6c7e880fbb67c8afcc812c9c093890a0e3a642875b0219131e6173978b596fa3
       builds: 11
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -22580,10 +22257,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-aws-account-operator-master-hive-e2e-promotion-int
-      file: histories/155-0.html
       sha256: d592a7e45716734b3313b6332f01a601dc623a2825d10ac351ec4090b762f235
       builds: 5
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -22653,10 +22328,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-aws-account-operator-master-hive-e2e-promotion-stage
-      file: histories/156-0.html
       sha256: 86be70f81dee1e6fe685bc8b4f1dbfbb35be9d1d780ee49da7291d1d212542b1
       builds: 7
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -22738,10 +22411,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-managed-cluster-validating-webhooks-master-rosa-sts-e2e-promotion-int
-      file: histories/157-0.html
       sha256: 3c9a18d82ed878e885f5208408bbe77a1bc1d47da00aedc9a43fb79e920c0241
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -22889,10 +22560,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-managed-cluster-validating-webhooks-master-rosa-sts-e2e-promotion-stage
-      file: histories/158-0.html
       sha256: 1cc00129c1747d2297803a651bd6cc9a1fdd31963dff70a2fa175580ebc63312
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -23039,10 +22708,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-int
-      file: histories/159-0.html
       sha256: 27dad0ddb8d9c87b1aac0980ecea2b344403001a5966d01b53bcd2c3dd76d0f7
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -23190,10 +22857,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-stage
-      file: histories/160-0.html
       sha256: ff2245c683258d8d61a61c833bf88075a50289116295d499bb6cd71e003a2465
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -23341,10 +23006,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-configure-alertmanager-operator-master-osd-gcp-e2e-promotion-int
-      file: histories/161-0.html
       sha256: a978637ae10a4d9f437ef82de9cf4c0f5b54b2ba2b8bff429dabb78d4cbd3ea3
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -23491,10 +23154,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-configure-alertmanager-operator-master-osd-gcp-e2e-promotion-stage
-      file: histories/162-0.html
       sha256: 80c6afee3827bc430528492f577b436c93b8a7df03280bcf4873aae37f981c33
       builds: 15
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -23614,10 +23275,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-managed-upgrade-operator-master-osd-gcp-e2e-promotion-int
-      file: histories/163-0.html
       sha256: afc7306dc2b6c2395dd62880fd491a76c2fba73523282afcc85e65c9dcaed3ea
       builds: 11
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -23717,10 +23376,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-managed-upgrade-operator-master-osd-gcp-e2e-promotion-stage
-      file: histories/164-0.html
       sha256: c7071935e031cb9ea153b2cb4eb9488244bdc548b5a6dfdcd170f4825aa8da46
       builds: 13
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -23830,10 +23487,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-ocm-agent-operator-master-osd-gcp-e2e-promotion-int
-      file: histories/165-0.html
       sha256: d1e63423dfe99e1e31b8760d4c7cbdd1f454223d4916a563e674a8239d9b3894
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -23980,10 +23635,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-ocm-agent-operator-master-osd-gcp-e2e-promotion-stage
-      file: histories/166-0.html
       sha256: c13f5f9fdaa655b13f99f4e97debfe1cb716947fad72edbe67d3f892e83d58aa
       builds: 15
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -24103,10 +23756,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-int
-      file: histories/167-0.html
       sha256: 5ae091a5c5ee70d9f3e69b60386f9a0bcf3ec029e88a7480cfe854328a31eb51
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -24253,10 +23904,8 @@ categories:
     effective_gating: true
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-stage
-      file: histories/168-0.html
       sha256: a1660cca593792211bdaac3387f79c3a9e5d2e23e2bf507c150f66d7c28b21dd
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -24426,10 +24075,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-day1-supplemental-f3
-      file: histories/169-0.html
       sha256: 4d54e6f546e44078a0eb04ad6b1e2142cc88887bea199de66e863fffc8184e1a
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -24574,10 +24221,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-advanced-f3
-      file: histories/170-0.html
       sha256: eedd6063994480b02ee0cf2b683ed9c4e08e22556a78cc542d70757c6245cf1a
       builds: 15
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: true
@@ -24698,10 +24343,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-arm-f7
-      file: histories/171-0.html
       sha256: 8b1cf7619b8bf6eeca002d5606e678657e14ac74f0a8d7c36292ebff0f20315d
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -24848,10 +24491,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-encryption-f7
-      file: histories/172-0.html
       sha256: 1b272f325ecdf38f86e1fcc782d4671c89501de3e7164ff9a64d646d0e890851
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -24999,10 +24640,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-full-resource-f7
-      file: histories/173-0.html
       sha256: a60f5969f2488cd1308fee8a02b145243b813fc6b1db09c0100028bd52b9b54a
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -25149,10 +24788,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-network-f7
-      file: histories/174-0.html
       sha256: d82739073c14d1ea452b0ca88cb278f69594278cd43f163708bc3776d45548b6
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -25300,10 +24937,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-private-f3
-      file: histories/175-0.html
       sha256: 0b7fb852ed8214c353974cfa4dea3ac5f5ea21cc581298dc7abd4ca433167290
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -25451,10 +25086,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-upgrade-y-f7
-      file: histories/176-0.html
       sha256: 6261f193b6b62f8d027902c128d4642d35978b6731a17bd8004eb1cccb54ea5c
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -25601,10 +25234,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-upgrade-z-f7
-      file: histories/177-0.html
       sha256: ffff1ad14ab2cd900793486366981ddef0fee72ef9f66a7e1d997729bea272cf
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -25752,10 +25383,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-advanced-f3
-      file: histories/178-0.html
       sha256: 123223e28764154d893effaf6eb4f9fb64348a7429d1e85d1fdea193211b710d
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -25905,10 +25534,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-advanced-day1-negative-f7
-      file: histories/179-0.html
       sha256: 23a93805c8a58c578ab4a47b1adf7bbf2ab0d25551124b7189362ef9cfde8ac4
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -26056,10 +25683,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-classic-full-resource-f7
-      file: histories/180-0.html
       sha256: f76feb1ff8f1dd4ad76918d3d2bbfc91a286351af53ec0089e8a8e05935eac57
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -26206,10 +25831,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-private-f3
-      file: histories/181-0.html
       sha256: edb7b1164018badf94ae2b2d4c67fd7c3b42a0a82e5612ad9ba8547129ca2448
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -26357,10 +25980,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-private-day1-negative-f7
-      file: histories/182-0.html
       sha256: abdfdb477afd2d7c16d28c7f79612e43acbbfdb7411fc959fb2b9fb45a1f75b2
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -26507,10 +26128,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-shared-vpc-f3
-      file: histories/183-0.html
       sha256: add6c968595d12d4224dd6395473cb52917eb7027d0d35abb610639add62ec29
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -26660,10 +26279,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-upgrade-y-f7
-      file: histories/184-0.html
       sha256: df8c7c71f8873b4610f81086735258f3ae19846a267f3b8ca7d9448e5854d58f
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -26810,10 +26427,8 @@ categories:
     effective_gating: false
     pages:
     - url: https://prow.ci.openshift.org/job-history/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-upgrade-z-f7
-      file: histories/185-0.html
       sha256: 07eb18f56077cd4c0acf9334888f33c0267f6a2203fadddcba131cab8cf27b35
       builds: 20
-      raw_file_retained_locally_not_for_publication: true
     fetched: true
     window_coverage_complete: true
     history_exhausted: false
@@ -27007,8 +26622,7 @@ failure_analyses:
   evidence: HCP AD cannot select an OpenShift v5 version because none is published
     in the environment. Version availability prevents the run from proceeding. No
     cs-telemetry artifact was found; no additional cause is established.
-  build_log_retrieved: false
-  cs_telemetry: No cs-telemetry artifact found in the supplied public artifact observations
+  cs_telemetry: No cs-telemetry artifact found in the available public artifacts
   blocked_reason: null
   failure_classification: Env/config issue
   failure_summary: HCP AD cannot select an OpenShift v5 version because none is published
@@ -27051,7 +26665,6 @@ failure_analyses:
     an exact failing testcase/result. The exported JUnit analysis reports all 39 readiness
     checks passing. This does not identify the main test failure. CAPI readiness retries
     are not established as the cause; no root-cause classification is supported.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: The exported JUnit analysis reports all 39 readiness checks passing.
     This does not identify the main test failure. CAPI readiness retries are not established
@@ -27099,7 +26712,6 @@ failure_analyses:
     an exact failing testcase/result. The exported JUnit analysis reports all 39 readiness
     checks passing. This does not identify the main test failure. CAPI readiness retries
     are not established as the cause; no root-cause classification is supported.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: The exported JUnit analysis reports all 39 readiness checks passing.
     This does not identify the main test failure. CAPI readiness retries are not established
@@ -27146,7 +26758,6 @@ failure_analyses:
     an exact failing testcase/result. The exported JUnit analysis reports all 39 readiness
     checks passing. This does not identify the main test failure. CAPI readiness retries
     are not established as the cause; no root-cause classification is supported.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: The exported JUnit analysis reports all 39 readiness checks passing.
     This does not identify the main test failure. CAPI readiness retries are not established
@@ -27193,7 +26804,6 @@ failure_analyses:
     an exact failing testcase/result. The exported JUnit analysis reports all 39 readiness
     checks passing. This does not identify the main test failure. CAPI readiness retries
     are not established as the cause; no root-cause classification is supported.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: The exported JUnit analysis reports all 39 readiness checks passing.
     This does not identify the main test failure. CAPI readiness retries are not established
@@ -27243,7 +26853,6 @@ failure_analyses:
     an exact failing testcase/result. The exported JUnit analysis reports all 39 readiness
     checks passing. This does not identify the main test failure. CAPI readiness retries
     are not established as the cause; no root-cause classification is supported.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: The exported JUnit analysis reports all 39 readiness checks passing.
     This does not identify the main test failure. CAPI readiness retries are not established
@@ -27290,10 +26899,9 @@ failure_analyses:
   evidence_status: supported
   evidence: CLI E2E includes assertion/error-message mismatches and a failing quoted-tag
     machinepool testcase. Public JUnit confirms quoted-tag machinepool, policy-validation,
-    operator-role, and spot-queue lifecycle test failures. The supplied artifact analysis
-    identifies additional assertion/error-message mismatches. Do not attribute every
-    failure in this run to the HCP name prefix; other underlying causes remain unresolved.
-  build_log_retrieved: false
+    operator-role, and spot-queue lifecycle test failures. Public test artifacts also
+    show assertion/error-message mismatches. Do not attribute every failure in this
+    run to the HCP name prefix; other underlying causes remain unresolved.
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Test bug
@@ -27308,9 +26916,9 @@ failure_analyses:
   - hosted-cp cluster creation Spot termination queue URL lifecycle should edit cluster
     with spot-termination-queue-url and verify enhanced mode
   diagnosis: Public JUnit confirms quoted-tag machinepool, policy-validation, operator-role,
-    and spot-queue lifecycle test failures. The supplied artifact analysis identifies
-    additional assertion/error-message mismatches. Do not attribute every failure
-    in this run to the HCP name prefix; other underlying causes remain unresolved.
+    and spot-queue lifecycle test failures. Public test artifacts also show assertion/error-message
+    mismatches. Do not attribute every failure in this run to the HCP name prefix;
+    other underlying causes remain unresolved.
 - category: rosa-cli-jobs
   job_index: 118
   name: HCP Advanced
@@ -27349,7 +26957,6 @@ failure_analyses:
     two-character random suffix exceeds the machinepool-name limit. This is a test-input
     defect. Other selected CLI evidence includes assertion/error-message mismatches;
     the scoped source fix changes only the overlength HCP test prefix.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Test bug
@@ -27399,7 +27006,6 @@ failure_analyses:
     two-character random suffix exceeds the machinepool-name limit. This is a test-input
     defect. Other selected CLI evidence includes assertion/error-message mismatches;
     the scoped source fix changes only the overlength HCP test prefix.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Test bug
@@ -27449,7 +27055,6 @@ failure_analyses:
     two-character random suffix exceeds the machinepool-name limit. This is a test-input
     defect. Other selected CLI evidence includes assertion/error-message mismatches;
     the scoped source fix changes only the overlength HCP test prefix.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Test bug
@@ -27499,7 +27104,6 @@ failure_analyses:
     two-character random suffix exceeds the machinepool-name limit. This is a test-input
     defect. Other selected CLI evidence includes assertion/error-message mismatches;
     the scoped source fix changes only the overlength HCP test prefix.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Test bug
@@ -27548,8 +27152,7 @@ failure_analyses:
   evidence: The multi-htpasswd identity-provider test fails a nil assertion. Telemetry
     did not surface the root cause. A nil assertion alone does not establish a product,
     configuration, or test defect.
-  build_log_retrieved: false
-  cs_telemetry: No root cause surfaced in the supplied public telemetry observations
+  cs_telemetry: No root cause surfaced in the available public telemetry
   blocked_reason: Telemetry did not surface the root cause. A nil assertion alone
     does not establish a product, configuration, or test defect.
   failure_classification: Insufficient evidence
@@ -27595,9 +27198,8 @@ failure_analyses:
     failure is a bounded metrics-readiness wait. The underlying reason for delayed
     metrics is not established; the evidence supports a resilience/de-flake classification,
     not a product root cause.
-  build_log_retrieved: false
-  cs_telemetry: No additional telemetry root cause established in the supplied public
-    artifact observations
+  cs_telemetry: No additional telemetry root cause established in the available public
+    artifacts
   blocked_reason: null
   failure_classification: Resilience / de-flake
   failure_summary: CPU/socket metrics waits exceed the 120-second test timeout.
@@ -27643,9 +27245,8 @@ failure_analyses:
     The timeout is observed, but the reason reconciliation did not finish is unresolved.
     Do not infer a product defect, environment issue, or de-flake opportunity from
     the timeout alone.
-  build_log_retrieved: false
-  cs_telemetry: No additional telemetry root cause established in the supplied public
-    artifact observations
+  cs_telemetry: No additional telemetry root cause established in the available public
+    artifacts
   blocked_reason: The timeout is observed, but the reason reconciliation did not finish
     is unresolved. Do not infer a product defect, environment issue, or de-flake opportunity
     from the timeout alone.
@@ -27693,9 +27294,8 @@ failure_analyses:
     failure is a bounded metrics-readiness wait. The underlying reason for delayed
     metrics is not established; the evidence supports a resilience/de-flake classification,
     not a product root cause.
-  build_log_retrieved: false
-  cs_telemetry: No additional telemetry root cause established in the supplied public
-    artifact observations
+  cs_telemetry: No additional telemetry root cause established in the available public
+    artifacts
   blocked_reason: null
   failure_classification: Resilience / de-flake
   failure_summary: CPU/socket metrics waits exceed the 120-second test timeout.
@@ -27740,9 +27340,8 @@ failure_analyses:
   evidence: The root-disk test times out after oc debug exits nonzero. The nonzero
     debug-command exit precedes the timeout, but its cause is not established. Available
     evidence does not support assigning a root-cause bucket.
-  build_log_retrieved: false
-  cs_telemetry: No additional telemetry root cause established in the supplied public
-    artifact observations
+  cs_telemetry: No additional telemetry root cause established in the available public
+    artifacts
   blocked_reason: The nonzero debug-command exit precedes the timeout, but its cause
     is not established. Available evidence does not support assigning a root-cause
     bucket.
@@ -27788,7 +27387,6 @@ failure_analyses:
     and request deadlines. The observed failures are API connectivity/availability
     symptoms. The available evidence supports an environment/configuration classification
     but does not establish the underlying infrastructure cause or a product regression.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Env/config issue
@@ -27835,7 +27433,6 @@ failure_analyses:
     image tag. The image import reports a missing spec definition. No testcases execute,
     so this is an image/configuration setup failure rather than a conformance testcase
     failure.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Env/config issue
@@ -27883,7 +27480,6 @@ failure_analyses:
     and request deadlines. The observed failures are API connectivity/availability
     symptoms. The available evidence supports an environment/configuration classification
     but does not establish the underlying infrastructure cause or a product regression.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Env/config issue
@@ -27931,7 +27527,6 @@ failure_analyses:
     and request deadlines. The observed failures are API connectivity/availability
     symptoms. The available evidence supports an environment/configuration classification
     but does not establish the underlying infrastructure cause or a product regression.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Env/config issue
@@ -27979,7 +27574,6 @@ failure_analyses:
     list only 3.2. The observed expectation is stale relative to the available versions.
     This establishes a test expectation defect; it does not establish a product HAProxy
     failure.
-  build_log_retrieved: false
   cs_telemetry: not applicable
   blocked_reason: null
   failure_classification: Test bug
@@ -27995,5 +27589,4 @@ blockers:
   details: Prow returns HTTP 500 because latest-build.txt is missing (three attempts).
     Counts, last failure and streak remain unknown, not zero.
   clearance: Restore public Prow history/build pointer or correct registry job mapping
-goal_complete: false
 collected_at_utc: '2026-10-19T15:01:01.022361+00:00'
