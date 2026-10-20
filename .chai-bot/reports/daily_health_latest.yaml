@@ -1604,7 +1604,10 @@ categories:
     latest_failure_at: '2026-10-20T06:00:53Z'
     failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main/2112423769359257600
     failure_summary: Empty Day2Pre test selection makes the matrix report fail despite the selected Ginkgo spec
-      passing; the existing public selection-fix PR tracks this issue.
+      passing; the existing public selection-fix PR tracks this issue. The cs-telemetry log covers
+      2026-10-20 06:03:08–08:24:24 UTC and 2,410 events. A case-insensitive scan checked for error, failure,
+      timeout, HTTP 4xx/5xx, or server errors; the scan found no such lines. This scan does not establish
+      that no service-side issue occurred.
     failure_classification: Test bug
     failure_analysis_status: classified_supported_finding_only
     failing_tests:
