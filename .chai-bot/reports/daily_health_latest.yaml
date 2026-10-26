@@ -3220,8 +3220,7 @@ categories:
     latest_failure_at: '2026-10-26T12:47:21Z'
     failure_classification: Test bug
     failure_summary: Backup fixture rendered an empty application manifest; oc apply had no objects to apply.
-    diagnosis: oc apply reported no objects passed to apply. https://github.com/openshift-online/rosa-backend-tests/pull/310
-      addresses backup fixture rendering and diagnostics.
+    diagnosis: oc apply reported no objects passed to apply.
     analysis_source_url: ''
     failure_analysis_status: analyzed
     failing_tests: []
@@ -3377,9 +3376,8 @@ categories:
     latest_failure_at: '2026-10-26T08:01:35Z'
     failure_classification: Test bug
     failure_summary: Empty node-pool tag update expected acceptance but received HTTP 400 invalid-tag validation.
-    diagnosis: 'Primary: empty-tag expectation. https://github.com/openshift-online/rosa-backend-tests/pull/303
-      addresses that test only. Separate Resilience / de-flake: HTPasswd login authenticated but timed out waiting
-      for the default project; the PR is not established to fix it.'
+    diagnosis: 'Primary: empty-tag expectation. Separate Resilience / de-flake: HTPasswd login authenticated but timed
+      out waiting for the default project.'
     analysis_source_url: ''
     failure_analysis_status: analyzed
     failing_tests: []
