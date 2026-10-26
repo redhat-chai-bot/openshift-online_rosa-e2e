@@ -5044,7 +5044,7 @@ categories:
       from cluster-config-operator, missing Prometheus alert rules and control-plane-metrics-forwarder conformance.
       The latest subsequent completed build passed; this does not imply every run fails.
     analysis_source_url: ''
-    failure_analysis_status: not_analyzed
+    failure_analysis_status: analyzed
     failing_tests:
     - cluster-config-operator missing-object (404)
     - missing Prometheus alert rules
