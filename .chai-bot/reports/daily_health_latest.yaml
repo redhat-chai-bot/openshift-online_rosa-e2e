@@ -5037,12 +5037,18 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn/2114509328709849088
     last_failure_date: '2026-10-26'
     latest_failure_at: '2026-10-26T00:08:09Z'
-    failure_classification: ''
-    failure_summary: ''
-    diagnosis: ''
+    failure_classification: Product bug
+    failure_summary: The analyzed failed run had missing cluster-config-operator objects, missing Prometheus alert
+      rules and control-plane-metrics-forwarder conformance failures; the latest subsequent build passed.
+    diagnosis: These failures were observed in the analyzed failed run, including missing-object HTTP 404 errors
+      from cluster-config-operator, missing Prometheus alert rules and control-plane-metrics-forwarder conformance.
+      The latest subsequent completed build passed; this does not imply every run fails.
     analysis_source_url: ''
     failure_analysis_status: not_analyzed
-    failing_tests: []
+    failing_tests:
+    - cluster-config-operator missing-object (404)
+    - missing Prometheus alert rules
+    - control-plane-metrics-forwarder conformance
     failing_steps: []
   pass_count: 21
   fail_count: 22
