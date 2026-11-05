@@ -1,5 +1,20 @@
 report_date: '2026-11-05'
-generated_at: '2026-11-05T15:32:50Z'
+generated_at: '2026-11-05T15:41:54Z'
+reporting_window:
+  report:
+    start: '2026-10-29T14:50:47Z'
+    end: '2026-11-05T14:50:47Z'
+  comparison:
+    start: '2026-10-22T14:50:47Z'
+    end: '2026-10-29T14:50:47Z'
+  selection_basis: computed completion time (Started + Duration)
+  interval: (start, end]
+  caveat: 'Previous-window coverage is incomplete for exactly one job: its Prow job-history page returned
+    the maximum of 20 records and the oldest of those begins after the comparison window opens, so earlier
+    runs were not retrievable from the single permitted page request. That job''s comparison-window count
+    may therefore be understated. The report window is fully covered for every successfully fetched job.
+    This is the reason overall_trend, non_gating_trend and the ocm-fvt-hcp-int category trend are reported
+    as unavailable.'
 overall_pass_rate: 70
 gating_pass_rate: 67
 non_gating_pass_rate: 73
@@ -1465,12 +1480,15 @@ categories:
     failure_classification: ''
     consecutive_failures: 10
     failing_tests:
-    - rosa-e2e-ocm-fvt
-    failure_summary: 'Unverified: node pool workers upgrade stalled: replica count unchanged for 30m2s.'
-    diagnosis: 'Highest consecutive-failure count in the report window (bounded failure-fallback candidate).
-      Sanitized symptom: node pool workers upgrade stalled, replica count unchanged for 30m2s. Classification
-      left blank: this job sits outside the five deep-dive categories selected for this run, so the symptom
-      was not independently confirmed against its build log in this pass and no class is asserted.'
+    - N-X HCP Upgrade Testing for Y-stream
+    failure_summary: 'Confirmed symptom: node pool workers upgrade stalled: replica count unchanged for
+      30m2s. Underlying cause remains unverified.'
+    diagnosis: 'Symptom confirmed by direct inspection of the build log for the most recent Prow run of
+      this job (build 2118292307177377792, the run already recorded in last_failure_url): the test ''N-X
+      HCP Upgrade Testing for Y-stream'' failed with node pool workers upgrade stalled, replica count
+      unchanged for 30m2s. Only the symptom was confirmed from the build log; the underlying cause was
+      not determined, so failure_classification is intentionally left blank and no class is asserted.
+      Highest consecutive-failure count in the report window (bounded failure-fallback candidate).'
     team: *id009
     labels: *id010
   - name: HCP PL OCP5
