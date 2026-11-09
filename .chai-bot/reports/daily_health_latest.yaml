@@ -2540,7 +2540,7 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main/2119716924580433920
     last_failure_date: '2026-11-09'
-    failure_classification: GCP worker nodes not ready
+    failure_classification: Env/config issue
     consecutive_failures: 7
     failing_tests:
     - CreateClusterByYAMLProfile [feature-cluster-creation, critical]
@@ -2614,7 +2614,7 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main/2119716932969041920
     last_failure_date: '2026-11-09'
-    failure_classification: GCP worker nodes not ready
+    failure_classification: Env/config issue
     consecutive_failures: 7
     failing_tests:
     - prepare-cluster scope (Ginkgo suite failed for scope prepare-cluster)
@@ -2664,7 +2664,7 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-psc-wif-sv-staging-main/2119732075501195264
     last_failure_date: '2026-11-09'
-    failure_classification: GCP worker nodes not ready
+    failure_classification: Env/config issue
     consecutive_failures: 7
     failing_tests: []
     failure_summary: Fails in the same rosa-e2e-ocm-fvt leaf as the other OSD GCP staging variants, 7 consecutive runs. Per-test detail was not opened for this job within the analysis budget; the step attribution is from the run's own ci-operator failed-step record.
@@ -2820,7 +2820,7 @@ categories:
     pass_rate: 33
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage/2119716942200705024
     last_failure_date: '2026-11-09'
-    failure_classification: service cluster removal timeout
+    failure_classification: Resilience / de-flake
     consecutive_failures: 1
     failing_tests:
     - OSD Fleet Manager Testing @cluster_cleanup Cleanup bootstrapped clusters Cleanup phase removes service cluster [feature-cleanup, ExcludeGating]
@@ -2874,7 +2874,7 @@ categories:
     pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22/2119671701091389440
     last_failure_date: '2026-11-09'
-    failure_classification: hosted control plane pods not ready in 1800s
+    failure_classification: Resilience / de-flake
     consecutive_failures: 3
     failing_tests: []
     failure_summary: All three failures are in the pre phase step rosa-cluster-wait-ready-hosted-cp. The step polled for all hosted control-plane pods to become ready and timed out after 1800s, with the container exiting code 1 after 30m25s. The run never reached test execution.
@@ -2949,7 +2949,7 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn/2119618656919883776
     last_failure_date: '2026-11-09'
-    failure_classification: 17 blocking conformance failures
+    failure_classification: Product bug
     consecutive_failures: 7
     failing_tests:
     - 17 blocking conformance failures reported by the suite, including [sig-storage] EmptyDir volumes should support (non-root,0644,default) [LinuxOnly] [NodeConformance] [Conformance] and [sig-storage] Secrets should be consumable from pods in volume with defaultMode set [LinuxOnly] [NodeConformance] [Conformance]
