@@ -2567,7 +2567,8 @@ categories:
     last_failure_date: '2026-11-09'
     failure_classification: ''
     consecutive_failures: 1
-    failing_tests: []
+    failing_tests:
+    - It can create multi htpasswd type IDPs
     failure_summary: 'Latest failing run: GCP cluster setup and authentication prechecks passed, then the Day2 test ''It can create multi htpasswd type IDPs'' failed because the password mutation was still not observed after 30 verification attempts. 6 of 7 completed runs failed. Cause unresolved.'
     diagnosis: 'Observed in the latest failing run: setup and authentication prechecks for the GCP cluster completed successfully; the Day2 test ''It can create multi htpasswd type IDPs'' then failed because the password mutation was still not observed after 30 verification attempts. cs-telemetry for this run was inspected and contains no error marker matching this failure. Failing leaf step: rosa-e2e-ocm-fvt (report phase: Test-execution). No service-side or test-side root cause is established by the available evidence, so this job is left unclassified; the earlier Env/config issue classification is withdrawn as unsupported. Safe to auto-fix: no.'
     team:
@@ -2640,7 +2641,8 @@ categories:
     last_failure_date: '2026-11-06'
     failure_classification: ''
     consecutive_failures: 0
-    failing_tests: []
+    failing_tests:
+    - It can create multi htpasswd type IDPs
     failure_summary: 'Latest failing run: GCP cluster setup and authentication prechecks passed, then the Day2 test ''It can create multi htpasswd type IDPs'' failed because the password mutation was still not observed after 30 verification attempts. 3 of 7 completed runs failed and the most recent run passed. Cause unresolved.'
     diagnosis: 'Observed in the latest failing run: setup and authentication prechecks for the GCP cluster completed successfully; the Day2 test ''It can create multi htpasswd type IDPs'' then failed because the password mutation was still not observed after 30 verification attempts. cs-telemetry for this run was inspected and records a deprovision state=error; that marker does not establish the cause of the password propagation failure. Failing leaf step: rosa-e2e-ocm-fvt (report phase: Test-execution). No service-side or test-side root cause is established by the available evidence, so this job is left unclassified; the earlier Env/config issue classification is withdrawn as unsupported. Safe to auto-fix: no.'
     team:
