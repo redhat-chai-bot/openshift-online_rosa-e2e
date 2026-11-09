@@ -2565,11 +2565,11 @@ categories:
     pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main/2119702077436334080
     last_failure_date: '2026-11-09'
-    failure_classification: GCP worker nodes not ready
+    failure_classification: ''
     consecutive_failures: 1
     failing_tests: []
-    failure_summary: Six of seven runs failed in the rosa-e2e-ocm-fvt leaf. One run passed, so the condition is not absolute for this variant. Per-test detail was not opened within the analysis budget.
-    diagnosis: 'Root cause classification: Env/config issue. Failing leaf step: rosa-e2e-ocm-fvt (report phase: Test-execution). Frequency: 6 of 7 completed runs (86%). Same category-wide OSD GCP staging failing leaf and window; one passing run indicates the same environment condition with intermittent success rather than a distinct cause. Safe to auto-fix: no - Same shared OSD GCP staging environment condition.'
+    failure_summary: 'Latest failing run: GCP cluster setup and authentication prechecks passed, then the Day2 test ''It can create multi htpasswd type IDPs'' failed because the password mutation was still not observed after 30 verification attempts. 6 of 7 completed runs failed. Cause unresolved.'
+    diagnosis: 'Observed in the latest failing run: setup and authentication prechecks for the GCP cluster completed successfully; the Day2 test ''It can create multi htpasswd type IDPs'' then failed because the password mutation was still not observed after 30 verification attempts. cs-telemetry for this run was inspected and contains no error marker matching this failure. Failing leaf step: rosa-e2e-ocm-fvt (report phase: Test-execution). No service-side or test-side root cause is established by the available evidence, so this job is left unclassified; the earlier Env/config issue classification is withdrawn as unsupported. Safe to auto-fix: no.'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Coffee Focaccia
@@ -2638,11 +2638,11 @@ categories:
     pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main/2118629807519436800
     last_failure_date: '2026-11-06'
-    failure_classification: GCP worker nodes not ready
+    failure_classification: ''
     consecutive_failures: 0
     failing_tests: []
-    failure_summary: Three of seven runs failed in the rosa-e2e-ocm-fvt leaf; the latest run passed and there is no active streak. Per-test detail was not opened within the analysis budget.
-    diagnosis: 'Root cause classification: Env/config issue. Failing leaf step: rosa-e2e-ocm-fvt (report phase: Test-execution). Frequency: 3 of 7 completed runs (43%), most recent run passed. Same OSD GCP staging family and failing leaf, with a recovery pattern consistent with the intermittent worker-node readiness condition seen across the category. Safe to auto-fix: no - Same shared OSD GCP staging environment condition.'
+    failure_summary: 'Latest failing run: GCP cluster setup and authentication prechecks passed, then the Day2 test ''It can create multi htpasswd type IDPs'' failed because the password mutation was still not observed after 30 verification attempts. 3 of 7 completed runs failed and the most recent run passed. Cause unresolved.'
+    diagnosis: 'Observed in the latest failing run: setup and authentication prechecks for the GCP cluster completed successfully; the Day2 test ''It can create multi htpasswd type IDPs'' then failed because the password mutation was still not observed after 30 verification attempts. cs-telemetry for this run was inspected and records a deprovision state=error; that marker does not establish the cause of the password propagation failure. Failing leaf step: rosa-e2e-ocm-fvt (report phase: Test-execution). No service-side or test-side root cause is established by the available evidence, so this job is left unclassified; the earlier Env/config issue classification is withdrawn as unsupported. Safe to auto-fix: no.'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Coffee Focaccia
