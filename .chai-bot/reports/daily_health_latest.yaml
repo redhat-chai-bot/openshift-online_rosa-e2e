@@ -106,19 +106,20 @@ notes:
     - 'Failure classification covers 17 of the 98 jobs with at least one failed build in the window (scope cap:
       5 categories x 5 jobs). Every other failing job carries an empty failure_classification and failure_summary
       ''Not analyzed under report scope cap'' rather than a guess.'
-    - 'Failure-phase attribution WAS performed this run and is published as a separate phase-breakdown artifact;
-      no failure_phase field is emitted into this file. Sample 796 completed builds, fully reconciled (539 passed
-      / 257 failed). Phases: Setup 14, Test-execution 167, Cleanup 0, Unknown 76. 197 of the 257 failures were
-      inspected. Unknown breakdown: 60 not reached before the phase-analysis stop (1200s limit, 1159s used),
-      11 unmapped leaf refs, 3 step-graph probe parse failures, 2 with no failed substep.'
+    - 'Failure-phase breakdown is attached separately for the same 7-day sample. It reconciles all 796 runs
+      (539 passed/257 failed): Setup 14, Test-execution 167, Cleanup 0, Unknown 76. Step-graph analysis inspected
+      197/257 failed runs; Unknown comprises 60 not reached before the analysis stop (1159 of 1200 seconds used),
+      11 unmapped refs, 3 step-graph probe parse failures and 2 without a failed substep. Exact mapped-leaf ref
+      matching was used; no inference from path or Prow phase.'
     - 'Phase attribution used the phase map .chai-bot/rosa_ci_step_phases.yaml at ref
       7a535ee57a186e0cb25446c1c6278980559bb9f9 (schema_version 1; 113 unique leaf refs). A run is attributed only
       on an EXACT leaf-ref string match against that map, to the earliest confirmed failed mapped leaf in execution
       order; phase is never inferred from step-name substrings, artifact paths or Prow pre/test/post placement.
       Only sanitized summaries are recorded: no raw logs, run or cluster identifiers, or internal hostnames.'
-    - 'The one shared PR budget for this run was spent on the selected registry reconciliation (see
-      remediation_scope); no failure-fix PR was opened and no auto-fix triage (auto_fixable / auto_fix_note)
-      was performed.'
+    - 'The shared one-new-PR budget for this run was used for the registry reconciliation (see
+      remediation_scope), so no failure-code remediation PR was opened and no auto-fix triage
+      (auto_fixable / auto_fix_note) was performed. The CAPA test teardown fix remains deferred to its own
+      source repository, which is outside this run''s write scope.'
     - Informing-only categories carry pass_rate null and health no_data because no non-informing job contributes
       a rate. Their jobs DID run; they are not no-run categories.
   classification_buckets:
@@ -134,12 +135,13 @@ notes:
     falls by >= 10, stable otherwise, unknown when either side is absent
   analysis_source: 'Public Prow job-history pages and public build-log/JUnit evidence. Only sanitized summaries
     are written: no raw logs, credentials, internal hostnames, cluster or customer identifiers, or personal names.'
-  remediation_scope: 'One registry-only remediation was selected and delivered, using the single shared PR budget:
-    https://github.com/openshift-online/rosa-e2e/pull/389 adds five already-existing daily-scheduled OCP5 Classic
-    STG FVT periodics to the ocm-fvt-classic-stg category, each with an explicit per-job gating: false. That PR
-    touches only configs/ci-status-jobs.yaml and its make-configs output configs/generated/ci-status-jobs.yaml.
-    Failure-code remediation was DEFERRED: no failure-fix PR was opened. No Jira issue was created, transitioned
-    or commented. This report file is the only path changed by the handoff commit itself.'
+  remediation_scope: 'One registry-only PR was opened, using the shared one-new-PR budget:
+    https://github.com/openshift-online/rosa-e2e/pull/389 adds five existing daily-scheduled OCP5 Classic STG FVT
+    jobs to the ocm-fvt-classic-stg category with explicit per-job gating: false. It touches only
+    configs/ci-status-jobs.yaml and its make-configs output configs/generated/ci-status-jobs.yaml. No Jira changes
+    were made. Failure-code fixes are deferred. A check of the six relevant repositories found no open pull
+    requests carrying the rosa-ci-fix label (PR 389 uses the [rosa-ci-fix] title prefix, not the label). This
+    report file is the only path changed by the handoff commit itself.'
   remediation_caveats:
   - 'Actual production gate enforcement for the five newly registered jobs is NOT proven; gate-consumer evidence
     remains unverified, which is why each carries an explicit gating: false rather than inheriting the category
