@@ -1029,9 +1029,9 @@ categories:
     diagnosis: 'Step ipi-install-install failed within seconds during manifest creation: the EC2 DescribeInstanceTypes
       call returned HTTP 401 ''AuthFailure: AWS was not able to validate the provided access credentials'',
       so no cluster was created. Three CAPA jobs failed with this identical signature inside one four-hour
-      span on 2026-11-14, matching SHIP outage #12507 (CI cluster-profile AWS credential invalidated fleet-wide
-      from approximately 04:00Z, same DescribeInstanceTypes 401 AuthFailure signature on unrelated jobs).
-      CI infrastructure credential outage, not a ROSA product or test regression.'
+      span on 2026-11-14, the public job logs show the same AWS authentication failure
+      in multiple CAPA runs.
+      Public logs confirm credential rejection; the wider cause is not established.'
     team:
       id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
       name: '[ROSA] CAPA'
@@ -1142,9 +1142,9 @@ categories:
     diagnosis: 'Step ipi-install-install failed within seconds during manifest creation: the EC2 DescribeInstanceTypes
       call returned HTTP 401 ''AuthFailure: AWS was not able to validate the provided access credentials'',
       so no cluster was created. Three CAPA jobs failed with this identical signature inside one four-hour
-      span on 2026-11-14, matching SHIP outage #12507 (CI cluster-profile AWS credential invalidated fleet-wide
-      from approximately 04:00Z, same DescribeInstanceTypes 401 AuthFailure signature on unrelated jobs).
-      CI infrastructure credential outage, not a ROSA product or test regression.'
+      span on 2026-11-14, the public job logs show the same AWS authentication failure
+      in multiple CAPA runs.
+      Public logs confirm credential rejection; the wider cause is not established.'
     team:
       id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
       name: '[ROSA] CAPA'
@@ -1199,9 +1199,9 @@ categories:
     diagnosis: 'Step ipi-install-install failed within seconds during manifest creation: the EC2 DescribeInstanceTypes
       call returned HTTP 401 ''AuthFailure: AWS was not able to validate the provided access credentials'',
       so no cluster was created. Three CAPA jobs failed with this identical signature inside one four-hour
-      span on 2026-11-14, matching SHIP outage #12507 (CI cluster-profile AWS credential invalidated fleet-wide
-      from approximately 04:00Z, same DescribeInstanceTypes 401 AuthFailure signature on unrelated jobs).
-      CI infrastructure credential outage, not a ROSA product or test regression.'
+      span on 2026-11-14, the public job logs show the same AWS authentication failure
+      in multiple CAPA runs.
+      Public logs confirm credential rejection; the wider cause is not established.'
     team:
       id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
       name: '[ROSA] CAPA'
