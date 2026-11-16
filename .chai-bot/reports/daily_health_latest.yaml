@@ -1142,12 +1142,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-22-full/2120426807793553408
     last_failure_date: '2026-11-11'
-    failure_classification: ''
+    failure_classification: Test bug
     consecutive_failures: 1
     failing_tests:
     - rosa-e2e-capa (step)
-    failure_summary: Earlier runs (2026-11-10..13) failed inside rosa-e2e-capa after 16-22m; Ansible retried "Wait for ROSANetwork to be fully ready" to exhaustion.
-    diagnosis: 'Observed: TASK [Wait for ROSANetwork to be fully ready] retried down from 40 attempts; CAPA controller came up ok. Root cause not established from build-log alone - left unclassified.'
+    failure_summary: 'rosa-e2e-capa failed after 1h24m31s in the Ansible deletion phase: the conditional on wait_rcp.rc / final_rcp_check.rc raised "''dict object'' has no attribute ''rc''" at tasks/delete_rosa_hcp_resources.yml line 344 (2026-11-11 run).'
+    diagnosis: 'Ansible runtime conditional-evaluation error, not a YAML syntax error - the log phrase "may be elsewhere in the file depending on the exact syntax problem" is Ansible boilerplate. Failing expression in task "Display ROSAControlPlane deletion result": "(wait_rcp is defined and wait_rcp.rc == 0) or (final_rcp_check is defined and final_rcp_check.rc == 0)"; "is defined" does not guard a skipped task registration, which carries no "rc" key. The playbook is not in this repository: the rosa-e2e-capa step clones stolostron/rosa-hcp-e2e-test with git clone --depth=1 --branch main and no pinned SHA, and build-log.txt records no cloned commit, so job-time source was unpinned upstream main. Current public main no longer contains that expression (upstream PRs #198, #200, #201 and a subsequent revert to the PR #176 state on 2026-11-13). Separate and unrelated: the CAPA Full Lifecycle and Smoke failures from 2026-11-14 onward are the AWS cluster-profile AuthFailure already recorded on those jobs, not this defect.'
     team:
       id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
       name: '[ROSA] CAPA'
@@ -1194,12 +1194,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-candidate-5-0-full/2120789211639451648
     last_failure_date: '2026-11-12'
-    failure_classification: ''
+    failure_classification: Test bug
     consecutive_failures: 1
     failing_tests:
     - rosa-e2e-capa (step)
-    failure_summary: Earlier runs (2026-11-10..13) failed inside rosa-e2e-capa after 16-22m; Ansible retried "Wait for ROSANetwork to be fully ready" to exhaustion.
-    diagnosis: 'Observed: TASK [Wait for ROSANetwork to be fully ready] retried down from 40 attempts; CAPA controller came up ok. Root cause not established from build-log alone - left unclassified.'
+    failure_summary: 'rosa-e2e-capa failed after 22m1s in the Ansible deletion phase: the conditional on wait_rcp.rc / final_rcp_check.rc raised "''dict object'' has no attribute ''rc''" at tasks/delete_rosa_hcp_resources.yml line 344 (2026-11-12 run).'
+    diagnosis: 'Ansible runtime conditional-evaluation error, not a YAML syntax error - the log phrase "may be elsewhere in the file depending on the exact syntax problem" is Ansible boilerplate. Failing expression in task "Display ROSAControlPlane deletion result": "(wait_rcp is defined and wait_rcp.rc == 0) or (final_rcp_check is defined and final_rcp_check.rc == 0)"; "is defined" does not guard a skipped task registration, which carries no "rc" key. The playbook is not in this repository: the rosa-e2e-capa step clones stolostron/rosa-hcp-e2e-test with git clone --depth=1 --branch main and no pinned SHA, and build-log.txt records no cloned commit, so job-time source was unpinned upstream main. Current public main no longer contains that expression (upstream PRs #198, #200, #201 and a subsequent revert to the PR #176 state on 2026-11-13). Separate and unrelated: the CAPA Full Lifecycle and Smoke failures from 2026-11-14 onward are the AWS cluster-profile AuthFailure already recorded on those jobs, not this defect.'
     team:
       id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
       name: '[ROSA] CAPA'
