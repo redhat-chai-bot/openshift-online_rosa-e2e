@@ -79,13 +79,6 @@ cs_telemetry_findings:
     finding: Telemetry recorded zero events, consistent with the job exiting before any cluster lifecycle activity; it provides no failure signal.
   - job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main
     finding: Telemetry covered 2835 events across 64 clusters with no error-state lifecycle entries and no spot-related signal; it did not provide an explanatory failure signal.
-gaps:
-  - Anonymous GCS (storage.googleapis.com XML and JSON APIs) returns 401/403 from this workspace; artifact bytes are reachable only through the credentialed coordinator MCP tools, one run per call.
-  - Phase attribution therefore covers 20 of 396 failed runs with real step evidence (18 Test-execution, 2 Setup) plus 1 unmapped leaf; the remaining 376 are Unknown (budget_exhausted). Reconciliation still holds exactly.
-  - cs-telemetry artifacts exist for OCM FVT/rosa-e2e HCP runs but their content was not read within the budget.
-  - '1 of 207 jobs returned HTTP 500 on its single history request and is recorded fetch_error, not no-runs, and was not retried: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upgrade-staging-main'
-  - Registry drift affects 3 tracked names (FIPS 5.0 + CAPA 5.0 smoke/full). Their history pages still resolve to the pre-rename jobs, so capa-e2e-stg and rosa-e2e-stg rates include the tail of jobs renamed in openshift/release on 2026-11-18; the post-rename stable-5-0 jobs are untracked and therefore absent from these rates.
-  - 'No history page was truncated: 0 jobs had their oldest returned build newer than the start of the previous window.'
 categories:
   - id: rosa-e2e-stg
     name: ROSA E2E STG
