@@ -1555,11 +1555,19 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main/2123627790279380992
     last_failure_date: '2026-11-20'
-    failure_classification: ''
+    failure_classification: Env/config issue
     consecutive_failures: 8
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
+    failing_tests:
+    - '[It] PreCheck @CheckConnection Check the connections [feature-env-validation]'
+    failure_summary: Pre-flight connectivity precheck failed after a rejected credential refresh; the
+      job aborted before cluster provisioning.
+    diagnosis: 'Failed leaf ref rosa-e2e-ocm-fvt: the pre-env-validation precheck case "@CheckConnection
+      Check the connections" expects a zero connection-failure count and observed one (ocm-backend-tests
+      cases/cms/prechecking_test.go:65). The Prow build log attributes the failed connection to a credential
+      refresh being rejected, so the run never reached cluster provisioning. The cs-telemetry artifact
+      was collected and contains no error, failure or invalid-grant lines, indicating no Clusters Service-side
+      fault. Remediation is a CI credential/configuration repair outside the allowed repository scope;
+      no safe in-repository fix is evidenced.'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
