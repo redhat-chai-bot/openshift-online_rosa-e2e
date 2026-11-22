@@ -1803,7 +1803,7 @@ categories:
         failing_tests:
           - 4-19-gap-analysis
         failure_summary: The 4-19-gap-analysis step exits 1 after 1m17s with the identical '[ERROR] Failed to fetch latest GA version from Sippy API'.
-        diagnosis: junit_operator.xml for build 2124382675350327296 shows one failed leaf ref, 4-19-gap-analysis, with the same log sequence as the 5.0 job but OPENSHIFT_VERSION=4.19. Because 4.19 is a long-GA stream, the failure is in the Sippy fetch itself rather than in the absence of a GA release, which points at the gap-analysis script's Sippy client or its error handling rather than at the ROSA product. 2 of 7 runs passed this week, 5 consecutive failures. Executed leaf ref '4-19-gap-analysis' is NOT in the phase map -> Unknown(unmapped_ref).
+        diagnosis: 'junit_operator.xml for build 2124382675350327296 shows one failed leaf ref, 4-19-gap-analysis. Log sequence: "[INFO] OCM environment: stage" -> "[INFO] Logging in to OCM using client credentials" -> "[INFO] Resolving baseline and target from OPENSHIFT_VERSION=4.19..." -> "[ERROR] Failed to fetch latest GA version from Sippy API" -> exit status 1, after 1m17s. OCM login succeeds first, so this is not an OCM credential failure. NOT OBSERVED: the Sippy response itself - its HTTP status, body and whether a GA version exists for this stream are not in the published artifacts, so the report states only that the fetch failed and the script exited without a fallback. The identical failure is confirmed on 4.19, 4.22 and 5.0 in this window, so the defect is in the shared baseline-resolution path rather than version specific. The Test bug classification is kept as originally reported. NOTE: the executed leaf ref "4-19-gap-analysis" is not present in .chai-bot/rosa_ci_step_phases.yaml, so these runs are attributed Unknown(unmapped_ref) in the phase breakdown.'
         raw_terminal_states:
           FAILURE: 5
           SUCCESS: 2
@@ -1908,7 +1908,7 @@ categories:
         failing_tests:
           - 4-22-gap-analysis
         failure_summary: The 4-22-gap-analysis step exits 1 after 15s with the identical Sippy GA-version resolution error.
-        diagnosis: junit_operator.xml for build 2124405168823865344 shows one failed leaf ref, 4-22-gap-analysis, same '[ERROR] Failed to fetch latest GA version from Sippy API' after successful OCM login, OPENSHIFT_VERSION=4.22. Confirmed on three separate streams (4.19, 4.22, 5.0) in this window, so the defect is in the shared gap-analysis baseline-resolution path, not version specific. 2 of 7 runs passed this week, 5 consecutive failures. Executed leaf ref '4-22-gap-analysis' is NOT in the phase map -> Unknown(unmapped_ref).
+        diagnosis: 'junit_operator.xml for build 2124405168823865344 shows one failed leaf ref, 4-22-gap-analysis. Log sequence: "[INFO] OCM environment: stage" -> "[INFO] Logging in to OCM using client credentials" -> "[INFO] Resolving baseline and target from OPENSHIFT_VERSION=4.22..." -> "[ERROR] Failed to fetch latest GA version from Sippy API" -> exit status 1, after 15s. OCM login succeeds first, so this is not an OCM credential failure. NOT OBSERVED: the Sippy response itself - its HTTP status, body and whether a GA version exists for this stream are not in the published artifacts, so the report states only that the fetch failed and the script exited without a fallback. The identical failure is confirmed on 4.19, 4.22 and 5.0 in this window, so the defect is in the shared baseline-resolution path rather than version specific. The Test bug classification is kept as originally reported. NOTE: the executed leaf ref "4-22-gap-analysis" is not present in .chai-bot/rosa_ci_step_phases.yaml, so these runs are attributed Unknown(unmapped_ref) in the phase breakdown.'
         raw_terminal_states:
           FAILURE: 5
           SUCCESS: 2
@@ -1945,7 +1945,7 @@ categories:
         failing_tests:
           - 5-0-gap-analysis
         failure_summary: The 5-0-gap-analysis step exits 1 after 14s with '[ERROR] Failed to fetch latest GA version from Sippy API' while resolving baseline/target for OPENSHIFT_VERSION=5.0.
-        diagnosis: 'junit_operator.xml for build 2124412949408780288 shows one failed leaf ref, 5-0-gap-analysis. Log sequence: ''[INFO] OCM environment: stage'' -> ''[INFO] Logging in to OCM using client_id and secret'' -> ''[INFO] Resolving baseline and target from OPENSHIFT_VERSION=5.0...'' -> ''[ERROR] Failed to fetch latest GA version from Sippy API'' -> exit status 1. OCM login succeeds, so this is not a credential failure; the script has no fallback when Sippy returns no GA version for the requested stream. 0 of 7 runs passed this week, 7 consecutive failures. NOTE: the executed leaf ref ''5-0-gap-analysis'' is NOT present in .chai-bot/rosa_ci_step_phases.yaml, so this run is attributed Unknown(unmapped_ref) in the phase breakdown.'
+        diagnosis: 'junit_operator.xml for build 2124412949408780288 shows one failed leaf ref, 5-0-gap-analysis. Log sequence: "[INFO] OCM environment: stage" -> "[INFO] Logging in to OCM using client credentials" -> "[INFO] Resolving baseline and target from OPENSHIFT_VERSION=5.0..." -> "[ERROR] Failed to fetch latest GA version from Sippy API" -> exit status 1, after 14s. OCM login succeeds first, so this is not an OCM credential failure. NOT OBSERVED: the Sippy response itself - its HTTP status, body and whether a GA version exists for this stream are not in the published artifacts, so the report states only that the fetch failed and the script exited without a fallback. The identical failure is confirmed on 4.19, 4.22 and 5.0 in this window, so the defect is in the shared baseline-resolution path rather than version specific. The Test bug classification is kept as originally reported. NOTE: the executed leaf ref "5-0-gap-analysis" is not present in .chai-bot/rosa_ci_step_phases.yaml, so these runs are attributed Unknown(unmapped_ref) in the phase breakdown.'
         raw_terminal_states:
           FAILURE: 7
         pages_fetched: 1
@@ -3549,7 +3549,7 @@ categories:
         failing_tests:
           - HTPasswd expected-user convergence (/ocm-backend-tests/cases/cms/cluster_idp_test.go:59)
         failure_summary: 'rosa-e2e-ocm-fvt fails after 2h28m25s with 106 passed / 1 failed: the HTPasswd IDP never propagates 3 of 5 expected users.'
-        diagnosis: 'junit_operator.xml for build 2124332140110811136 shows one failed leaf ref, rosa-e2e-ocm-fvt (8898s). The single failing case is at /ocm-backend-tests/cases/cms/cluster_idp_test.go:59: the HTPasswd expected-user state never converges. expected_members=5, but only 2 of the 5 members were observed present in all 20 samples taken over 9m32.539s (curve=present 2/5 x20), with the same 3 synthetic test accounts missing in every sample, ending in context deadline exceeded. Because the same 2 members were present throughout and the other 3 never appeared at any point, this is not timing variance; the IDP member set genuinely never reaches the expected count, i.e. expected IDP members missing. Classified Product bug on that evidence. ALTERNATIVE NOT EXCLUDED: a drifted test expectation (expected_members hardcoded to 5) would produce the same signature; separating the two needs clusters-service-side IDP logs, which were not inspected within the artifact budget. 0 of 8 runs passed this week, 8 consecutive failures; gating job.'
+        diagnosis: 'junit_operator.xml for build 2124332140110811136 shows one failed leaf ref, rosa-e2e-ocm-fvt (8898s). The single failing case is at /ocm-backend-tests/cases/cms/cluster_idp_test.go:59: the HTPasswd expected-user state never converges. 5 members were expected, 2 were observed present in all 20 observations taken over 9m32.539s, and the same 3 expected accounts were absent in every observation, ending in context deadline exceeded. Because the same 2 were present throughout and the other 3 never appeared at any point, this is not timing variance. UNRESOLVED: whether the product never created the 3 members, or the test expectation of 5 has drifted, is NOT established by the published artifacts; both remain open and separating them needs Clusters Service side IDP logs, which are not among the published artifacts. The Product bug bucket is retained as the current best reading, with the test expectation alternative explicitly unresolved. 0 of 8 runs passed this week, 8 consecutive failures; gating job.'
         raw_terminal_states:
           FAILURE: 8
         pages_fetched: 1
@@ -3565,7 +3565,7 @@ categories:
           - clusters-service
         components:
           - clusters-service
-        failure_label: HTPasswd IDP synthetic users never converge (3 of 5 missing)
+        failure_label: HTPasswd IDP expected members never converge (3 of 5 absent)
         evidence_source: artifacts/junit_operator.xml
         analyzed: true
       - name: STS AD
@@ -3938,12 +3938,12 @@ categories:
         prev_pass_rate: 14
         last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-ocp5-latest-rc-staging-main/2122223523509309440
         last_failure_date: "2026-11-16"
-        failure_classification: Product bug
+        failure_classification: Env/config issue
         consecutive_failures: 1
         failing_tests:
           - cluster create / state convergence (/ocm-backend-tests/pkg/ocm/cluster/create_cluster.go:595)
-        failure_summary: 'rosa-e2e-ocm-fvt fails after 55m55s: the STS cluster stays in ''waiting'' because OCM reports a required operator role does not exist.'
-        diagnosis: 'junit_operator.xml for build 2122223523509309440 shows one failed leaf ref, rosa-e2e-ocm-fvt (3344s). Failure at /ocm-backend-tests/pkg/ocm/cluster/create_cluster.go:595: the cluster stays in state ''waiting'' where ''installing'' was expected, and the OCM status description reports that a required STS operator role for the cloud-credential-operator does not exist for the cluster, while the provision shard is active. The operator-role name quoted in that status description terminates mid-token, which is consistent with a truncated operator-role name having been created, so the created role never matches the name OCM looks up. Classified Product bug on that evidence. ALTERNATIVE NOT EXCLUDED: the harness may create the roles with a too-short prefix, which would make this a test bug; the role-creation log was not retrieved within the artifact budget. 0 of 1 runs passed this week. Note this job runs on the never-firing cron 0 0 31 2 * and is part of the OCP5 latest-RC pre-release cohort.'
+        failure_summary: 'rosa-e2e-ocm-fvt fails after 55m55s: operator-role creation is rejected by an AWS account-level IAM role quota, so the cluster never leaves the waiting state.'
+        diagnosis: 'Build log evidence establishes the causal chain. First, operator-role creation is rejected by AWS: "There was an error creating the operator roles: operation error IAM: CreateRole, https response error StatusCode: 409, LimitExceeded: Cannot exceed quota for RolesPerAccount: 1000". The run then times out after 2400s waiting for the cluster to move from state waiting to installing, with the OCM install gate reporting that the cloud-credential-operator operator role does not exist for the cluster. The missing role is therefore a direct consequence of the account hitting its IAM RolesPerAccount quota of 1000, i.e. a shared CI AWS account exhausted of IAM roles, not a defect in ROSA or in the test. This SUPERSEDES the earlier hypothesis in this report that the operator-role name had been truncated: the role name merely appears cut off where the OCM status message truncates it, and the role was never created at all. Reclassified from Product bug to Env/config issue on that evidence. 0 of 1 runs passed this week.'
         raw_terminal_states:
           FAILURE: 1
         pages_fetched: 1
@@ -3959,8 +3959,8 @@ categories:
           - clusters-service
         components:
           - clusters-service
-        failure_label: 'STS cluster install blocked: cloud-credential-operator role not found'
-        evidence_source: artifacts/junit_operator.xml
+        failure_label: 'AWS account IAM role quota exhausted: operator roles could not be created'
+        evidence_source: artifacts/<test>/rosa-e2e-ocm-fvt/build-log.txt
         analyzed: true
       - name: STS n-X Y-Upgrade OCP5
         prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-nx-y-upg-ocp5-lt-rc-staging-main
@@ -4232,8 +4232,8 @@ categories:
         consecutive_failures: 0
         failing_tests:
           - '[It] PreCheck @CheckConnection Check the connections [feature-env-validation]'
-        failure_summary: rosa-e2e-ocm-fvt aborts after 44s when the @CheckConnection pre-flight environment validation fails.
-        diagnosis: 'junit_operator.xml for build 2124065480518930432 shows one failed leaf ref, rosa-e2e-ocm-fvt (38s). The embedded ocmtest report lists failed_cases = [{''title'': ''[It] PreCheck @CheckConnection Check the connections [feature-env-validation]'', ''failure_reason'': ''FAILED Expected int : 1 to be zero-valued In It at: /ocm-backend-tests/cases/cms/prechecking_test.go:65''}]. Summary line ''[DT],cs-osd-ccs-gcp-ad-staging-main,3,2,1,0,0.67'' confirms 3 cases, 2 passed, 1 failed. The sibling prechecks (@CheckAWSLoadBalancerCapacity and one other) passed. rosa-e2e-collect-cs-telemetry ran and succeeded. 1 of 8 runs passed this week; gating job. This same @CheckConnection precheck failure is the confirmed failure in GCP Root Disk and GCP Non-Cross-Proj WIF in the same window, i.e. a shared ocm-fvt-gcp-stg environment-reachability defect.'
+        failure_summary: 'rosa-e2e-ocm-fvt aborts after 44s: the @CheckConnection pre-flight fails after the Clusters Service connection refresh fails with invalid_grant.'
+        diagnosis: 'The ocm-fvt build log for this run records a Clusters Service connection-refresh failure before the precheck assertion: "EnsureFreshConnections: token refresh failed for RoleBindingConnection (invalid_grant: Offline user session not found); rebuilding from env credentials", followed by "RoleBindingConnection: refresh failed (invalid_grant: Offline user session not found) and rebuild still unusable". A second connection in the same run fails its refresh with unauthorized_client (Invalid client or Invalid client credentials). WHICH credential source supplied the stale offline session, and why it is stale, is NOT established by the published artifacts; the log shows the refresh and the rebuild both failing, not their origin. The precheck then fails at /ocm-backend-tests/cases/cms/prechecking_test.go:65 with "Expected int : 1 to be zero-valued"; the run summary is 3 cases, 2 passed, 1 failed. CS telemetry for this run reports Total events: 0 and Clusters seen: 0. Classification remains Env/config issue. 1 of 8 runs passed this week; gating job. The same refresh signature appears in GCP Root Disk and GCP Non-Cross-Proj WIF in the same window, so these three share one environment-side defect.'
         raw_terminal_states:
           SUCCESS: 1
           FAILURE: 7
@@ -4250,8 +4250,8 @@ categories:
           - clusters-service
         components:
           - clusters-service
-        failure_label: '@CheckConnection pre-flight environment check fails'
-        evidence_source: artifacts/junit_operator.xml (cs-telemetry step present and successful)
+        failure_label: 'Clusters Service connection refresh failed (invalid_grant: offline session not found)'
+        evidence_source: artifacts/<test>/rosa-e2e-ocm-fvt/build-log.txt and artifacts/<test>/rosa-e2e-collect-cs-telemetry/artifacts/cs-telemetry.log
         analyzed: true
       - name: GCP Marketplace
         prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main
@@ -4271,8 +4271,8 @@ categories:
         consecutive_failures: 8
         failing_tests:
           - rosa-e2e-ocm-fvt
-        failure_summary: 'rosa-e2e-ocm-fvt fails after 1h44m45s because the OSD GCP cluster install never finishes: six cluster operators never become available.'
-        diagnosis: 'junit_operator.xml for build 2124412925157314560 shows a single failed leaf ref, rosa-e2e-ocm-fvt (6278s). Installer output: ''level=error msg=failed to initialize the cluster: Cluster operators authentication, console, image-registry, ingress, machine-api, monitoring are not available: timed out waiting for the condition'', followed by ''failed due to install error'' with exit status 6 and ''level=fatal msg=runtime error''. The Ginkgo Eventually wrapper then returns the install error. The CS telemetry collection step ran and succeeded, so telemetry was collected for this run. 8 of 8 runs failed this week; gating job.'
+        failure_summary: 'rosa-e2e-ocm-fvt fails after 1h44m45s: after the readiness wait the cluster reaches state error with GCPNoWorkerNodesReady / provision_error OCM3058.'
+        diagnosis: 'Build log evidence: after the readiness wait the run records cluster_state=error (expected ready), status.description="GCPNoWorkerNodesReady" and provision_error=OCM3058 ("No worker nodes became ready. Ensure your cluster meets the requirements outlined in the documentation."), with provision_shard.status=active. The installer output earlier in the same log reports that cluster operators authentication, console, image-registry, ingress, machine-api and monitoring never became available ("timed out waiting for the condition", install exit status 6), consistent with worker nodes never joining. CS telemetry for this run is populated: Total events 257 across 16 clusters, of which two entries are state=error. NOT ATTRIBUTED: an authentication warning appears earlier in this log, but nothing in the published artifacts links it to the provisioning failure, so the two are reported separately and no causal claim is made. Classification remains Env/config issue. 8 of 8 runs failed this week; gating job.'
         raw_terminal_states:
           FAILURE: 8
         pages_fetched: 1
@@ -4288,8 +4288,8 @@ categories:
           - clusters-service
         components:
           - clusters-service
-        failure_label: OSD GCP install never completes - cluster operators unavailable
-        evidence_source: artifacts/junit_operator.xml (cs-telemetry step present and successful)
+        failure_label: 'OSD GCP provisioning failed: GCPNoWorkerNodesReady / OCM3058'
+        evidence_source: artifacts/<test>/rosa-e2e-ocm-fvt/build-log.txt and artifacts/<test>/rosa-e2e-collect-cs-telemetry/artifacts/cs-telemetry.log
         analyzed: true
       - name: GCP Non-Cross-Proj WIF
         prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-non-cross-proj-wif-staging-main
@@ -4309,8 +4309,8 @@ categories:
         consecutive_failures: 0
         failing_tests:
           - '[It] PreCheck @CheckConnection Check the connections [feature-env-validation]'
-        failure_summary: rosa-e2e-ocm-fvt aborts after 47s on the same @CheckConnection pre-flight failure.
-        diagnosis: junit_operator.xml for build 2124065482163097600 shows one failed leaf ref, rosa-e2e-ocm-fvt (40s, pod failed after 47s). Same embedded ocmtest failed_cases entry '[It] PreCheck @CheckConnection Check the connections [feature-env-validation]' at /ocm-backend-tests/cases/cms/prechecking_test.go:65. rosa-e2e-collect-cs-telemetry ran and succeeded. 2 of 7 runs passed this week; gating job. Third confirmed instance of the shared GCP @CheckConnection defect.
+        failure_summary: rosa-e2e-ocm-fvt aborts after 47s on the same Clusters Service connection-refresh failure and @CheckConnection precheck failure.
+        diagnosis: 'The ocm-fvt build log for this run records a Clusters Service connection-refresh failure before the precheck assertion: "EnsureFreshConnections: token refresh failed for RoleBindingConnection (invalid_grant: Offline user session not found); rebuilding from env credentials", followed by "RoleBindingConnection: refresh failed (invalid_grant: Offline user session not found) and rebuild still unusable". A second connection in the same run fails its refresh with unauthorized_client (Invalid client or Invalid client credentials). WHICH credential source supplied the stale offline session, and why it is stale, is NOT established by the published artifacts; the log shows the refresh and the rebuild both failing, not their origin. The precheck then fails at /ocm-backend-tests/cases/cms/prechecking_test.go:65, identical to GCP CCS AD and GCP Root Disk in the same window. CS telemetry for this run reports Total events: 0 and Clusters seen: 0. Classification remains Env/config issue. 2 of 7 runs passed this week; gating job.'
         raw_terminal_states:
           SUCCESS: 2
           FAILURE: 5
@@ -4327,8 +4327,8 @@ categories:
           - clusters-service
         components:
           - clusters-service
-        failure_label: '@CheckConnection pre-flight environment check fails'
-        evidence_source: artifacts/junit_operator.xml
+        failure_label: 'Clusters Service connection refresh failed (invalid_grant: offline session not found)'
+        evidence_source: artifacts/<test>/rosa-e2e-ocm-fvt/build-log.txt and artifacts/<test>/rosa-e2e-collect-cs-telemetry/artifacts/cs-telemetry.log
         analyzed: true
       - name: GCP Root Disk
         prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main
@@ -4348,8 +4348,8 @@ categories:
         consecutive_failures: 0
         failing_tests:
           - '[It] PreCheck @CheckConnection Check the connections [feature-env-validation]'
-        failure_summary: rosa-e2e-ocm-fvt aborts after 39s on the same @CheckConnection pre-flight failure seen in GCP CCS AD.
-        diagnosis: junit_operator.xml for build 2124065483840819200 shows one failed leaf ref, rosa-e2e-ocm-fvt (32s, pod failed after 39s, exit 1). The embedded ocmtest report shows the same failed_cases entry '[It] PreCheck @CheckConnection Check the connections [feature-env-validation]' with passing @CheckAWSLoadBalancerCapacity siblings. Identical signature to cs-osd-ccs-gcp-ad-staging-main in the same window. 1 of 8 runs passed this week; gating job.
+        failure_summary: rosa-e2e-ocm-fvt aborts after 39s on the same Clusters Service connection-refresh failure and @CheckConnection precheck failure seen in GCP CCS AD.
+        diagnosis: 'The ocm-fvt build log for this run records a Clusters Service connection-refresh failure before the precheck assertion: "EnsureFreshConnections: token refresh failed for RoleBindingConnection (invalid_grant: Offline user session not found); rebuilding from env credentials", followed by "RoleBindingConnection: refresh failed (invalid_grant: Offline user session not found) and rebuild still unusable". A second connection in the same run fails its refresh with unauthorized_client (Invalid client or Invalid client credentials). WHICH credential source supplied the stale offline session, and why it is stale, is NOT established by the published artifacts; the log shows the refresh and the rebuild both failing, not their origin. The precheck then fails at /ocm-backend-tests/cases/cms/prechecking_test.go:65, identical to GCP CCS AD and GCP Non-Cross-Proj WIF in the same window. CS telemetry is NOT available for this run: the collect-cs-telemetry step published no artifacts, so the event count is unknown rather than zero. Classification remains Env/config issue. 1 of 8 runs passed this week; gating job.'
         raw_terminal_states:
           SUCCESS: 1
           FAILURE: 7
@@ -4366,8 +4366,8 @@ categories:
           - clusters-service
         components:
           - clusters-service
-        failure_label: '@CheckConnection pre-flight environment check fails'
-        evidence_source: artifacts/junit_operator.xml
+        failure_label: 'Clusters Service connection refresh failed (invalid_grant: offline session not found)'
+        evidence_source: artifacts/<test>/rosa-e2e-ocm-fvt/build-log.txt (cs-telemetry artifacts absent for this run)
         analyzed: true
       - name: GCP WIF SV
         prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main
@@ -4423,8 +4423,8 @@ categories:
         consecutive_failures: 7
         failing_tests:
           - rosa-e2e-ocm-fvt
-        failure_summary: rosa-e2e-ocm-fvt fails 41s after the test runner starts, immediately after environment setup with the private-connectivity tunnel enabled.
-        diagnosis: 'junit_operator.xml for build 2124442986895904768 shows one failed leaf ref, rosa-e2e-ocm-fvt (33s step time, pod failed after 41s, exit code 1). The captured failure text covers the image pull and test-runner startup for this GCP PSC WIF SV job configuration (private-connectivity tunnel enabled, with zone and proxy settings supplied by the job environment) and ends before the test assertion. PARTIAL: the specific assertion is beyond the captured excerpt; the failure is confined to the test-execution leaf and occurs during environment bring-up, consistent with a tunnel/configuration failure, but the exact failing assertion was not retrieved within the artifact budget. 7 of 7 runs failed this week.'
+        failure_summary: 'rosa-e2e-ocm-fvt exits 41s after start: the private-connectivity IAP tunnel the job depends on exited before it became ready, so no test ran.'
+        diagnosis: 'Build log evidence: the step starts the private-connectivity IAP tunnel and two seconds later records "Failed to start GCP PSC IAP tunnel for job <job>: GCP PSC IAP tunnel exited before becoming ready: exit status 1". The run then ends with "could not resolve cluster id ... for post gather steps"; no cluster was created and no test assertion was reached, which is why no failing test name exists for this run. WHY the tunnel exited is NOT established: the tunnel''s own log is written inside the step output directory and is not among the published artifacts, so the underlying cause remains unknown. CS telemetry for this run reports Total events: 0 and Clusters seen: 0, consistent with no cluster having been provisioned. Classification remains Env/config issue on the tunnel-startup evidence. 0 of 7 runs passed this week, 7 consecutive failures.'
         raw_terminal_states:
           FAILURE: 7
         pages_fetched: 1
@@ -4440,8 +4440,8 @@ categories:
           - clusters-service
         components:
           - clusters-service
-        failure_label: ocmtest exits within 41s under GCP PSC IAP tunnel config
-        evidence_source: artifacts/junit_operator.xml (excerpt truncated - diagnosis partial)
+        failure_label: PSC IAP tunnel exited before becoming ready
+        evidence_source: artifacts/<test>/rosa-e2e-ocm-fvt/build-log.txt and artifacts/<test>/rosa-e2e-collect-cs-telemetry/artifacts/cs-telemetry.log
         analyzed: true
       - name: GCP WIF Version Pruning
         prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-version-pruning-staging-main
@@ -7909,6 +7909,7 @@ notes:
   failure_analysis_scope: 'The 5 lowest-rate categories with data were analyzed: hypershift-ci (0%), ocm-fvt-gcp-stg (20%), rosa-gap-analysis (23%), ocm-fvt-osdfm-stg (33%), ocm-fvt-classic-stg (36%). Up to 5 lowest-rate non-informing failed jobs per category were selected; 12 jobs were analyzed against artifacts/junit_operator.xml. Jobs with fail_count>0 that were not analyzed carry an empty failure_classification and a failure_summary saying so, per the artifact schema.'
   artifact_access_limit: CI artifact bytes were not directly reachable from the reporting environment (object storage returned 401 for listing and 403 for object reads, and the artifact browser returned 404 or redirected to a sign-in page). Artifacts were therefore read only through the authorized read path available to the reporter, which costs two requests per run. That is why per-run phase attribution covers 13 of 370 failed runs; the remainder are Unknown(budget_expired), which the phase specification explicitly allows.
   jira: No Jira issue was created, referenced as new, or invented. No repository was edited, no branch pushed, no PR opened.
+  correction_history: 'Revision 2 (2026-11-22): analysis-authored failure fields for GCP PSC WIF SV, GCP CCS AD, GCP Root Disk, GCP Non-Cross-Proj WIF, GCP Marketplace, STS AD OCP5, ROSA AD and the three GAP jobs were corrected against the published Prow build logs and CS telemetry artifacts for the named builds. STS AD OCP5 moved from Product bug to Env/config issue: its operator roles were never created because the AWS account hit its IAM RolesPerAccount quota, which supersedes the earlier role-name-truncation hypothesis. Counts, rates, trends, category and job membership are unchanged by this revision.'
 trend_rule: 'category and overall trend use a +/-10 percentage-point band on the exact (unrounded) pass-rate delta: improving >= +10, declining <= -10, otherwise stable; no-data when either window has no counted runs'
 registry_reconciliation:
   performed_at: "2026-11-22T14:41:51Z"
@@ -7957,15 +7958,16 @@ registry_reconciliation:
   unresolved_gaps:
     - id: gangway_per_job_allowlist
       statement: The deployed Gangway trigger consumer for the ROSA CI tenant is verified in the pinned openshift/release tree (ServiceAccount periodic-job-bot in namespace hp-sre-rosa-ci bound in clusters/app.ci/prow/03_deployment/gangway.yaml:346, provisioned by clusters/app.ci/gangway-tokens/hp-sre-rosa-ci/admin_rbac.yaml), but that RBAC is namespace- and ServiceAccount-scoped and carries no per-job allowlist, so which specific Prow jobs may be triggered cannot be established from the pinned repositories.
-      blocks: 28 of 54 candidates whose only schedule is the never-firing cron 0 0 31 2 *
+      blocks: 28 of 54 candidates whose only cron is the unschedulable 0 0 31 2 *
     - id: promotion_trigger_controller
-      statement: The actual promotion trigger for the 58 tracked jobs that carry the never-firing cron 0 0 31 2 *, and for the event-only candidates, is not configured in either pinned repository. Their existence is verified; their firing is not.
+      statement: 'The actual promotion trigger for the 58 tracked jobs that carry the unschedulable cron 0 0 31 2 *, and for the event-only candidates, is not configured in either pinned repository. Their existence is verified; their firing is not. POST-HISTORY NOTE: the run-history sample for this window contains one completed run of STS AD OCP5, one of those 58 jobs. That confirms the job executed; it does not identify the trigger, which remains unverified. These jobs are therefore not described as never-run anywhere in this report.'
     - id: bundle_gate_enforcement
       statement: configs/bundle.yaml and the gating field are verified to exist and to be consumed by the documented report logic, but no deployed promotion-blocking controller reading them was found in either pinned repository.
     - id: component_prow_filter_without_jobs
-      statement: 'aws-vpce-operator has a component_prow_filters entry in the registry but contributes zero registry jobs. Both resolutions are unsafe on current evidence: its two periodics carry the never-firing cron, and deleting the filter would be an unverified removal.'
+      statement: 'aws-vpce-operator has a component_prow_filters entry in the registry but contributes zero registry jobs. Both resolutions are unsafe on current evidence: its two periodics carry the unschedulable cron, and deleting the filter would be an unverified removal.'
     - id: phase_map_unmapped_gap_analysis_refs
       statement: The confirmed-failing leaf refs 4-19-gap-analysis, 4-22-gap-analysis and 5-0-gap-analysis are absent from .chai-bot/rosa_ci_step_phases.yaml, so every rosa-gap-analysis failure classifies as Unknown. This is a phase-map gap, not a registry gap.
     - id: history_not_available
       statement: Both source checkouts are depth-1, so no commit history was available. No removal, rename, recency or deprecation claim is made anywhere in the reconciliation.
   report_path: .chai-bot/reports/registry_audit_latest.md
+  post_history_note: Source reconciliation was performed from definitions alone, before run history was read. The health sample subsequently showed one completed run of STS AD OCP5, one of the 58 tracked jobs whose only cron is the unschedulable 0 0 31 2 *. That confirms the job executed, not what triggered it. Trigger wiring and the deployed promotion gate remain unverified, the 208/208 exact name matches, zero verified discrepancies, candidate counts and scope limits are unchanged, and safe registry corrections remain 0. See section 4.1.1 of the companion audit.
