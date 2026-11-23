@@ -1882,7 +1882,7 @@ categories:
     prev_pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19/2124745059101315072
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - external API dependency fetch failure
+    failure_classification: Env/config issue
     consecutive_failures: 6
     consecutive_failures_is_lower_bound: false
     failing_tests: &id009 []
@@ -1926,7 +1926,7 @@ categories:
     prev_pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20/2124752444465352704
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - external API dependency fetch failure
+    failure_classification: Env/config issue
     consecutive_failures: 6
     consecutive_failures_is_lower_bound: false
     failing_tests: *id009
@@ -1964,7 +1964,7 @@ categories:
     prev_pass_rate: 100
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21/2124760634535972864
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - external API dependency fetch failure
+    failure_classification: Env/config issue
     consecutive_failures: 6
     consecutive_failures_is_lower_bound: false
     failing_tests: *id009
@@ -2002,7 +2002,7 @@ categories:
     prev_pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22/2124767889532653568
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - external API dependency fetch failure
+    failure_classification: Env/config issue
     consecutive_failures: 6
     consecutive_failures_is_lower_bound: false
     failing_tests: *id009
@@ -2040,7 +2040,7 @@ categories:
     prev_pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0/2124775453125251072
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - external API dependency fetch failure
+    failure_classification: Env/config issue
     consecutive_failures: 19
     consecutive_failures_is_lower_bound: false
     failing_tests: *id009
@@ -3448,7 +3448,7 @@ categories:
     prev_pass_rate: 100
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-production-ocm-fvt-periodic-cs-rosa-hcp-ad-production-main/2124699775147184128
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - authorization/access issue observed
+    failure_classification: Env/config issue
     consecutive_failures: 1
     consecutive_failures_is_lower_bound: false
     failing_tests: []
@@ -4149,7 +4149,7 @@ categories:
     prev_pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main/2124065480518930432
     last_failure_date: '2026-11-21'
-    failure_classification: Env/config - credential refresh symptoms observed
+    failure_classification: Env/config issue
     consecutive_failures: 0
     consecutive_failures_is_lower_bound: false
     failing_tests: &id027 []
@@ -4194,7 +4194,7 @@ categories:
     prev_pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main/2124775397722689536
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - staging provisioning state
+    failure_classification: Env/config issue
     consecutive_failures: 13
     consecutive_failures_is_lower_bound: false
     failing_tests:
@@ -4230,7 +4230,7 @@ categories:
     prev_pass_rate: 83
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-non-cross-proj-wif-staging-main/2124065482163097600
     last_failure_date: '2026-11-21'
-    failure_classification: Env/config - credential refresh symptoms observed
+    failure_classification: Env/config issue
     consecutive_failures: 0
     consecutive_failures_is_lower_bound: false
     failing_tests: *id027
@@ -4267,7 +4267,7 @@ categories:
     prev_pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main/2124065483840819200
     last_failure_date: '2026-11-21'
-    failure_classification: Env/config - credential refresh symptoms observed
+    failure_classification: Env/config issue
     consecutive_failures: 0
     consecutive_failures_is_lower_bound: false
     failing_tests: *id027
@@ -4336,7 +4336,7 @@ categories:
     prev_pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-psc-wif-sv-staging-main/2124805503946067968
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - startup failure before tests ran
+    failure_classification: Env/config issue
     consecutive_failures: 20
     consecutive_failures_is_lower_bound: true
     failing_tests: []
@@ -4589,7 +4589,7 @@ categories:
     prev_pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage/2124790316182540288
     last_failure_date: '2026-11-23'
-    failure_classification: Service cleanup convergence failure
+    failure_classification: Product bug
     consecutive_failures: 1
     consecutive_failures_is_lower_bound: false
     failing_tests: []
@@ -4698,7 +4698,7 @@ categories:
     prev_pass_rate: 29
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22/2124745047348875264
     last_failure_date: '2026-11-23'
-    failure_classification: Env/config - staging cluster readiness failure
+    failure_classification: Env/config issue
     consecutive_failures: 10
     consecutive_failures_is_lower_bound: false
     failing_tests: []
