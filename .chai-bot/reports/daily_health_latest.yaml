@@ -1,13 +1,13 @@
-report_date: '2026-11-25'
-generated_at: '2026-11-25T15:41:45Z'
+report_date: '2026-11-26'
+generated_at: '2026-11-26T15:24:00Z'
 overall_pass_rate: -1
-gating_pass_rate: 56
+gating_pass_rate: 58
 non_gating_pass_rate: -1
 job_registry_url: https://raw.githubusercontent.com/openshift-online/rosa-e2e/main/configs/generated/ci-status-jobs.yaml
 categories:
 - id: rosa-e2e-stg
   name: ROSA E2E STG
-  pass_rate: 85
+  pass_rate: 86
   trend: stable
   health: green
   jobs:
@@ -22,7 +22,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-19/2125416832348196864
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -39,14 +39,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20
     gating: true
     informing: false
-    pass_count: 6
-    fail_count: 1
+    pass_count: 5
+    fail_count: 2
     total: 7
-    pass_rate: 86
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20/2123612518621384704
-    last_failure_date: '2026-11-20'
+    pass_rate: 71
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20/2125786997296467968
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -214,7 +214,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-4-22/2124797755703431168
     last_failure_date: '2026-11-23'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -495,10 +495,10 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-e2e-staging-stable-4-22
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 4
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 43
+    pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-e2e-staging-stable-4-22/2124405160443645952
     last_failure_date: '2026-11-22'
     failure_classification: ''
@@ -759,14 +759,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-staging
     gating: false
     informing: false
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-staging/2125439933198897152
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -811,14 +811,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-21
     gating: false
     informing: true
-    pass_count: 7
-    fail_count: 0
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 100
-    last_failure_url: ''
-    last_failure_date: ''
+    pass_rate: 86
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-21/2125869811392057344
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -877,14 +877,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-integration
     gating: false
     informing: true
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-integration/2125424568448323584
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -897,22 +897,22 @@ categories:
     components: []
 - id: rosa-cx-e2e
   name: ROSA CX E2E
-  pass_rate: 73
-  trend: stable
+  pass_rate: -1
+  trend: unavailable
   health: yellow
   jobs:
   - name: HCP External OIDC
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-external-oidc-e2e-staging
     gating: false
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 71
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-external-oidc-e2e-staging/2125575497256538112
-    last_failure_date: '2026-11-25'
+    pass_rate: 57
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-external-oidc-e2e-staging/2125937879862480896
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 3
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1021,6 +1021,30 @@ categories:
     - ci-failure
     - rosa-e2e
     components: []
+  - name: HCP Zero Egress
+    prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-zero-egress-e2e-staging
+    gating: false
+    informing: false
+    pass_count: -1
+    fail_count: -1
+    total: 0
+    pass_rate: -1
+    last_failure_url: ''
+    last_failure_date: ''
+    failure_classification: fetch_error
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: Prow job-history returned HTTP 500 on three separate attempts; execution availability for this window is unverified. Not zero runs. Remediation must skip this job.
+    team:
+      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
+      name: ROSA CI
+      slack_channel: wg-rosa-cicd
+      slack_alias: rosa-release-assurance-team
+    labels:
+    - ci-failure
+    - rosa-e2e
+    components: []
 - id: capa-e2e-stg
   name: CAPA E2E STG
   pass_rate: 97
@@ -1031,9 +1055,9 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e
     gating: false
     informing: false
-    pass_count: 8
+    pass_count: 7
     fail_count: 0
-    total: 8
+    total: 7
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -1210,10 +1234,10 @@ categories:
     fail_count: 1
     total: 1
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-5-0-full/2123325735459360768
-    last_failure_date: '2026-11-19'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-5-0-full/2125862594848755712
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1241,22 +1265,14 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19/2125469928633929728
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19/2125832229174120448
+    last_failure_date: '2026-11-26'
     failure_classification: Test bug
-    consecutive_failures: 7
+    consecutive_failures: 9
     failing_tests:
-    - gap-analysis version-resolution step (aborts before any test case runs)
-    failure_summary: 'Version-resolution step exits non-zero within seconds: the upstream CI release-metadata
-      API is reachable but its GA-date map now contains a key that is not an OCP x.y version, and the
-      resolver treats that as fatal.'
-    diagnosis: 'Classification: Test bug. The resolver parses every key of the upstream GA-date map as
-      an OCP version and aborts the whole run when any key fails to parse. The upstream map legitimately
-      includes a non-OCP product stream, so a valid upstream data addition hard-fails all five version
-      jobs before a single gap-analysis assertion executes. Confidence high: the failure text and the
-      upstream response shape agree on the key count and on the non-numeric key. Not a ROSA product defect
-      and not an upstream outage. Fix target: filter the GA-date map to numeric x.y keys in the gap-analysis
-      resolver. Residual uncertainty: the resolver source was not read, so the exact call site is unconfirmed.'
+    - 4-19-gap-analysis (step)
+    failure_summary: Same ga_dates parsing abort as nightly-5-0.
+    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-19-gap-analysis | phase: Unknown'
     team:
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
@@ -1274,22 +1290,14 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20/2125477222885101568
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20/2125839615498653696
+    last_failure_date: '2026-11-26'
     failure_classification: Test bug
-    consecutive_failures: 7
+    consecutive_failures: 9
     failing_tests:
-    - gap-analysis version-resolution step (aborts before any test case runs)
-    failure_summary: 'Version-resolution step exits non-zero within seconds: the upstream CI release-metadata
-      API is reachable but its GA-date map now contains a key that is not an OCP x.y version, and the
-      resolver treats that as fatal.'
-    diagnosis: 'Classification: Test bug. The resolver parses every key of the upstream GA-date map as
-      an OCP version and aborts the whole run when any key fails to parse. The upstream map legitimately
-      includes a non-OCP product stream, so a valid upstream data addition hard-fails all five version
-      jobs before a single gap-analysis assertion executes. Confidence high: the failure text and the
-      upstream response shape agree on the key count and on the non-numeric key. Not a ROSA product defect
-      and not an upstream outage. Fix target: filter the GA-date map to numeric x.y keys in the gap-analysis
-      resolver. Residual uncertainty: the resolver source was not read, so the exact call site is unconfirmed.'
+    - 4-20-gap-analysis (step)
+    failure_summary: Same ga_dates parsing abort as nightly-5-0.
+    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-20-gap-analysis | phase: Unknown'
     team:
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
@@ -1307,22 +1315,14 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21/2125484934855397376
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21/2125847303653691392
+    last_failure_date: '2026-11-26'
     failure_classification: Test bug
-    consecutive_failures: 7
+    consecutive_failures: 9
     failing_tests:
-    - gap-analysis version-resolution step (aborts before any test case runs)
-    failure_summary: 'Version-resolution step exits non-zero within seconds: the upstream CI release-metadata
-      API is reachable but its GA-date map now contains a key that is not an OCP x.y version, and the
-      resolver treats that as fatal.'
-    diagnosis: 'Classification: Test bug. The resolver parses every key of the upstream GA-date map as
-      an OCP version and aborts the whole run when any key fails to parse. The upstream map legitimately
-      includes a non-OCP product stream, so a valid upstream data addition hard-fails all five version
-      jobs before a single gap-analysis assertion executes. Confidence high: the failure text and the
-      upstream response shape agree on the key count and on the non-numeric key. Not a ROSA product defect
-      and not an upstream outage. Fix target: filter the GA-date map to numeric x.y keys in the gap-analysis
-      resolver. Residual uncertainty: the resolver source was not read, so the exact call site is unconfirmed.'
+    - 4-21-gap-analysis (step)
+    failure_summary: Same ga_dates parsing abort as nightly-5-0.
+    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-21-gap-analysis | phase: Unknown'
     team:
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
@@ -1340,22 +1340,14 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22/2125492343233581056
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22/2125854738523099136
+    last_failure_date: '2026-11-26'
     failure_classification: Test bug
-    consecutive_failures: 7
+    consecutive_failures: 9
     failing_tests:
-    - gap-analysis version-resolution step (aborts before any test case runs)
-    failure_summary: 'Version-resolution step exits non-zero within seconds: the upstream CI release-metadata
-      API is reachable but its GA-date map now contains a key that is not an OCP x.y version, and the
-      resolver treats that as fatal.'
-    diagnosis: 'Classification: Test bug. The resolver parses every key of the upstream GA-date map as
-      an OCP version and aborts the whole run when any key fails to parse. The upstream map legitimately
-      includes a non-OCP product stream, so a valid upstream data addition hard-fails all five version
-      jobs before a single gap-analysis assertion executes. Confidence high: the failure text and the
-      upstream response shape agree on the key count and on the non-numeric key. Not a ROSA product defect
-      and not an upstream outage. Fix target: filter the GA-date map to numeric x.y keys in the gap-analysis
-      resolver. Residual uncertainty: the resolver source was not read, so the exact call site is unconfirmed.'
+    - 4-22-gap-analysis (step)
+    failure_summary: Same ga_dates parsing abort as nightly-5-0.
+    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-22-gap-analysis | phase: Unknown'
     team:
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
@@ -1373,22 +1365,14 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0/2125500250557779968
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0/2125862597084319744
+    last_failure_date: '2026-11-26'
     failure_classification: Test bug
-    consecutive_failures: 7
+    consecutive_failures: 20
     failing_tests:
-    - gap-analysis version-resolution step (aborts before any test case runs)
-    failure_summary: 'Version-resolution step exits non-zero within seconds: the upstream CI release-metadata
-      API is reachable but its GA-date map now contains a key that is not an OCP x.y version, and the
-      resolver treats that as fatal.'
-    diagnosis: 'Classification: Test bug. The resolver parses every key of the upstream GA-date map as
-      an OCP version and aborts the whole run when any key fails to parse. The upstream map legitimately
-      includes a non-OCP product stream, so a valid upstream data addition hard-fails all five version
-      jobs before a single gap-analysis assertion executes. Confidence high: the failure text and the
-      upstream response shape agree on the key count and on the non-numeric key. Not a ROSA product defect
-      and not an upstream outage. Fix target: filter the GA-date map to numeric x.y keys in the gap-analysis
-      resolver. Residual uncertainty: the resolver source was not read, so the exact call site is unconfirmed.'
+    - 5-0-gap-analysis (step)
+    failure_summary: 'GAP harness aborts resolving the GA baseline: it requires every key of Sippy''s ga_dates map to parse as a numeric version, and the upstream payload now contains a non-numeric key.'
+    diagnosis: 'GA version resolution failed: could not read ga_dates from https://sippy.dptools.openshift.org/api/releases: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 5-0-gap-analysis | phase: Unknown'
     team:
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
@@ -1412,13 +1396,14 @@ categories:
     fail_count: 9
     total: 10
     pass_rate: 10
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main/2125424571795378176
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 6
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main/2125786992259108864
+    last_failure_date: '2026-11-26'
+    failure_classification: Product bug
+    consecutive_failures: 7
+    failing_tests:
+    - HCP Creation Positive Validation - Test support of Windows LI for CNV on ROSA-HCP [day2, High]
+    failure_summary: 'Node-pool node never became ready in 60 minutes: the backing Machine entered deletion (WaitingForInfrastructureDeletion) after the kubelet stopped posting node status and the Ready condition went Unknown for >8m. Data-plane node lifecycle defect, not a test timing issue.'
+    diagnosis: 'timeout error. Nodes not started totally after 60 mins. desired=1 current=0 | Deleting: Machine deletion in progress, stage: WaitingForInfrastructureDeletion | InfrastructureReady: 1 of 2 completed | Node.AllConditions: Kubelet stopped posting node status | Condition Ready on Node is reporting status Unknown with reason NodeStatusUnknown for more than 8m0s | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -1434,17 +1419,18 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-staging-main
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 4
+    pass_count: 2
+    fail_count: 5
     total: 7
-    pass_rate: 43
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-staging-main/2125429366526578688
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
+    pass_rate: 29
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-staging-main/2125791774751330304
+    last_failure_date: '2026-11-26'
+    failure_classification: Test bug
+    consecutive_failures: 3
+    failing_tests:
+    - CMS Testing Break glass credential Testing - Create/List/Retrieve/Delete HCP cluster with break_glass_credentials can work well [Critical, day2]
+    failure_summary: The spec fails on a bare boolean assertion with no captured API response or reason, so the product-side cause cannot be determined from the artifacts. The demonstrated defect is the missing diagnostic context; a log/artifact improvement is the prerequisite for real root-cause analysis.
+    diagnosis: 'Expected <bool>: false to be true (hcp_external_auth_test.go:166) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution | Product-side cause UNDETERMINED. Classified on the evidence that exists (unactionable bare-bool assertion); re-classify once the spec records the break-glass API response.'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -1460,14 +1446,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 7
+    pass_count: 3
+    fail_count: 6
     total: 9
-    pass_rate: 22
+    pass_rate: 33
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main/2125419312872165376
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1512,14 +1498,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-staging-main/2125459565402132480
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1538,17 +1524,18 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 29
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main/2125454768670248960
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
+    pass_rate: 14
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main/2125817149602664448
+    last_failure_date: '2026-11-26'
+    failure_classification: Resilience / de-flake
+    consecutive_failures: 3
+    failing_tests:
+    - HCP Autoscale Testing - Karpenter/AutoNode - Deploy a stress test pod and check it scales on Karpenter spot nodes [Medium, day2]
+    failure_summary: Karpenter NodeClaim for the spot NodePool did not reach Ready inside the test's fixed 900s Eventually budget. Spot provisioning latency varies; the wait is brittle rather than the behaviour being wrong.
+    diagnosis: 'Timed out after 900.000s. NodeClaim for NodePool ''spot-<id>'' should be ready. Expected <bool>: false to be true (hcp_autonode_test.go:339) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -1564,17 +1551,18 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 4
+    pass_count: 2
+    fail_count: 5
     total: 7
-    pass_rate: 43
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main/2125469918580183040
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
+    pass_rate: 29
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main/2125832218927435776
+    last_failure_date: '2026-11-26'
+    failure_classification: Env/config issue
+    consecutive_failures: 3
+    failing_tests:
+    - HCP Spot Instances Spot NodePool E2E - Lifecycle - should create spot node pool and verify EC2 InstanceLifecycle is spot [Critical, day2]
+    failure_summary: 'Spot node pool never produced an instance: AWSMachine never reported spec.providerID and InfrastructureReady stayed 0 of 2 for 45 minutes. Consistent with AWS spot capacity unavailability in the CI region rather than a ROSA defect.'
+    diagnosis: 'timeout error. Nodes not started totally after 45 mins. desired=1, current=0 | InfrastructureReady: 0 of 2 completed | NodeHealthy: Waiting for AWSMachine to report spec.providerID (hcp_spot_instances_test.go:651) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -1590,14 +1578,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-staging-main/2125444467115692032
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1620,13 +1608,14 @@ categories:
     fail_count: 5
     total: 7
     pass_rate: 29
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main/2125439937963626496
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main/2125802326336737280
+    last_failure_date: '2026-11-26'
+    failure_classification: Env/config issue
+    consecutive_failures: 3
+    failing_tests:
+    - CreateClusterByYAMLProfile [feature-cluster-creation, critical] (pre-cluster-creation step)
+    failure_summary: 'Shared-VPC setup cannot create the AWS RAM resource share: RAM rejects sharing the listed resources outside the AWS organization. An AWS account/RAM policy configuration problem in the CI account; the job fails 6 minutes in, before any cluster exists.'
+    diagnosis: 'operation error RAM: CreateResourceShare, https response error StatusCode: 400, OperationNotPermittedException: The resource share includes one or more resources that cannot be shared with accounts outside of your AWS organization. (profile_handler.go:906) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -1704,7 +1693,7 @@ categories:
     consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: ''
+    diagnosis: Prow job-history returned HTTP 500 on three separate attempts; execution availability for this window is unverified. Not zero runs. Remediation must skip this job.
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -1724,10 +1713,10 @@ categories:
     fail_count: 5
     total: 7
     pass_rate: 29
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-staging-main/2125464598508212224
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-staging-main/2125826990534561792
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 3
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1772,10 +1761,10 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-access-request-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-access-request-staging-main/2124749888599101440
     last_failure_date: '2026-11-23'
     failure_classification: ''
@@ -1831,7 +1820,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1883,7 +1872,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 8
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1909,7 +1898,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 20
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1935,7 +1924,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 5
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1961,7 +1950,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -1987,7 +1976,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2013,7 +2002,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 6
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2065,7 +2054,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 20
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2091,7 +2080,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 6
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2117,7 +2106,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 5
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2143,7 +2132,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2195,7 +2184,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 5
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2221,7 +2210,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2247,7 +2236,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2273,7 +2262,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 6
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2299,7 +2288,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2328,10 +2317,10 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-autonode-integration-main/2125500217833820160
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-autonode-integration-main/2125862572757356544
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 12
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2376,14 +2365,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-scale-integration-main
     gating: false
     informing: true
-    pass_count: 3
-    fail_count: 4
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 43
+    pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-scale-integration-main/2125500232098648064
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2402,14 +2391,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main
     gating: false
     informing: true
-    pass_count: 5
-    fail_count: 2
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 71
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main/2124050480924463104
-    last_failure_date: '2026-11-21'
+    pass_rate: 57
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main/2125862576091828224
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2458,10 +2447,10 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main/2125500211127128064
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main/2125862569380941824
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 20
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2495,20 +2484,13 @@ categories:
     failure_classification: Env/config issue
     consecutive_failures: 2
     failing_tests:
-    - node pool create/edit with tags and autorepair
-    - node pool tag update/removal
-    - hosted-control-plane spot-instance node pool case
-    failure_summary: Node-pool tag and autorepair mutations are rejected with HTTP 403 where 200 is expected,
-      while the rest of the production suite passes.
-    diagnosis: 'Classification: Env/config issue. Clusters Service returns HTTP 403 Forbidden on specific
-      node-pool tag and autorepair endpoints in production while 135 sibling cases on the same cluster
-      pass; a blanket outage or broad service regression would not spare those, so a per-endpoint authorisation
-      or entitlement gap for the production functional-test principal fits the evidence best. Confidence
-      moderate: a service-side authorisation regression scoped to the same endpoints would be indistinguishable
-      in these artifacts, and distinguishing the two needs service-side authorisation decision logs. Artifact
-      gap: this job variant emits no CS telemetry at all, so the usual corroboration was unavailable.
-      The second current-window failure on this job has a different signature, so this is not a single
-      permafail.'
+    - HCP Spot Instances Spot NodePool Update - Max Price should update node pool spot max price only when the organization toggle allows it
+    - HCP Spot Instances - should reject adding spot_market_options to an existing on-demand node pool
+    - HCP Spot Instances - should reject removing spot_market_options from a spot node pool
+    - HCP Node Pools Node Pools Creation - Create/edit nodepool with tags and autorepair set will work
+    - (5th failure in the same Day2 suite)
+    failure_summary: The production organization is not entitled to the spot-instances feature-review API, so the suite's spot specs fail on an HTTP 403 where they expect 200. Scope/entitlement differs between staging and production, not a code defect.
+    diagnosis: 'organization feature review status Expected <int>: 403 to equal <int>: 200 (hcp_spot_instances_test.go:507) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -2522,34 +2504,25 @@ categories:
     - clusters-service
 - id: ocm-fvt-classic-stg
   name: OCM FVT Classic STG
-  pass_rate: 36
-  trend: degrading
-  health: red
+  pass_rate: 41
+  trend: stable
+  health: yellow
   jobs:
   - name: ROSA AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main/2125419310355582976
     last_failure_date: '2026-11-25'
-    failure_classification: Product bug
-    consecutive_failures: 1
-    failing_tests:
-    - HTPasswd IDP expected-user convergence check (cluster IDP test suite)
-    failure_summary: HTPasswd IDP reaches the cluster but two bulk-import users never appear; the convergence
-      check samples 20 times over about 9.5 minutes and times out with 3 of 5 expected members present.
-    diagnosis: 'Classification: Product bug. Three independent jobs on three independent clusters across
-      three OCM products (ROSA STS, ROSA non-STS, OSD RH-AWS) reproduce the identical bounded-time observation
-      with the same two bulk-import users missing, which indicates a deterministic functional gap in HTPasswd
-      IDP bulk/import-user creation in Clusters Service rather than per-cluster flake. Collected CS telemetry
-      shows IDP credential secret create/update activity proceeding normally, consistent with ''IDP exists
-      but some members never materialise'' rather than ''IDP creation failed''. Confidence high for the
-      shared cause; telemetry exposes no per-member detail, so the component dropping the import users
-      is not identified. Shared across three release-gating jobs.'
+    failure_classification: ''
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -2565,26 +2538,17 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-staging-main
     gating: true
     informing: false
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-staging-main/2125424570134433792
     last_failure_date: '2026-11-25'
-    failure_classification: Product bug
-    consecutive_failures: 7
-    failing_tests:
-    - HTPasswd IDP expected-user convergence check (cluster IDP test suite)
-    failure_summary: HTPasswd IDP reaches the cluster but two bulk-import users never appear; the convergence
-      check samples 20 times over about 9.5 minutes and times out with 3 of 5 expected members present.
-    diagnosis: 'Classification: Product bug. Three independent jobs on three independent clusters across
-      three OCM products (ROSA STS, ROSA non-STS, OSD RH-AWS) reproduce the identical bounded-time observation
-      with the same two bulk-import users missing, which indicates a deterministic functional gap in HTPasswd
-      IDP bulk/import-user creation in Clusters Service rather than per-cluster flake. Collected CS telemetry
-      shows IDP credential secret create/update activity proceeding normally, consistent with ''IDP exists
-      but some members never materialise'' rather than ''IDP creation failed''. Confidence high for the
-      shared cause; telemetry exposes no per-member detail, so the component dropping the import users
-      is not identified. Shared across three release-gating jobs.'
+    failure_classification: ''
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -2600,24 +2564,17 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-staging-main
     gating: true
     informing: false
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-staging-main/2125429366497218560
     last_failure_date: '2026-11-25'
-    failure_classification: Product bug
-    consecutive_failures: 7
-    failing_tests:
-    - cluster ingress load-balancer type change (classic to NLB and back)
-    - cluster ingress route-selector update via API
-    failure_summary: Two distinct ingress mutations each fail to converge within their 600-second budget
-      while the rest of the suite passes.
-    diagnosis: 'Classification: Product bug. Ingress reconciliation does not complete for either mutation,
-      while 91 sibling cases on the same cluster pass, which argues against a broad environment fault.
-      Distinct from the HTPasswd defect affecting the other classic-staging jobs. Confidence moderate:
-      no ingress-operator or service-side logs are present in the job artifacts, so the stalling component
-      is not identified.'
+    failure_classification: ''
+    consecutive_failures: 0
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -2637,21 +2594,13 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shared-vpc-staging-main/2125434399376805888
-    last_failure_date: '2026-11-25'
-    failure_classification: Env/config issue
-    consecutive_failures: 3
-    failing_tests:
-    - shared-VPC pre-cluster-creation profile setup
-    failure_summary: Shared-VPC setup fails about five minutes in, before any cluster is created, while
-      contacting the AWS Resource Access Manager service used to share subnets across accounts.
-    diagnosis: 'Classification: Env/config issue. The failure occurs during shared-VPC pre-creation against
-      AWS Resource Access Manager, before a cluster exists, pointing at RAM access or cross-account trust
-      configuration. Confidence low, and two artifact gaps are the reason: the assertion output was truncated
-      by the test framework''s maximum-length formatter, and the job''s top-level build log was redacted
-      by CI for containing potentially sensitive information, so the underlying cloud error string could
-      not be recovered. A RAM permission change and a transient TLS or connection fault are both consistent
-      with what survives in the artifacts.'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shared-vpc-staging-main/2125796791415738368
+    last_failure_date: '2026-11-26'
+    failure_classification: ''
+    consecutive_failures: 4
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -2775,22 +2724,13 @@ categories:
     fail_count: 5
     total: 7
     pass_rate: 29
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-staging-main/2125439935451238400
-    last_failure_date: '2026-11-25'
-    failure_classification: Product bug
-    consecutive_failures: 1
-    failing_tests:
-    - HTPasswd IDP expected-user convergence check (cluster IDP test suite)
-    failure_summary: HTPasswd IDP reaches the cluster but two bulk-import users never appear; the convergence
-      check samples 20 times over about 9.5 minutes and times out with 3 of 5 expected members present.
-    diagnosis: 'Classification: Product bug. Three independent jobs on three independent clusters across
-      three OCM products (ROSA STS, ROSA non-STS, OSD RH-AWS) reproduce the identical bounded-time observation
-      with the same two bulk-import users missing, which indicates a deterministic functional gap in HTPasswd
-      IDP bulk/import-user creation in Clusters Service rather than per-cluster flake. Collected CS telemetry
-      shows IDP credential secret create/update activity proceeding normally, consistent with ''IDP exists
-      but some members never materialise'' rather than ''IDP creation failed''. Confidence high for the
-      shared cause; telemetry exposes no per-member detail, so the component dropping the import users
-      is not identified. Shared across three release-gating jobs.'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-staging-main/2125802323811766272
+    last_failure_date: '2026-11-26'
+    failure_classification: ''
+    consecutive_failures: 2
+    failing_tests: []
+    failure_summary: ''
+    diagnosis: ''
     team:
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
@@ -2813,7 +2753,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2839,7 +2779,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2865,7 +2805,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 7
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2891,7 +2831,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 1
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2943,7 +2883,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -2968,14 +2908,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main
     gating: false
     informing: true
-    pass_count: 2
-    fail_count: 5
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 29
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main/2125500202738520064
-    last_failure_date: '2026-11-25'
+    pass_rate: 14
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main/2125862565220192256
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 3
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3020,14 +2960,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-aws-integration-ocm-fvt-periodic-cs-osd-ccs-aws-ad-integration-main
     gating: false
     informing: true
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-aws-integration-ocm-fvt-periodic-cs-osd-ccs-aws-ad-integration-main/2125500196027633664
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3044,7 +2984,7 @@ categories:
     - clusters-service
 - id: ocm-fvt-gcp-stg
   name: OCM FVT GCP STG
-  pass_rate: 47
+  pass_rate: 50
   trend: improving
   health: yellow
   jobs:
@@ -3052,10 +2992,10 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main
     gating: true
     informing: false
-    pass_count: 4
-    fail_count: 4
+    pass_count: 5
+    fail_count: 3
     total: 8
-    pass_rate: 50
+    pass_rate: 62
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main/2125152635622264832
     last_failure_date: '2026-11-24'
     failure_classification: ''
@@ -3078,14 +3018,14 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main
     gating: true
     informing: false
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main/2125500198544216064
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3130,10 +3070,10 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 5
+    pass_count: 4
+    fail_count: 4
     total: 8
-    pass_rate: 38
+    pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main/2125228958336159744
     last_failure_date: '2026-11-24'
     failure_classification: ''
@@ -3186,10 +3126,10 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-psc-wif-sv-staging-main/2125530225029681152
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-psc-wif-sv-staging-main/2125892617790033920
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 20
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3208,10 +3148,10 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-version-pruning-staging-main
     gating: false
     informing: false
-    pass_count: 7
+    pass_count: 5
     fail_count: 2
-    total: 9
-    pass_rate: 78
+    total: 7
+    pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-version-pruning-staging-main/2124095671404335104
     last_failure_date: '2026-11-21'
     failure_classification: ''
@@ -3318,10 +3258,10 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-sc-autoscaling-integration
     gating: false
     informing: true
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -3342,35 +3282,26 @@ categories:
     - osd-fleet-manager
 - id: ocm-fvt-osdfm-stg
   name: OCM FVT OSDFM STG
-  pass_rate: 33
-  trend: stable
+  pass_rate: 0
+  trend: degrading
   health: red
   jobs:
   - name: OSDFM Basic Periodic
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage
     gating: true
     informing: false
-    pass_count: 1
-    fail_count: 2
+    pass_count: 0
+    fail_count: 3
     total: 3
-    pass_rate: 33
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage/2125228156951465984
-    last_failure_date: '2026-11-24'
-    failure_classification: Product bug
-    consecutive_failures: 2
+    pass_rate: 0
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage/2125629878135951360
+    last_failure_date: '2026-11-25'
+    failure_classification: Resilience / de-flake
+    consecutive_failures: 3
     failing_tests:
-    - fleet-manager cluster cleanup state-convergence check (45-minute budget)
-    failure_summary: Cluster cleanup never advances past the cleanup state and times out after 45 minutes,
-      failing both the pre-clean and post-clean suite steps.
-    diagnosis: 'Classification: Product bug. The cleanup state machine remained in the cleanup state for
-      the entire 45-minute budget while the harness performed 17 successful state reads with zero read
-      errors, so the state was observable and simply never advanced, indicating a service-side fleet-manager
-      deprovision stall rather than a harness or transport fault. Confidence low-to-moderate and the uncertainty
-      is material: the suite itself reports the cause as unknown with backend logs unavailable and conditions
-      not exposed through the SDK, so the stall is not localised and a load-dependent slow cleanup against
-      a too-tight budget (Resilience / de-flake) cannot be excluded. Collected CS telemetry shows many
-      unrelated clusters completing install, ready and deprovision transitions normally in the same window,
-      so it does not isolate this cluster.'
+    - OSD Fleet Manager Testing @cluster_cleanup Cleanup bootstrapped clusters Cleanup phase deprovisions management cluster [feature-cleanup, ExcludeGating]
+    failure_summary: MC deprovision was accepted (http_2xx) and reached state 'deprovisioning', but the cleanup acknowledgement never arrived inside the spec's fixed ~1200s budget; the matcher wanted cleanup_ack_pending or empty.
+    diagnosis: 'osdfm_cleanup elapsed_s=1201 last_successful_state=deprovisioning state_age_s=1199 path=deprovision_management,delete,delete,http_2xx,wait_ack read_errors=0 cause=unknown | leaf ref: rosa-e2e-ocm-fvt-longrunning | phase: test-execution'
     team:
       id: bd8a0aae-863d-4ea3-a697-028b5043fc08
       name: ROSA Fleet Manager
@@ -3384,22 +3315,22 @@ categories:
     - osd-fleet-manager
 - id: hypershift-ci
   name: HyperShift CI
-  pass_rate: 0
-  trend: degrading
+  pass_rate: 14
+  trend: stable
   health: red
   jobs:
   - name: INT HCP 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-integration-stable-4-22
     gating: false
     informing: true
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-integration-stable-4-22/2125454767000915968
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3417,28 +3348,18 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22
     gating: false
     informing: false
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22/2125469916046823424
     last_failure_date: '2026-11-25'
-    failure_classification: Product bug
-    consecutive_failures: 7
+    failure_classification: Env/config issue
+    consecutive_failures: 0
     failing_tests:
-    - wait-for-cluster-ready provisioning step (60-minute stall timeout)
-    failure_summary: Cluster provisioning stalls in the installing state for over an hour; every later
-      step fails as a consequence of the cluster never becoming ready.
-    diagnosis: 'Classification: Product bug. The hosted-cluster resource is created on the management
-      cluster but its entire status block stays unpopulated, so the hosted-control-plane operator never
-      reconciled it and the service never progressed past installing; all downstream failures (kubeconfig
-      retrieval rejected for a non-ready cluster, diagnostics gathering without a server, RBAC-denied
-      collection) are cascade. Confidence moderate: this job variant is the only one that deploys a candidate
-      hosted-control-plane operator build before provisioning, and the equivalent job at the same version
-      in the standard staging variant passed 6 of 7 runs in the same window, which points at the candidate
-      operator build; the specific operator build identifier was not extracted from the artifacts, so
-      that correlation is unconfirmed. Secondary finding: the install-report step prints an all-healthy
-      verdict after recording that it could not retrieve cluster operators or nodes.'
+    - rosa-cluster-wait-ready-cluster (step)
+    failure_summary: 'Cluster provisioning stalled in staging: state stayed ''installing'' for the full 60-minute stall timeout; the install breakdown shows validating=140s and pending=34s with no progress afterwards.'
+    diagnosis: 'ERROR: Cluster state ''installing'' has not changed for 60 minutes (stall timeout: 60 minutes) / Cluster appears to be stalled. Failing early. / {"status":"installing","install":{"claim":"1","validating":"140","pending":"34"}} | leaf ref: rosa-cluster-wait-ready-cluster | phase: setup'
     team:
       id: a5267ed5-eaa8-4cd6-90e3-d0ce145dbfbf
       name: ROSA HCP Platform
@@ -3451,7 +3372,7 @@ categories:
     - hypershift
 - id: hcp-conformance
   name: HCP Conformance
-  pass_rate: 47
+  pass_rate: 44
   trend: stable
   health: yellow
   jobs:
@@ -3466,7 +3387,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-hcp-ovn/2125396650003271680
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3487,10 +3408,10 @@ categories:
     fail_count: 8
     total: 8
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn/2125424124623851520
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn/2125769126080155648
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 8
+    consecutive_failures: 13
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3511,10 +3432,10 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn/2125416827310837760
-    last_failure_date: '2026-11-25'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn/2125779211057631232
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 5
+    consecutive_failures: 6
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3538,7 +3459,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-hcp-ovn/2125386640594571264
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3555,14 +3476,14 @@ categories:
     prow_job: periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn
     gating: false
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 29
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn/2125430121098645504
-    last_failure_date: '2026-11-25'
+    pass_rate: 14
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn/2125792513196298240
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 3
+    consecutive_failures: 4
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3586,7 +3507,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn/2125381047238529024
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3601,22 +3522,22 @@ categories:
     components: []
 - id: classic-conformance
   name: Classic STS Conformance
-  pass_rate: 71
-  trend: stable
+  pass_rate: 57
+  trend: degrading
   health: yellow
   jobs:
   - name: STS 4.19
     prow_job: periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn
     gating: false
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 71
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn/2125401750268547072
-    last_failure_date: '2026-11-25'
+    pass_rate: 57
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn/2125764124783677440
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3633,14 +3554,14 @@ categories:
     prow_job: periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-sts-ovn
     gating: false
     informing: false
-    pass_count: 6
-    fail_count: 1
+    pass_count: 5
+    fail_count: 2
     total: 7
-    pass_rate: 86
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-sts-ovn/2125411762256744448
-    last_failure_date: '2026-11-25'
+    pass_rate: 71
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-sts-ovn/2125774156761927680
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3657,14 +3578,14 @@ categories:
     prow_job: periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn
     gating: false
     informing: false
-    pass_count: 4
-    fail_count: 3
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 57
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn/2125381550353682432
-    last_failure_date: '2026-11-25'
+    pass_rate: 43
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn/2125743943025954816
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 3
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3681,14 +3602,14 @@ categories:
     prow_job: periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn
     gating: false
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 71
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn/2125391623939428352
-    last_failure_date: '2026-11-25'
+    pass_rate: 57
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn/2125754008902569984
+    last_failure_date: '2026-11-26'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3703,7 +3624,7 @@ categories:
     components: []
 - id: rosa-cli-jobs
   name: ROSA CLI E2E
-  pass_rate: 55
+  pass_rate: 54
   trend: improving
   health: yellow
   jobs:
@@ -3718,7 +3639,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-day1-negative-f7/2123753570460241920
     last_failure_date: '2026-11-20'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 9
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3736,9 +3657,9 @@ categories:
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-day1-supplemental-f3
     gating: false
     informing: false
-    pass_count: 3
+    pass_count: 2
     fail_count: 0
-    total: 3
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -3768,7 +3689,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-arm-f7/2124657277095907328
     last_failure_date: '2026-11-23'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3787,13 +3708,13 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 2
-    total: 2
+    fail_count: 3
+    total: 3
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-f3/2124555857264906240
-    last_failure_date: '2026-11-22'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-f3/2125643026486267904
+    last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 6
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3818,7 +3739,7 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 0
+    consecutive_failures: 20
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3837,13 +3758,13 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 2
-    total: 2
+    fail_count: 3
+    total: 3
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-external-auth-f3/2124526165342294016
-    last_failure_date: '2026-11-22'
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-external-auth-f3/2125613353798733824
+    last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 10
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3868,7 +3789,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-private-link-f3/2124947946217672704
     last_failure_date: '2026-11-23'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 7
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3887,13 +3808,13 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 3
-    total: 3
+    fail_count: 2
+    total: 2
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-shared-vpc-f3/2125379407060144128
     last_failure_date: '2026-11-25'
     failure_classification: ''
-    consecutive_failures: 3
+    consecutive_failures: 14
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -3912,11 +3833,11 @@ categories:
     gating: false
     informing: false
     pass_count: 2
-    fail_count: 1
-    total: 3
-    pass_rate: 67
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-y-stream-f3/2123230284194254848
-    last_failure_date: '2026-11-19'
+    fail_count: 0
+    total: 2
+    pass_rate: 100
+    last_failure_url: ''
+    last_failure_date: ''
     failure_classification: ''
     consecutive_failures: 0
     failing_tests: []
@@ -4087,9 +4008,9 @@ categories:
     gating: false
     informing: false
     pass_count: 1
-    fail_count: 2
-    total: 3
-    pass_rate: 33
+    fail_count: 1
+    total: 2
+    pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-private-link-f3/2124283559702171648
     last_failure_date: '2026-11-21'
     failure_classification: ''
@@ -4112,11 +4033,11 @@ categories:
     gating: false
     informing: false
     pass_count: 2
-    fail_count: 1
-    total: 3
-    pass_rate: 67
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-f3/2123219462759911424
-    last_failure_date: '2026-11-19'
+    fail_count: 0
+    total: 2
+    pass_rate: 100
+    last_failure_url: ''
+    last_failure_date: ''
     failure_classification: ''
     consecutive_failures: 0
     failing_tests: []
@@ -4136,9 +4057,9 @@ categories:
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-upgrade-y-stream-f3
     gating: false
     informing: false
-    pass_count: 3
+    pass_count: 2
     fail_count: 0
-    total: 3
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -4168,7 +4089,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-y-stream-f3/2124902404519366656
     last_failure_date: '2026-11-23'
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 9
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -4186,9 +4107,9 @@ categories:
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-z-stream-f3
     gating: false
     informing: false
-    pass_count: 3
+    pass_count: 2
     fail_count: 0
-    total: 3
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -4209,9 +4130,9 @@ categories:
     - rosa-cli
 - id: sre-operator-e2e
   name: SRE Operator E2E
-  pass_rate: null
-  trend: unavailable
-  health: white
+  pass_rate: 100
+  trend: improving
+  health: green
   jobs:
   - name: RMO Promotion INT
     prow_job: periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-int
@@ -4357,10 +4278,10 @@ categories:
     prow_job: periodic-ci-openshift-managed-upgrade-operator-master-rosa-sts-e2e-promotion-int
     gating: false
     informing: true
-    pass_count: 0
+    pass_count: 2
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 2
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -4392,10 +4313,10 @@ categories:
     prow_job: periodic-ci-openshift-managed-upgrade-operator-master-rosa-sts-e2e-promotion-stage
     gating: true
     informing: false
-    pass_count: 0
+    pass_count: 2
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 2
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -4567,10 +4488,10 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-int
     gating: false
     informing: true
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -4602,10 +4523,10 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-stage
     gating: true
     informing: false
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -5127,10 +5048,10 @@ categories:
     prow_job: periodic-ci-openshift-managed-upgrade-operator-master-osd-gcp-e2e-promotion-int
     gating: false
     informing: true
-    pass_count: 0
+    pass_count: 2
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 2
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -5162,10 +5083,10 @@ categories:
     prow_job: periodic-ci-openshift-managed-upgrade-operator-master-osd-gcp-e2e-promotion-stage
     gating: true
     informing: false
-    pass_count: 0
+    pass_count: 2
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 2
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -5267,10 +5188,10 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-int
     gating: false
     informing: true
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -5302,10 +5223,10 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-stage
     gating: true
     informing: false
-    pass_count: 0
+    pass_count: 1
     fail_count: 0
-    total: 0
-    pass_rate: null
+    total: 1
+    pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -5335,7 +5256,7 @@ categories:
     - managed-cluster-validating-webhooks
 - id: terraform-provider-rhcs-jobs
   name: ROSA TF E2E
-  pass_rate: 87
+  pass_rate: 85
   trend: improving
   health: green
   jobs:
@@ -5350,7 +5271,7 @@ categories:
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-day1-supplemental-f3/2124694020109111296
     last_failure_date: '2026-11-23'
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 2
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
@@ -5493,10 +5414,10 @@ categories:
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-private-f3
     gating: false
     informing: false
-    pass_count: 2
+    pass_count: 1
     fail_count: 1
-    total: 3
-    pass_rate: 67
+    total: 2
+    pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-private-f3/2125456555234037760
     last_failure_date: '2026-11-25'
     failure_classification: ''
@@ -5643,9 +5564,9 @@ categories:
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-private-f3
     gating: false
     informing: false
-    pass_count: 3
+    pass_count: 2
     fail_count: 0
-    total: 3
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -5693,10 +5614,10 @@ categories:
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-shared-vpc-f3
     gating: false
     informing: false
-    pass_count: 2
+    pass_count: 1
     fail_count: 1
-    total: 3
-    pass_rate: 67
+    total: 2
+    pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-shared-vpc-f3/2125506374342283264
     last_failure_date: '2026-11-25'
     failure_classification: ''
