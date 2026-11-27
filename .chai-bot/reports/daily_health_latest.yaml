@@ -2971,15 +2971,15 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn/2126131506156933120
     last_failure_date: '2026-11-27'
-    failure_classification: Product bug
+    failure_classification: Env/config issue
     consecutive_failures: 8
     failing_tests:
     - '[sig-storage] CSI Mock honor pv reclaim policy CSI honor pv reclaim policy using mock driver Static provisioning should honor pv retain reclaim policy when deleting pv then pvc'
     - '[sig-storage] CSI Mock honor pv reclaim policy CSI honor pv reclaim policy using mock driver Dynamic provisioning should honor pv delete reclaim policy when deleting pv then pvc'
     - '[sig-storage] Subpath Atomic writer volumes should support subpaths with configmap pod [Conformance]'
     - '[sig-storage] In-tree Volumes [Driver: hostPath] [Testpattern: Inline-volume (default fs)] volumes should store data'
-    failure_summary: Current window 0/8 with 8 consecutive failures; the OCP conformance suite reported blocking CSI and storage test failures.
-    diagnosis: The conformance-tests step ran and reported failures in the CSI mock reclaim-policy, subpath and in-tree volume suites. Reported errors include the API server returning 'an error on the server ("unknown")' when fetching CSI driver pod logs, a lost HTTP/2 client connection while creating the mock driver StatefulSet, and storage specs ending as 'Interrupted by User'. These are the observed failures only; no root cause is asserted beyond them. The leaf ref conformance-tests is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown.
+    failure_summary: Current window 0/8 with 8 consecutive failures; the conformance suite reported API-server errors, a lost HTTP/2 connection and blocking storage tests ending 'Interrupted by User'. Exact cause unconfirmed.
+    diagnosis: 'The conformance-tests step ran and reported failures in the CSI mock reclaim-policy, subpath and in-tree volume suites. The recorded errors are connectivity- and API-shaped rather than assertion failures: the API server returned ''an error on the server ("unknown")'' when fetching CSI driver pod logs, the HTTP/2 client connection was lost while creating the mock driver StatefulSet, and storage specs ended as ''Interrupted by User''. These observations indicate the cluster or its API was not reliably reachable during the run; they do not establish a defect in product code. Which component or condition caused the disconnections is not identified by the available logs, so the exact cause is unconfirmed. The leaf ref conformance-tests is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown.'
     team: *id001
     labels:
     - ci-failure
@@ -2995,7 +2995,7 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn/2126141604438740992
     last_failure_date: '2026-11-27'
-    failure_classification: Product bug
+    failure_classification: Env/config issue
     consecutive_failures: 7
     failing_tests:
     - '[sig-storage] In-tree Volumes [Driver: nfs3] [Testpattern: Generic Ephemeral-volume (default fs) (late-binding)] ephemeral should support two pods which have the same volume definition'
@@ -3004,8 +3004,8 @@ categories:
     - '[sig-storage] In-tree Volumes [Driver: hostPath] [Testpattern: Inline-volume (default fs)] volumes should store data'
     - '[sig-storage] CSI Mock volume fsgroup policies CSI FSGroupPolicy [LinuxOnly] should modify fsGroup if fsGroupPolicy=default'
     - '[sig-network] Netpol NetworkPolicy between server and client should enforce multiple egress policies with egress allow-all policy taking precedence [Feature:NetworkPolicy]'
-    failure_summary: Current window 0/7 with 7 consecutive failures; the OCP conformance suite reported blocking storage, CSI and network-policy test failures.
-    diagnosis: 'The conformance-tests step ran and reported six failures, each marked lifecycle="blocking": ephemeral nfs3 volumes, loopback local block volume online expansion, pre-provisioned local and inline hostPath volume data tests, a CSI FSGroupPolicy spec that aborted inside pod exec, and a NetworkPolicy egress precedence test. Several ran to their ~930 second limit and ended as ''Interrupted by User''. These are the observed failures only; no root cause is asserted beyond them. The leaf ref conformance-tests is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown.'
+    failure_summary: Current window 0/7 with 7 consecutive failures; blocking storage, CSI and network-policy tests ran to their time limit and ended 'Interrupted by User'. Exact cause unconfirmed.
+    diagnosis: 'The conformance-tests step ran and reported six failures, each marked lifecycle="blocking": ephemeral nfs3 volumes, loopback local block volume online expansion, pre-provisioned local and inline hostPath volume data tests, a CSI FSGroupPolicy spec that aborted inside pod exec, and a NetworkPolicy egress precedence test. Several ran to their ~930 second limit and ended as ''Interrupted by User'' rather than failing an assertion, which indicates the suite lost the cluster or its API mid-run rather than a defect in product code. The available logs do not identify which component or condition caused that, so the exact cause is unconfirmed. The leaf ref conformance-tests is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown.'
     team: *id001
     labels:
     - ci-failure
