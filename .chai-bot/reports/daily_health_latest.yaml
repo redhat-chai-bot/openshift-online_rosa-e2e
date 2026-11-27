@@ -1093,12 +1093,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19/2126194582390575104
     last_failure_date: '2026-11-27'
-    failure_classification: unattributed (unmapped_ref)
+    failure_classification: Test bug
     consecutive_failures: 7
     failing_tests:
-    - 4-19-gap-analysis
-    failure_summary: Most recent failed build 2126194582390575104 could not be attributed to a mapped phase (unmapped_ref).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-19-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    - nightly-4-19-4-19-gap-analysis
+    failure_summary: All 7 completed runs in the current window failed in the 4.19 gap-analysis step, which exits before any GAP validation runs.
+    diagnosis: Step nightly-4-19-4-19-gap-analysis logs 'Failed to fetch latest GA version from Sippy API', then 'ga_dates holds 20 key(s), at least one of which is not a numeric version', and exits before GAP validation executes. The step's own parsing of the ga_dates payload rejects a non-numeric key instead of tolerating or skipping it, so the defect is in the harness rather than the product under test. Current window 0/7 with 7 consecutive failures; the leaf step ref is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown. No log content beyond these two messages is reproduced here.
     team: *id001
     labels:
     - ci-failure
@@ -1114,12 +1114,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20/2126201999945895936
     last_failure_date: '2026-11-27'
-    failure_classification: unattributed (unmapped_ref)
+    failure_classification: Test bug
     consecutive_failures: 7
     failing_tests:
-    - 4-20-gap-analysis
-    failure_summary: Most recent failed build 2126201999945895936 could not be attributed to a mapped phase (unmapped_ref).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-20-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    - nightly-4-20-4-20-gap-analysis
+    failure_summary: All 7 completed runs in the current window failed in the 4.20 gap-analysis step, which exits before any GAP validation runs.
+    diagnosis: Step nightly-4-20-4-20-gap-analysis logs 'Failed to fetch latest GA version from Sippy API', then 'ga_dates holds 20 key(s), at least one of which is not a numeric version', and exits before GAP validation executes. The step's own parsing of the ga_dates payload rejects a non-numeric key instead of tolerating or skipping it, so the defect is in the harness rather than the product under test. Current window 0/7 with 7 consecutive failures; the leaf step ref is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown. No log content beyond these two messages is reproduced here.
     team: *id001
     labels:
     - ci-failure
@@ -1135,12 +1135,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21/2126209688029630464
     last_failure_date: '2026-11-27'
-    failure_classification: unattributed (unmapped_ref)
+    failure_classification: Test bug
     consecutive_failures: 7
     failing_tests:
-    - 4-21-gap-analysis
-    failure_summary: Most recent failed build 2126209688029630464 could not be attributed to a mapped phase (unmapped_ref).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-21-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    - nightly-4-21-4-21-gap-analysis
+    failure_summary: All 7 completed runs in the current window failed in the 4.21 gap-analysis step, which exits before any GAP validation runs.
+    diagnosis: Step nightly-4-21-4-21-gap-analysis logs 'Failed to fetch latest GA version from Sippy API', then 'ga_dates holds 20 key(s), at least one of which is not a numeric version', and exits before GAP validation executes. The step's own parsing of the ga_dates payload rejects a non-numeric key instead of tolerating or skipping it, so the defect is in the harness rather than the product under test. Current window 0/7 with 7 consecutive failures; the leaf step ref is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown. No log content beyond these two messages is reproduced here.
     team: *id001
     labels:
     - ci-failure
@@ -1156,12 +1156,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22/2126217129458929664
     last_failure_date: '2026-11-27'
-    failure_classification: unattributed (unmapped_ref)
+    failure_classification: Test bug
     consecutive_failures: 7
     failing_tests:
-    - 4-22-gap-analysis
-    failure_summary: Most recent failed build 2126217129458929664 could not be attributed to a mapped phase (unmapped_ref).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-22-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    - nightly-4-22-4-22-gap-analysis
+    failure_summary: All 7 completed runs in the current window failed in the 4.22 gap-analysis step, which exits before any GAP validation runs.
+    diagnosis: Step nightly-4-22-4-22-gap-analysis logs 'Failed to fetch latest GA version from Sippy API', then 'ga_dates holds 20 key(s), at least one of which is not a numeric version', and exits before GAP validation executes. The step's own parsing of the ga_dates payload rejects a non-numeric key instead of tolerating or skipping it, so the defect is in the harness rather than the product under test. Current window 0/7 with 7 consecutive failures; the leaf step ref is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown. No log content beyond these two messages is reproduced here.
     team: *id001
     labels:
     - ci-failure
@@ -1177,12 +1177,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0/2126225711034273792
     last_failure_date: '2026-11-27'
-    failure_classification: unattributed (unmapped_ref)
+    failure_classification: Test bug
     consecutive_failures: 7
     failing_tests:
-    - 5-0-gap-analysis
-    failure_summary: Most recent failed build 2126225711034273792 could not be attributed to a mapped phase (unmapped_ref).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 5-0-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    - nightly-5-0-5-0-gap-analysis
+    failure_summary: All 7 completed runs in the current window failed in the 5.0 gap-analysis step, which exits before any GAP validation runs.
+    diagnosis: Step nightly-5-0-5-0-gap-analysis logs 'Failed to fetch latest GA version from Sippy API', then 'ga_dates holds 20 key(s), at least one of which is not a numeric version', and exits before GAP validation executes. The step's own parsing of the ga_dates payload rejects a non-numeric key instead of tolerating or skipping it, so the defect is in the harness rather than the product under test. Current window 0/7 with 7 consecutive failures; the leaf step ref is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown. No log content beyond these two messages is reproduced here.
     team: *id001
     labels:
     - ci-failure
@@ -2144,12 +2144,16 @@ categories:
     pass_rate: 25
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-production-ocm-fvt-periodic-cs-rosa-hcp-ad-production-main/2126017412200402944
     last_failure_date: '2026-11-26'
-    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    failure_classification: Env/config issue
     consecutive_failures: 0
     failing_tests:
-    - rosa-e2e-ocm-fvt
-    failure_summary: 'Most recent failed build 2126017412200402944 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
-    diagnosis: 'Window 2026-11-20..2026-11-27: 1/4 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    - HCP Node Pools Node Pools Creation Create/edit nodepool with tags and autorepair set will work [config-nodepool, day2, Critical]
+    - HCP Node Pools Node Pools Creation Update/Remove nodepool tag(s) [config-nodepool, day2, High]
+    - HCP Spot Instances Spot NodePool Update - Max Price should update node pool spot max price only when the organization toggle allows it [Critical, day2, feature-spot-instances, config-spot-instances, config-nodepool]
+    - HCP Spot Instances Spot Instance - Version Gate and Queue URL Validation should reject adding spot_market_options to an existing on-demand node pool [High, day2, feature-spot-instances, config-spot-instances, config-nodepool]
+    - HCP Spot Instances Spot Instance - Version Gate and Queue URL Validation should reject removing spot_market_options from a spot node pool [High, day2, feature-spot-instances, config-spot-instances, config-nodepool]
+    failure_summary: Latest run failed five Day2 tests covering node-pool tags and organization feature review, each expecting HTTP 200 but receiving HTTP 403.
+    diagnosis: The Day2 suite reported exactly 5 failures out of 140 tests. Two node-pool tag tests assert the response code at cases/cms/hcp_node_pools_test.go:149 and three organization-feature-review assertions at cases/cms/hcp_spot_instances_test.go:507, :920 and :963 all received HTTP 403 where HTTP 200 was expected. A 403 across unrelated Day2 assertions in the production environment points at the environment's authorisation or organisation entitlement configuration rather than the test logic, but no cs-telemetry artifact was published for this run, so the reason for the 403 remains unverified. Confirmed failing leaf step rosa-e2e-ocm-fvt (phase Test-execution). Test names are recorded without their author or test-owner tags.
     team: *id003
     labels:
     - ci-failure
@@ -2859,12 +2863,12 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage/2125629878135951360
     last_failure_date: '2026-11-25'
-    failure_classification: 'step failure: rosa-e2e-ocm-fvt-longrunning (Test-execution)'
+    failure_classification: Product bug
     consecutive_failures: 3
     failing_tests:
-    - rosa-e2e-ocm-fvt-longrunning
-    failure_summary: 'Most recent failed build 2125629878135951360 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt-longrunning; attributed phase Test-execution.'
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/3 passed, 3 failed, consecutive_failures=3. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt-longrunning. Phase=Test-execution (confirmed). No log content copied.'
+    - deprovisions management cluster
+    failure_summary: Current window 0/3; the latest run failed the management-cluster deprovision test after 1200 seconds with the cluster still in state 'deprovisioning'.
+    diagnosis: The deprovision test issued the management-cluster delete, received an HTTP 2xx response, then polled for 1200 seconds while the state remained 'deprovisioning' instead of advancing to 'cleanup_ack_pending'. The captured CS telemetry shows repeated lifecycle state=error observations after the delete call but does not expose the backend reason, so the underlying cause is unconfirmed beyond these observations. Confirmed failing leaf step rosa-e2e-ocm-fvt-longrunning (phase Test-execution). No cluster identifiers, credentials or telemetry payloads are reproduced here.
     team: *id004
     labels:
     - ci-failure
@@ -2918,16 +2922,12 @@ categories:
     pass_rate: 29
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22/2125469916046823424
     last_failure_date: '2026-11-25'
-    failure_classification: 'step failure: gather-audit-logs (Setup)'
+    failure_classification: Env/config issue
     consecutive_failures: 0
     failing_tests:
-    - gather-audit-logs
-    - gather-must-gather
     - rosa-cluster-wait-ready-cluster
-    - rosa-gap-analysis-api-resources-and-crd
-    - rosa-gap-analysis-cluster-install-delete-metrics
-    failure_summary: 'Most recent failed build 2125469916046823424 failed at confirmed leaf step(s): gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics; attributed phase Setup.'
-    diagnosis: 'Window 2026-11-20..2026-11-27: 2/7 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics. Phase=Setup (confirmed). No log content copied.'
+    failure_summary: 'Latest failure timed out in rosa-cluster-wait-ready-cluster: the cluster was still installing after 60 minutes and never reached readiness.'
+    diagnosis: Readiness polling ran for 60 minutes and then timed out with the cluster still installing. At timeout the console deployment reported zero replicas and the ingress canary route had not been admitted, so the cluster never converged rather than a test assertion failing. Confirmed failing leaf step rosa-cluster-wait-ready-cluster (phase Setup). Cluster identifiers are deliberately not recorded.
     team: *id005
     labels:
     - ci-failure
@@ -2950,11 +2950,12 @@ categories:
     pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-hcp-ovn/2125396650003271680
     last_failure_date: '2026-11-25'
-    failure_classification: unattributed (artifacts_unavailable)
+    failure_classification: Env/config issue
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: Most recent failed build 2125396650003271680 could not be attributed to a mapped phase (artifacts_unavailable).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: none confirmed. Phase=Unknown (artifacts_unavailable). No log content copied.'
+    failing_tests:
+    - e2e-rosa-hcp-ovn
+    failure_summary: 'Latest failure never reached the tests: ci-operator stopped during setup because the job''s secret collection was blocked.'
+    diagnosis: ci-operator ran for only a few seconds and reported job state 'failed' with reason 'blocked_secret_collection'; the e2e-rosa-hcp-ovn test could not start because its secret collection is blocked. No cluster was provisioned and no step or JUnit artifacts were produced, which is why the run carries no confirmed failing leaf and stays phase Unknown. This is a CI credential-access configuration problem, not a product or test defect. The secret collection name and the contact channel in the log are deliberately not reproduced here. Current window 6/7.
     team: *id001
     labels:
     - ci-failure
@@ -2970,12 +2971,15 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn/2126131506156933120
     last_failure_date: '2026-11-27'
-    failure_classification: unattributed (unmapped_ref)
+    failure_classification: Product bug
     consecutive_failures: 8
     failing_tests:
-    - conformance-tests
-    failure_summary: Most recent failed build 2126131506156933120 could not be attributed to a mapped phase (unmapped_ref).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/8 passed, 8 failed, consecutive_failures=8. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: conformance-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    - '[sig-storage] CSI Mock honor pv reclaim policy CSI honor pv reclaim policy using mock driver Static provisioning should honor pv retain reclaim policy when deleting pv then pvc'
+    - '[sig-storage] CSI Mock honor pv reclaim policy CSI honor pv reclaim policy using mock driver Dynamic provisioning should honor pv delete reclaim policy when deleting pv then pvc'
+    - '[sig-storage] Subpath Atomic writer volumes should support subpaths with configmap pod [Conformance]'
+    - '[sig-storage] In-tree Volumes [Driver: hostPath] [Testpattern: Inline-volume (default fs)] volumes should store data'
+    failure_summary: Current window 0/8 with 8 consecutive failures; the OCP conformance suite reported blocking CSI and storage test failures.
+    diagnosis: The conformance-tests step ran and reported failures in the CSI mock reclaim-policy, subpath and in-tree volume suites. Reported errors include the API server returning 'an error on the server ("unknown")' when fetching CSI driver pod logs, a lost HTTP/2 client connection while creating the mock driver StatefulSet, and storage specs ending as 'Interrupted by User'. These are the observed failures only; no root cause is asserted beyond them. The leaf ref conformance-tests is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown.
     team: *id001
     labels:
     - ci-failure
@@ -2991,12 +2995,17 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn/2126141604438740992
     last_failure_date: '2026-11-27'
-    failure_classification: unattributed (unmapped_ref)
+    failure_classification: Product bug
     consecutive_failures: 7
     failing_tests:
-    - conformance-tests
-    failure_summary: Most recent failed build 2126141604438740992 could not be attributed to a mapped phase (unmapped_ref).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: conformance-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    - '[sig-storage] In-tree Volumes [Driver: nfs3] [Testpattern: Generic Ephemeral-volume (default fs) (late-binding)] ephemeral should support two pods which have the same volume definition'
+    - '[sig-storage] PersistentVolumes-expansion loopback local block volume should support online expansion on node'
+    - '[sig-storage] In-tree Volumes [Driver: local] [LocalVolumeType: dir-bindmounted] [Testpattern: Pre-provisioned PV (default fs)] volumes should store data'
+    - '[sig-storage] In-tree Volumes [Driver: hostPath] [Testpattern: Inline-volume (default fs)] volumes should store data'
+    - '[sig-storage] CSI Mock volume fsgroup policies CSI FSGroupPolicy [LinuxOnly] should modify fsGroup if fsGroupPolicy=default'
+    - '[sig-network] Netpol NetworkPolicy between server and client should enforce multiple egress policies with egress allow-all policy taking precedence [Feature:NetworkPolicy]'
+    failure_summary: Current window 0/7 with 7 consecutive failures; the OCP conformance suite reported blocking storage, CSI and network-policy test failures.
+    diagnosis: 'The conformance-tests step ran and reported six failures, each marked lifecycle="blocking": ephemeral nfs3 volumes, loopback local block volume online expansion, pre-provisioned local and inline hostPath volume data tests, a CSI FSGroupPolicy spec that aborted inside pod exec, and a NetworkPolicy egress precedence test. Several ran to their ~930 second limit and ended as ''Interrupted by User''. These are the observed failures only; no root cause is asserted beyond them. The leaf ref conformance-tests is not present in .chai-bot/rosa_ci_step_phases.yaml, so the run stays phase Unknown.'
     team: *id001
     labels:
     - ci-failure
@@ -3032,12 +3041,12 @@ categories:
     pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn/2126154904895492096
     last_failure_date: '2026-11-27'
-    failure_classification: 'step failure: rosa-cluster-wait-ready-operators (Setup)'
+    failure_classification: Env/config issue
     consecutive_failures: 5
     failing_tests:
     - rosa-cluster-wait-ready-operators
-    failure_summary: 'Most recent failed build 2126154904895492096 failed at confirmed leaf step(s): rosa-cluster-wait-ready-operators; attributed phase Setup.'
-    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=5. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-cluster-wait-ready-operators. Phase=Setup (confirmed). No log content copied.'
+    failure_summary: Current window 1/7 with 5 consecutive failures; cluster readiness timed out after 60 minutes before the conformance suite started.
+    diagnosis: Readiness polling ran for 60 minutes and timed out. At timeout the console deployment was in CrashLoopBackOff with zero available replicas and the ingress cluster operator was degraded, so the cluster never became ready and the conformance suite never ran. Confirmed failing leaf step rosa-cluster-wait-ready-operators (phase Setup). Cluster identifiers are deliberately not recorded.
     team: *id001
     labels:
     - ci-failure
@@ -3053,11 +3062,12 @@ categories:
     pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn/2125381047238529024
     last_failure_date: '2026-11-25'
-    failure_classification: unattributed (artifacts_unavailable)
+    failure_classification: Env/config issue
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: Most recent failed build 2125381047238529024 could not be attributed to a mapped phase (artifacts_unavailable).
-    diagnosis: 'Window 2026-11-20..2026-11-27: 5/7 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: none confirmed. Phase=Unknown (artifacts_unavailable). No log content copied.'
+    failing_tests:
+    - e2e-rosa-hcp-ovn
+    failure_summary: 'Latest failure never reached the tests: ci-operator stopped during setup because the job''s secret collection was blocked.'
+    diagnosis: ci-operator ran for only a few seconds and reported job state 'failed' with reason 'blocked_secret_collection'; the e2e-rosa-hcp-ovn test could not start because its secret collection is blocked. No cluster was provisioned and no step or JUnit artifacts were produced, which is why the run carries no confirmed failing leaf and stays phase Unknown. This is a CI credential-access configuration problem, not a product or test defect. The secret collection name and the contact channel in the log are deliberately not reproduced here. Current window 5/7.
     team: *id001
     labels:
     - ci-failure
