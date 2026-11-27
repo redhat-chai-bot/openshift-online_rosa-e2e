@@ -101,7 +101,7 @@ directories. Dispositions:
 | `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-mc-one-integration-main` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml` | `0 8 * * *` (daily) | `ocm-fvt-hcp-int` with `informing: true` | Exact sibling of the four tracked `...rosa-hcp-backup-*-integration-main` FVT jobs, all of which carry `informing: true` in the same category. Matching the siblings keeps it out of every pass rate. |
 
 Both are schedulable (real crons), inside an existing category, and need no new support/gating decision.
-They are **prepared, not applied** — see §7.
+They are **included in existing draft PR; the pinned registry stays unchanged for this report** — see §7.
 
 ### 5b. Excluded, with rationale
 
@@ -145,15 +145,30 @@ successor gate inheritance was assumed anywhere.
 
 ## 7. Remediation candidate status
 
-All 12 open PRs against `openshift-online/rosa-e2e` `main` were listed (complete, untruncated).
-One touches the registry — a human-authored team-routing change to `configs/ci-status-jobs.yaml`
-(PR #337, `chore: route OSDFM CI status alerts…`, branch `chore/osdfm-ci-status-slack-hcp-platform`,
-labels `needs-rebase`, `lgtm`). It changes `team:` blocks only, not job coverage, so it neither
-duplicates nor conflicts with §5a. **It is human work and was left untouched.**
+**Correction to an earlier revision of this audit.** A previous revision reported "12/12 open PRs" and
+"no reconciliation PR exists to reuse". That search excluded drafts and therefore missed the reconciliation
+PR. The complete, draft-inclusive search lists **14/14 open PRs** against `openshift-online/rosa-e2e` `main`
+(12 non-draft plus 2 draft, untruncated). The corrected finding follows.
 
-**No reconciliation PR exists to reuse, and none was opened:** this scheduled run is authorized to prepare
-safe candidates only. The two §5a additions are recorded here as a ready, evidence-backed patch awaiting
-the coordinator's approval workflow.
+**A reusable reconciliation PR already existed and was updated rather than duplicated.**
+
+| Field | Value |
+|---|---|
+| PR | #411 `[rosa-ci-fix] Track HCP Backup MC One and 5.2 HCP conformance jobs` |
+| Head branch | `rosa-ci-fix/register-hcp-backup-mc-one` (bot-owned, pre-existing) |
+| Head commit | `60be0f2af2cec0400df414d302d9a5f3c34afb00` |
+| State | open, **draft**, unmerged |
+| Checks | 5 total: 4 completed (success, success, neutral, skipped) and Tide pending |
+| Outstanding | one automated commit-attribution warning remains |
+
+The PR already contained the **HCP Backup MC One** addition from §5a. This run added the **HCP 5.2
+conformance** job to the same branch, so both §5a candidates now sit in that single existing PR.
+**No new PR was opened and nothing was merged**; the PR was left in draft.
+
+The only other registry-touching PR is human-authored: PR #337, `chore: route OSDFM CI status alerts…`,
+branch `chore/osdfm-ci-status-slack-hcp-platform`, labels `needs-rebase`, `lgtm`. It changes OSDFM `team:`
+routing blocks only, not job coverage, so it **did not conflict** with either §5a addition.
+**It is human work and was left untouched.**
 
 ## 8. Limits and unverified coverage (explicit)
 
@@ -161,7 +176,8 @@ the coordinator's approval workflow.
 |---|---|
 | Registry → source disposition | **Complete** — 209/209 exact matches |
 | Source file inventory | **Complete** — 51,102/51,102 YAML files read, 0 unreadable |
-| Open-PR duplicate search | **Complete** — 12/12 listed |
+| Open-PR duplicate search | **Complete** — 14/14 listed, drafts included. An earlier revision listed 12/12 because it filtered drafts out and so missed reconciliation PR #411; corrected in §7 |
+| Reconciliation PR #411 | **Open, draft, unmerged** at `60be0f2af2cec0400df414d302d9a5f3c34afb00` — 4 checks completed, Tide pending, one automated commit-attribution warning outstanding |
 | Commit-history rename evidence | **Not available** — shallow history; not needed, since no rename or removal is claimed |
 | Gate wiring for 91 `gating: true` jobs | **Unverified** — consumers outside access grants |
 | Prow execution history for 2 jobs | **Unverified** — HTTP 500, recorded as `fetch_error`, never as zero runs |
