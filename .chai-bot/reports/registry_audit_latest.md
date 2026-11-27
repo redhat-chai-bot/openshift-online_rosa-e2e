@@ -4,654 +4,164 @@
 # ROSA CI Status Registry — Source/Config Reconciliation Audit
 
 **Audit type:** read-only reconciliation of the ROSA CI health-report job registry against pinned Prow/ci-operator source.
-**Date:** 2026-11-22. **No repository was edited, no branch pushed, no PR opened.**
+**Date:** 2026-11-27. **No registry source was edited, no branch pushed to upstream, no PR opened or merged.**
 
 ---
 
 ## 1. Pinned inputs and SHA evidence
 
-| Repo | Pinned SHA | Verified HEAD | Checkout | Files |
+| Repo | Pinned SHA | Verified HEAD | Checkout | Tracked files |
 |---|---|---|---|---|
-| `openshift-online/rosa-e2e` | `aee37555b9415349e8a84a6ab4afdcda9bafa5da` | `aee37555b9415349e8a84a6ab4afdcda9bafa5da` (`git rev-parse HEAD`) | `/workspace/.work/rosa-e2e` | 152 tracked files |
-| `openshift/release` | `482be9a47ba3caee7ecbe0de97c80774b3a63f32` | `482be9a47ba3caee7ecbe0de97c80774b3a63f32` (`git rev-parse HEAD`) | `/workspace/.work/release` | 71,782 tracked files |
+| `openshift-online/rosa-e2e` | `0f30372b1c8961e94ffcf6aea60c68e1d74ea903` | identical (`git rev-parse HEAD`, and `git ls-remote origin refs/heads/main` still returns this SHA) | full clone (no depth/filter/sparse) at `/workspace/src/rosa-e2e` | 152 |
+| `openshift/release` | `854e142306c97a3e86744d73dfe869b2d7c72545` | identical (`git rev-parse HEAD`) | `git init` + `git fetch --depth 1 origin <SHA>` + `checkout FETCH_HEAD` | 72,509 |
 
-**Checkout method (completeness limitation — stated explicitly):** both repos were obtained with
-`git init` + `git fetch --depth 1 origin <SHA>` + `git checkout FETCH_HEAD`.
-The *working tree is complete and unfiltered* at each pinned SHA (no `--filter`, no `--sparse-checkout`),
-so every file that exists at the pinned commit is present on disk and every finding below comes from
-whole-tree filesystem walks — **not** from GitHub code search, which truncates. The only thing omitted is
-**commit history** (depth 1). Consequence: this audit can state what *is* in the tree at the pinned SHAs,
-but **cannot** state when an entry was added, removed or renamed. No removal, rename, or history-derived
-claim is made anywhere in this report.
+**Completeness note.** The `openshift/release` checkout is shallow in *history* only. The working tree at the pinned
+SHA is complete and unfiltered (no `--filter`, no `--sparse-checkout`), so the file inventory is exhaustive.
+Commit-history-based rename evidence is therefore out of reach in this checkout and is marked where it matters.
 
-Agent instructions read and followed before any repo access: `rosa-e2e/AGENTS.md` and `rosa-e2e/CLAUDE.md`
-(identical content). They prescribe `make unit-test` / `make lint` for code changes; this audit changes no
-code, so no build or test target applied.
+### Registry parity (step 1 vs pinned SHA)
 
----
+| Artefact | SHA-256 | Result |
+|---|---|---|
+| live `main` raw `configs/generated/ci-status-jobs.yaml` | `ae67b43a6bd5acbb92d31a33094cfbdf1df0678343cb2f85b316dc28ef8355d0` | — |
+| same path at pinned `0f30372b` | `ae67b43a6bd5acbb92d31a33094cfbdf1df0678343cb2f85b316dc28ef8355d0` | **byte-identical** |
+| embedded copy `pkg/config/generated/ci-status-jobs.yaml` | `ae67b43a...8355d0` | **byte-identical** (embed in sync) |
 
-## 2. Byte-for-byte registry snapshot verification — EXACT MATCH
+Size 43,623 bytes / 860 lines, matching the expected canonical registry. Parity **confirmed**; the pinned
+registry was used unchanged for every health calculation in this run.
 
-The step-1 snapshot was compared against the pinned file with `cmp` (byte-for-byte) and SHA-256.
-Both stored step-1 buffers were downloaded and checked.
+## 2. Registry inventory
 
-| Artifact | Bytes | Lines | SHA-256 | `cmp` vs pinned |
-|---|---|---|---|---|
-| Pinned `rosa-e2e@aee3755:configs/generated/ci-status-jobs.yaml` | 43,391 | 858 | `693c40241b7b1092c653651365613f7af128efaeb596b2693bdfd2a28e30aea5` | — (reference) |
-| Step-1 buffer `[buffer:web#f0]` (fetched from `main`) | 43,391 | 858 | `693c4024…e30aea5` | **IDENTICAL** (exit 0, no differing byte) |
-| Step-1 buffer `[buffer:github_file#f0]` (fetched at pinned SHA) | 43,391 | 858 | `693c4024…e30aea5` | **IDENTICAL** (exit 0, no differing byte) |
+- Categories: **19**; job entries: **209**; unique `prow_job` names: **209** (no duplicates).
+- Effective gating jobs: **91**; non-gating: **118**; job-level `gating` overrides of the category default: **32**.
+- `informing: true` jobs: **35** (excluded from all rates, counted separately).
 
-**Verification result: byte-for-byte identical.** The 858-line / 43,391-byte figures reported in step 1 are
-confirmed, and the identity is established at the byte level, not merely by path and size. Because the
-`main`-branch fetch also hashes identically, `main` and the pinned SHA carried the same registry content at
-fetch time; health calculations built on the step-1 snapshot are therefore built on the pinned content.
-Pinned content was preserved and used unmodified throughout.
+## 3. Source inventory (openshift/release @ 854e1423)
 
----
+- YAML files scanned: **51,102** of 51,102; unreadable: **0**.
+- Distinct `periodic-*` job definitions found: **21,919**.
+- Method: exhaustive scan of every tracked YAML file in the complete pinned tree (not a search-result sample,
+  not a filename template). Definition locations are recorded per job name.
 
-## 3. Registry shape
+## 4. Registry → source: disposition of EVERY tracked name
 
-Parsed with `yq` from the pinned generated registry.
-
-- **19 categories**, **208 job entries**, **208 distinct `prow_job` values** — no duplicate job name anywhere
-  in the registry, and no entry with an empty or null `prow_job`.
-- Category gating: 5 categories `gating: true` (`rosa-e2e-stg`, `ocm-fvt-hcp-stg`, `ocm-fvt-classic-stg`,
-  `ocm-fvt-gcp-stg`, `ocm-fvt-osdfm-stg`); the other 14 are `gating: false`.
-- **16 job-level `gating: false` overrides** inside gating categories, and **16 job-level `gating: true`
-  overrides** inside the non-gating `sre-operator-e2e` category.
-- **35 jobs carry `informing: true`.**
-
-| Category | Scope | Category gating | Jobs |
-|---|---|---|---|
-| rosa-e2e-stg | platform | true | 32 |
-| rosa-e2e-int | platform | false | 5 |
-| rosa-cx-e2e | platform | false | 5 |
-| capa-e2e-stg | component | false | 8 |
-| rosa-gap-analysis | platform | false | 5 |
-| ocm-fvt-hcp-stg | component | true | 35 |
-| ocm-fvt-hcp-int | component | false | 6 |
-| ocm-fvt-hcp-prd | component | false | 1 |
-| ocm-fvt-classic-stg | component | true | 15 |
-| ocm-fvt-classic-int | component | false | 3 |
-| ocm-fvt-gcp-stg | component | true | 8 |
-| ocm-fvt-osdfm-int | component | false | 3 |
-| ocm-fvt-osdfm-stg | component | true | 1 |
-| hypershift-ci | component | false | 2 |
-| hcp-conformance | upstream | false | 6 |
-| classic-conformance | upstream | false | 4 |
-| rosa-cli-jobs | component | false | 20 |
-| sre-operator-e2e | component | false | 32 |
-| terraform-provider-rhcs-jobs | component | false | 17 |
-| **Total** | | | **208** |
-
----
-
-## 4. Disposition of every tracked job — 208 / 208 resolved
-
-**Method.** A whole-tree Python walk of `ci-operator/jobs/**` at the pinned release SHA extracted every
-`name: periodic-*` declaration with its file and line: **20,156 distinct periodic job names, 20,162
-declaration sites**. This covers both machine-generated per-repo job files *and* the manually-maintained
-periodic files (`ci-operator/jobs/infra-periodics.yaml` and the `openshift/release` own-repo periodics).
-Each registry `prow_job` was matched against that index by exact string equality.
-
-**Result: all 208 registry jobs exist in the pinned `openshift/release` tree. Zero missing, zero
-ambiguous, zero defined in more than one file.** There is no stale entry, no dangling reference, and no
-duplicate definition. The 208 resolve into 17 source files:
-
-| Defining file | Tracked jobs |
+| Disposition | Count |
 |---|---|
-| `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml` | 116 |
+| **Exact match** to a definition at the pinned SHA | **209 / 209** |
+| Proven rename | 0 |
+| Proven removal | 0 |
+| Unverified | 0 |
+
+Every one of the 209 tracked `prow_job` names resolves to an exact `name:` definition in the pinned
+`openshift/release` tree. **No registry entry is stale, renamed or removed.** No removal is claimed and none
+was needed, so no guessed-path removal was possible. Definition files (17 in total):
+
+| Definition file | Tracked jobs |
+|---|---|
+| `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml` | 117 |
 | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml` | 20 |
 | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml` | 17 |
 | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml` | 10 |
 | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml` | 8 |
 | `ci-operator/jobs/openshift-online/rosa-gap-analysis/openshift-online-rosa-gap-analysis-main-periodics.yaml` | 5 |
-| `.../splunk-forwarder-operator/...-master-periodics.yaml` | 4 |
-| `.../route-monitor-operator/...-master-periodics.yaml` | 4 |
-| `.../ocm-agent-operator/...-master-periodics.yaml` | 4 |
-| `.../managed-upgrade-operator/...-master-periodics.yaml` | 4 |
-| `.../configure-alertmanager-operator/...-master-periodics.yaml` | 4 |
-| `.../rbac-permissions-operator/...-master-periodics.yaml` | 2 |
-| `.../osd-metrics-exporter/...-main-periodics.yaml` | 2 |
-| `.../managed-cluster-validating-webhooks/...-master-periodics.yaml` | 2 |
-| `.../cloud-ingress-operator/...-master-periodics.yaml` | 2 |
-| `.../certman-operator/...-master-periodics.yaml` | 2 |
-| `.../aws-account-operator/...-master-periodics.yaml` | 2 |
-| **Total** | **208** |
+| `ci-operator/jobs/openshift/route-monitor-operator/openshift-route-monitor-operator-master-periodics.yaml` | 4 |
+| `ci-operator/jobs/openshift/configure-alertmanager-operator/openshift-configure-alertmanager-operator-master-periodics.yaml` | 4 |
+| `ci-operator/jobs/openshift/managed-upgrade-operator/openshift-managed-upgrade-operator-master-periodics.yaml` | 4 |
+| `ci-operator/jobs/openshift/ocm-agent-operator/openshift-ocm-agent-operator-master-periodics.yaml` | 4 |
+| `ci-operator/jobs/openshift/splunk-forwarder-operator/openshift-splunk-forwarder-operator-master-periodics.yaml` | 4 |
+| `ci-operator/jobs/openshift/osd-metrics-exporter/openshift-osd-metrics-exporter-main-periodics.yaml` | 2 |
+| `ci-operator/jobs/openshift/certman-operator/openshift-certman-operator-master-periodics.yaml` | 2 |
+| `ci-operator/jobs/openshift/cloud-ingress-operator/openshift-cloud-ingress-operator-master-periodics.yaml` | 2 |
+| `ci-operator/jobs/openshift/rbac-permissions-operator/openshift-rbac-permissions-operator-master-periodics.yaml` | 2 |
+| `ci-operator/jobs/openshift/aws-account-operator/openshift-aws-account-operator-master-periodics.yaml` | 2 |
+| `ci-operator/jobs/openshift/managed-cluster-validating-webhooks/openshift-managed-cluster-validating-webhooks-master-periodics.yaml` | 2 |
 
-### 4.1 Trigger-mode finding: 58 tracked jobs carry an unschedulable cron
+### Run history is a separate axis
 
-58 of the 208 tracked jobs declare `cron: 0 0 31 2 *` — 31 February, a date that never occurs, the
-`openshift/release` idiom for a periodic that is defined but not placed on the cron scheduler. These are
-event-/API-triggered in practice (image-promotion-driven SRE operator `*-promotion-{int,stage}` jobs, and
-the OCP5 `latest-rc` FVT jobs). Every remaining tracked job has a real firing cron. No tracked job lacks
-both `cron` and `interval`.
+Two tracked jobs have an existing, verified definition but their Prow job-history page returned **HTTP 500**
+on a single attempt (not retried; a 500 is a server error, not a denial):
 
-**This is material to the audit's classification logic and is recorded rather than interpreted:** because
-the registry already tracks 58 jobs carrying that cron, "has an unschedulable `0 0 31 2 *` cron" is demonstrably
-**not** an exclusion criterion in this registry's actual practice. Any candidate below is therefore
-*not* dismissed merely for having that cron. The effect of an unschedulable cron on run history is a
-reporting consequence, not a definition problem: per the lean registry header, *"Definition existence does
-not depend on available run history."*
+- `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-zero-egress-e2e-staging` — definition present in source; **execution availability unverified**, recorded as `fetch_error` (`-1`), **not** as zero runs.
+- `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upgrade-staging-main` — definition present in source; **execution availability unverified**, recorded as `fetch_error` (`-1`), **not** as zero runs.
 
-#### 4.1.1 Post-history note — added after the run-history sample was collected
+Anonymous GCS object reads (`storage.googleapis.com`) and `gcsweb` return 403/sign-in for this workspace, so
+the GCS route cannot corroborate these two. This is an access boundary, not evidence of absence.
 
-This section was written from source definitions alone, before any Prow history was read. The health
-sample collected afterwards for the same reporting window contains **one completed run of `STS AD OCP5`**
-(`…ocm-fvt-periodic-cs-rosa-sts-ad-ocp5-latest-rc-staging-main`), one of the 58 jobs whose only cron is the
-unschedulable `0 0 31 2 *`.
+## 5. Source → registry: untracked candidates
 
-What that observation does and does not establish:
+Scope used: every definition file that defines a tracked job, plus a name-signal sweep
+(`rosa|ocm-fvt|osdfm|hcp`) across the whole pinned tree. 62 untracked candidates fell inside ROSA-adjacent
+directories. Dispositions:
 
-- **It establishes that the job executed** in the reporting window. These jobs must therefore not be
-  described as never-run, and this report does not describe them that way. The wording in 4.1 and in
-  groups B and C has been corrected accordingly: the *cron expression* is unschedulable, which is a
-  property of the expression, not a claim that the *job* never runs.
-- **It does not establish what triggered the run.** No trigger record, API caller, or promotion event is
-  present in either pinned repository or in the run's published artifacts. The trigger for that run, and
-  for the other 57 jobs carrying the same cron, remains **unverified** exactly as stated in section 6.2.
-- **It does not change the source reconciliation.** The 208/208 exact name matches, the zero verified
-  removals/renames/discrepancies, the 54 candidates and their grouping (8 operational, 15 event-only,
-  10 unschedulable placeholders, 21 scope-ambiguous), the 0 safe registry corrections, and the scope
-  limits in section 8 are all unchanged. A single observed run is run history, not source drift.
-- **The deployed promotion gate remains unverified** (section 6.2). Observing one execution says nothing
-  about whether a promotion-blocking controller consumes these results.
+### 5a. Recommended additions (verified, scope-preserving)
 
-Consequently the lean registry header's precondition for including placeholder-schedule and event-only
-candidates — *verified trigger wiring* — is still not met by this observation, and the count of safe
-registry corrections remains **0**.
+| Candidate | Definition path | Schedule | Proposed category | Rationale |
+|---|---|---|---|---|
+| `periodic-ci-openshift-release-main-nightly-5.2-e2e-rosa-hcp-ovn` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml` | `1 23 * * *` (daily) | `hcp-conformance` (non-gating, scope `upstream`) | Same family, target and workflow as the six tracked `nightly-{4.19..5.1}-e2e-rosa-hcp-ovn` jobs. 5.2 is the next version in an already-supported series — version continuation inside existing scope, not a scope extension. |
+| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-mc-one-integration-main` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml` | `0 8 * * *` (daily) | `ocm-fvt-hcp-int` with `informing: true` | Exact sibling of the four tracked `...rosa-hcp-backup-*-integration-main` FVT jobs, all of which carry `informing: true` in the same category. Matching the siblings keeps it out of every pass rate. |
 
-### 4.2 Full per-job disposition table
+Both are schedulable (real crons), inside an existing category, and need no new support/gating decision.
+They are **prepared, not applied** — see §7.
 
-Columns: job · category · display name · effective gating · informing · trigger · evidence path:line.
-"Effective gating" shows the job-level value where one overrides the category default.
+### 5b. Excluded, with rationale
 
-| `prow_job` | Category | Name | Gating | Informing | Trigger | Evidence (pinned `openshift/release`) |
-|---|---|---|---|---|---|---|
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e` | capa-e2e-stg | CAPA E2E Smoke | null | — | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:19 |
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-full` | capa-e2e-stg | CAPA E2E Full Lifecycle | null | — | cron `0 8 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:120 |
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-21` | capa-e2e-stg | CAPA E2E Smoke 4.21 | null | — | cron `0 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:221 |
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-21-full` | capa-e2e-stg | CAPA E2E Full 4.21 | null | — | cron `0 8 * * 2` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:322 |
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-22` | capa-e2e-stg | CAPA E2E Smoke 4.22 | null | — | cron `0 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:423 |
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-4-22-full` | capa-e2e-stg | CAPA E2E Full 4.22 | null | — | cron `0 8 * * 3` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:524 |
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-5-0` | capa-e2e-stg | CAPA E2E Smoke 5.0 | null | — | cron `0 6 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:625 |
-| `periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-5-0-full` | capa-e2e-stg | CAPA E2E Full 5.0 | null | — | cron `0 8 * * 4` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main_capa-e2e-periodics.yaml`:726 |
-| `periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn` | classic-conformance | STS 4.19 | null | — | cron `30 1 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:182173 |
-| `periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-sts-ovn` | classic-conformance | STS 4.20 | null | — | cron `10 2 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:203030 |
-| `periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn` | classic-conformance | STS 4.21 | null | — | cron `10 0 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:227033 |
-| `periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn` | classic-conformance | STS 4.22 | null | — | cron `50 0 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:257627 |
-| `periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-hcp-ovn` | hcp-conformance | HCP 4.19 | null | — | cron `10 1 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:182059 |
-| `periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn` | hcp-conformance | HCP 4.20 | null | — | cron `50 1 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:202916 |
-| `periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn` | hcp-conformance | HCP 4.21 | null | — | cron `30 2 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:226919 |
-| `periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-hcp-ovn` | hcp-conformance | HCP 4.22 | null | — | cron `30 0 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:257513 |
-| `periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn` | hcp-conformance | HCP 5.0 | null | — | cron `23 3 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:320609 |
-| `periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn` | hcp-conformance | HCP 5.1 | null | — | cron `8 0 * * *` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml`:355503 |
-| `periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-integration-stable-4-22` | hypershift-ci | INT HCP 4.22 | null | true | cron `0 5 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:631 |
-| `periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22` | hypershift-ci | STG HCP 4.22 | null | — | cron `0 6 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:733 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-aws-integration-ocm-fvt-periodic-cs-osd-ccs-aws-ad-integration-main` | ocm-fvt-classic-int | OSD CCS AWS AD | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:835 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-classic-cust-chan-integration-main` | ocm-fvt-classic-int | STS Custom Channel | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:3578 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main` | ocm-fvt-classic-int | STS AD | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:3680 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-ocm-resources-staging-main` | ocm-fvt-classic-stg | OCM Resources | true | — | cron `20 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:3782 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-ocp5-latest-rc-staging-main` | ocm-fvt-classic-stg | OSD RH AWS OCP5 | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:3884 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-staging-main` | ocm-fvt-classic-stg | OSD RH AWS | true | — | cron `0 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:3986 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-ocp5-latest-rc-staging-main` | ocm-fvt-classic-stg | ROSA AD OCP5 | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4088 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main` | ocm-fvt-classic-stg | ROSA AD | true | — | cron `40 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4190 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-classic-cust-chan-staging-main` | ocm-fvt-classic-stg | STS Custom Channel | true | — | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4292 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-ocp5-latest-rc-staging-main` | ocm-fvt-classic-stg | STS AD OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4394 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-staging-main` | ocm-fvt-classic-stg | STS AD | true | — | cron `0 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4496 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-nx-y-upg-ocp5-lt-rc-staging-main` | ocm-fvt-classic-stg | STS n-X Y-Upgrade OCP5 | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4598 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-nx-y-upgrade-staging-main` | ocm-fvt-classic-stg | STS n-X Y-Upgrade | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4700 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-ocp5-latest-rc-staging-main` | ocm-fvt-classic-stg | STS PL OCP5 | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4802 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-staging-main` | ocm-fvt-classic-stg | STS PL | true | — | cron `20 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:4904 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shared-vpc-staging-main` | ocm-fvt-classic-stg | STS Shared VPC | true | — | cron `40 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5006 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shvpc-ocp5-lt-rc-staging-main` | ocm-fvt-classic-stg | STS Shared VPC OCP5 | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5108 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-upgrade-staging-main` | ocm-fvt-classic-stg | STS Upgrade | true | — | cron `20 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5210 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main` | ocm-fvt-gcp-stg | GCP CCS AD | true | — | cron `0 9 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:937 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main` | ocm-fvt-gcp-stg | GCP Marketplace | true | — | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:1141 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-firewall-rules-staging-main` | ocm-fvt-gcp-stg | GCP Firewall Rules | false (job override) | — | cron `0 12 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:1243 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-non-cross-proj-wif-staging-main` | ocm-fvt-gcp-stg | GCP Non-Cross-Proj WIF | true | — | cron `0 9 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:1345 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-psc-wif-sv-staging-main` | ocm-fvt-gcp-stg | GCP PSC WIF SV | false (job override) | — | cron `0 10 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:1549 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main` | ocm-fvt-gcp-stg | GCP Root Disk | true | — | cron `0 9 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:1651 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main` | ocm-fvt-gcp-stg | GCP WIF SV | true | — | cron `0 9 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:1855 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-version-pruning-staging-main` | ocm-fvt-gcp-stg | GCP WIF Version Pruning | false (job override) | — | cron `0 11 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:1957 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main` | ocm-fvt-hcp-int | HCP AD Regional | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5312 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-autonode-integration-main` | ocm-fvt-hcp-int | HCP Autonode | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5414 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main` | ocm-fvt-hcp-int | HCP Backup CP Up | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5515 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cpupzfin-integration-main` | ocm-fvt-hcp-int | HCP Backup CP In Progress | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5623 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-rest-integration-main` | ocm-fvt-hcp-int | HCP Backup Restore | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5731 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-scale-integration-main` | ocm-fvt-hcp-int | HCP Backup Scale | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5839 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-production-ocm-fvt-periodic-cs-rosa-hcp-ad-production-main` | ocm-fvt-hcp-prd | HCP AD | null | — | cron `0 3 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:5948 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-ocp5-latest-rc-staging-main` | ocm-fvt-hcp-stg | HCP E2E OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6050 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main` | ocm-fvt-hcp-stg | HCP E2E | true | — | cron `0 6 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6152 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-acc-req-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP Access Request OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6254 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-access-request-staging-main` | ocm-fvt-hcp-stg | HCP Access Request | true | — | cron `20 6 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6356 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-ocp5-latest-rc-staging-main` | ocm-fvt-hcp-stg | HCP AD OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6458 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main` | ocm-fvt-hcp-stg | HCP AD | true | — | cron `0 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6560 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP Adobe OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6662 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-staging-main` | ocm-fvt-hcp-stg | HCP Adobe | true | — | cron `20 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6764 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP AMD64 OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6866 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main` | ocm-fvt-hcp-stg | HCP AMD64 | true | — | cron `40 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:6968 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-upg-ocp5-ltrc-staging-main` | ocm-fvt-hcp-stg | HCP AMD64 Upgrade OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7070 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-upgrade-staging-main` | ocm-fvt-hcp-stg | HCP AMD64 Upgrade | true | — | cron `40 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7172 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-ocp5-latest-rc-staging-main` | ocm-fvt-hcp-stg | HCP ARM OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7274 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-staging-main` | ocm-fvt-hcp-stg | HCP ARM | true | — | cron `20 5 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7376 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP Autonode OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7478 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main` | ocm-fvt-hcp-stg | HCP Autonode | true | — | cron `0 5 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7580 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upg-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP n-X Y-Upgrade OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7682 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-nx-y-upgrade-staging-main` | ocm-fvt-hcp-stg | HCP n-X Y-Upgrade | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7784 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-ocp5-latest-rc-staging-main` | ocm-fvt-hcp-stg | HCP PL OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7886 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-staging-main` | ocm-fvt-hcp-stg | HCP PL | true | — | cron `20 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:7988 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main` | ocm-fvt-hcp-stg | HCP Shared VPC | true | — | cron `0 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8090 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shvpc-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP Shared VPC OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8192 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-upg-ocp5-latest-rc-staging-main` | ocm-fvt-hcp-stg | HCP Upgrade OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8294 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-upgrade-staging-main` | ocm-fvt-hcp-stg | HCP Upgrade | true | — | cron `20 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8396 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-y-upg-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP Y-Upgrade OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8498 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-y-upgrade-staging-main` | ocm-fvt-hcp-stg | HCP Y-Upgrade | true | — | cron `0 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8600 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-z-egr-upg-ocp5-ltrc-staging-main` | ocm-fvt-hcp-stg | HCP Zero Egress Upgrade OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8702 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egr-ocp5-lt-rc-staging-main` | ocm-fvt-hcp-stg | HCP Zero Egress OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8804 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-staging-main` | ocm-fvt-hcp-stg | HCP Zero Egress | true | — | cron `40 5 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:8906 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-upgrade-staging-main` | ocm-fvt-hcp-stg | HCP Zero Egress Upgrade | true | — | cron `40 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9008 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-jira-ocp5-staging-main` | ocm-fvt-hcp-stg | HCP Sanity Jira OCP5 | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9110 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-jira-staging-main` | ocm-fvt-hcp-stg | HCP Sanity Jira | false (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9212 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-ocp5-latest-rc-staging-main` | ocm-fvt-hcp-stg | HCP Sanity OCP5 | true | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9314 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-staging-main` | ocm-fvt-hcp-stg | HCP Sanity | true | — | cron `0 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9416 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-ocp5-resource-cleaner` | ocm-fvt-hcp-stg | HCP Resource Cleaner OCP5 | false (job override) | — | cron `0 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9517 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-basic-periodic-integration` | ocm-fvt-osdfm-int | OSDFM Basic Periodic | null | true | cron `0 9 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:2282 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-mc-autoscaling-integration` | ocm-fvt-osdfm-int | OSDFM MC Autoscaling | null | true | cron `0 10 * * 4` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:2384 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-sc-autoscaling-integration` | ocm-fvt-osdfm-int | OSDFM SC Autoscaling | null | true | cron `0 10 * * 3` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:2486 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage` | ocm-fvt-osdfm-stg | OSDFM Basic Periodic | true | — | cron `0 9 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:3476 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-day1-negative-f7` | rosa-cli-jobs | Day-1 Negative | null | — | cron `21 12 6,13,20,29 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:25 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-day1-supplemental-f3` | rosa-cli-jobs | Day-1 Supplemental | null | — | cron `15 23 3,6,9,12,15,18,21,24,27,30 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:149 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-f3` | rosa-cli-jobs | HCP Advanced | null | — | cron `29 17 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:273 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-regional-f3` | rosa-cli-jobs | HCP Advanced Regional | null | true | cron `'@yearly'` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:397 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-arm-f7` | rosa-cli-jobs | HCP ARM | null | — | cron `12 0 9,16,23,30 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:521 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-external-auth-f3` | rosa-cli-jobs | HCP External Auth | null | — | cron `31 15 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:645 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-private-link-f3` | rosa-cli-jobs | HCP Private Link | null | — | cron `27 19 2,5,8,11,14,17,20,23,26,29 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:769 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-shared-vpc-f3` | rosa-cli-jobs | HCP Shared VPC | null | — | cron `0 0 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:893 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-y-stream-f3` | rosa-cli-jobs | HCP Upgrade Y-Stream | null | — | cron `42 1 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1017 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-z-stream-f3` | rosa-cli-jobs | HCP Upgrade Z-Stream | null | — | cron `53 12 3,6,9,12,15,18,21,24,27,30 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1141 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-advanced-critical-high-f3` | rosa-cli-jobs | Non-STS Advanced (Critical/High) | null | — | cron `6 6 3,6,9,12,15,18,21,24,27,30 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1265 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-upgrade-y-stream-f7` | rosa-cli-jobs | Non-STS Upgrade Y-Stream | null | — | cron `21 12 6,13,20,29 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1389 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-ocm-resources-f3` | rosa-cli-jobs | OCM Resources | null | — | cron `24 19 2,5,8,11,14,17,20,23,26,29 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1513 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-sts-advanced-f3` | rosa-cli-jobs | STS Advanced | null | — | cron `34 13 3,6,9,12,15,18,21,24,27,30 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1637 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-sts-hibernation-f14` | rosa-cli-jobs | STS Hibernation | null | — | cron `3 18 13,29 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1761 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-sts-private-link-f3` | rosa-cli-jobs | STS Private Link | null | — | cron `27 23 3,6,9,12,15,18,21,24,27,30 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:1885 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-f3` | rosa-cli-jobs | STS Shared VPC | null | — | cron `59 0 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:2009 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-sts-shared-vpc-upgrade-y-stream-f3` | rosa-cli-jobs | STS Shared VPC Upgrade Y-Stream | null | — | cron `0 0 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:2133 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-y-stream-f3` | rosa-cli-jobs | STS Upgrade Y-Stream | null | — | cron `26 16 2,5,8,11,14,17,20,23,26,29 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:2257 |
-| `periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-z-stream-f3` | rosa-cli-jobs | STS Upgrade Z-Stream | null | — | cron `32 18 3,6,9,12,15,18,21,24,27,30 * *` | `ci-operator/jobs/openshift/rosa/openshift-rosa-master-periodics.yaml`:2381 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-autoscaling-e2e-staging` | rosa-cx-e2e | HCP Autoscaling | null | — | cron `0 16 * * 3` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11457 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-aws-vpc-cni-staging` | rosa-cx-e2e | HCP VPC-CNI | null | — | cron `0 16 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11560 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-external-oidc-e2e-staging` | rosa-cx-e2e | HCP External OIDC | null | — | cron `0 13 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12787 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-kms-e2e-staging` | rosa-cx-e2e | HCP KMS Encryption | null | — | cron `0 16 * * 2` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12890 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-shared-vpc-e2e-staging` | rosa-cx-e2e | HCP Shared VPC | null | — | cron `0 16 * * 4` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12993 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-integration` | rosa-e2e-int | HCP Hosted Operator Upgrade | null | true | cron `0 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:427 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-20` | rosa-e2e-int | HCP 4.20 | null | true | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11662 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-21` | rosa-e2e-int | HCP 4.21 | null | true | cron `30 8 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11764 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-22` | rosa-e2e-int | HCP 4.22 | null | true | cron `0 9 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11866 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-5-0` | rosa-e2e-int | HCP 5.0 | null | true | cron `30 9 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11968 |
-| `periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-staging` | rosa-e2e-stg | HCP Hosted Operator Upgrade | false (job override) | — | cron `0 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:529 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-osd-gcp-fips-e2e-staging-stable-4-22` | rosa-e2e-stg | OSD GCP FIPS 4.22 | true | — | cron `30 12 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9619 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-classic-sts-fips-e2e-staging-stable-4-19` | rosa-e2e-stg | STS FIPS 4.19 | true | — | cron `30 10 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9721 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-classic-sts-fips-e2e-staging-stable-4-20` | rosa-e2e-stg | STS FIPS 4.20 | true | — | cron `0 11 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9823 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-classic-sts-fips-e2e-staging-stable-4-21` | rosa-e2e-stg | STS FIPS 4.21 | true | — | cron `30 11 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:9925 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-classic-sts-fips-e2e-staging-stable-4-22` | rosa-e2e-stg | STS FIPS 4.22 | true | — | cron `0 12 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10027 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-classic-sts-fips-e2e-staging-stable-5-0` | rosa-e2e-stg | STS FIPS 5.0 | true | — | cron `30 12 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10129 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-4-19` | rosa-e2e-stg | HCP FIPS 4.19 | true | — | cron `0 8 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10231 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-4-20` | rosa-e2e-stg | HCP FIPS 4.20 | true | — | cron `30 8 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10333 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-4-21` | rosa-e2e-stg | HCP FIPS 4.21 | true | — | cron `0 9 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10435 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-4-22` | rosa-e2e-stg | HCP FIPS 4.22 | true | — | cron `30 9 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10537 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-5-0` | rosa-e2e-stg | HCP FIPS 5.0 | true | — | cron `0 10 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10639 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-e2e-staging-stable-4-22` | rosa-e2e-stg | OSD GCP 4.22 | true | — | cron `30 7 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10741 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-privatelink-staging` | rosa-e2e-stg | STS PrivateLink | false (job override) | — | cron `0 5 * * 1,4` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10844 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-19` | rosa-e2e-stg | STS 4.19 | true | — | cron `30 5 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:10946 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-20` | rosa-e2e-stg | STS 4.20 | true | — | cron `0 6 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11048 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-21` | rosa-e2e-stg | STS 4.21 | true | — | cron `30 6 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11150 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-4-22` | rosa-e2e-stg | STS 4.22 | true | — | cron `0 7 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11252 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-classic-sts-e2e-staging-stable-5-0` | rosa-e2e-stg | STS 5.0 | true | — | cron `30 7 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:11354 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-private-staging` | rosa-e2e-stg | HCP Private | false (job override) | — | cron `0 2 * * 2,5` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12071 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-privatelink-connectivity-mc-health-staging` | rosa-e2e-stg | HCP PrivateLink Connectivity / MC Health | false (job override) | — | cron `0 2 * * 3` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12174 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-19` | rosa-e2e-stg | HCP 4.19 | true | — | cron `30 2 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12276 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20` | rosa-e2e-stg | HCP 4.20 | true | — | cron `0 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12378 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-21` | rosa-e2e-stg | HCP 4.21 | true | — | cron `30 3 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12480 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-22` | rosa-e2e-stg | HCP 4.22 | true | — | cron `0 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12582 |
-| `periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-5-0` | rosa-e2e-stg | HCP 5.0 | true | — | cron `30 4 * * *` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:12684 |
-| `periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-1` | rosa-e2e-stg | STS Upgrade Y-1 | true | — | cron `0 2 * * 0` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:13311 |
-| `periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-2` | rosa-e2e-stg | STS Upgrade Y-2 | true | — | cron `0 2 * * 2` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:13413 |
-| `periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-classic-sts-upgrade-staging-y-minus-3` | rosa-e2e-stg | STS Upgrade Y-3 | true | — | cron `0 2 * * 4` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:13515 |
-| `periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-1` | rosa-e2e-stg | HCP Upgrade Y-1 | true | — | cron `30 2 * * 1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:13617 |
-| `periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-2` | rosa-e2e-stg | HCP Upgrade Y-2 | true | — | cron `30 2 * * 3` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:13719 |
-| `periodic-ci-openshift-online-rosa-e2e-main-upgrade-rosa-hcp-upgrade-staging-y-minus-3` | rosa-e2e-stg | HCP Upgrade Y-3 | true | — | cron `30 2 * * 5` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:13821 |
-| `periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19` | rosa-gap-analysis | GAP 4.19 | null | — | cron `0 6 * * *` | `ci-operator/jobs/openshift-online/rosa-gap-analysis/openshift-online-rosa-gap-analysis-main-periodics.yaml`:19 |
-| `periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20` | rosa-gap-analysis | GAP 4.20 | null | — | cron `30 6 * * *` | `ci-operator/jobs/openshift-online/rosa-gap-analysis/openshift-online-rosa-gap-analysis-main-periodics.yaml`:114 |
-| `periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21` | rosa-gap-analysis | GAP 4.21 | null | — | cron `0 7 * * *` | `ci-operator/jobs/openshift-online/rosa-gap-analysis/openshift-online-rosa-gap-analysis-main-periodics.yaml`:209 |
-| `periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22` | rosa-gap-analysis | GAP 4.22 | null | — | cron `30 7 * * *` | `ci-operator/jobs/openshift-online/rosa-gap-analysis/openshift-online-rosa-gap-analysis-main-periodics.yaml`:304 |
-| `periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0` | rosa-gap-analysis | GAP 5.0 | null | — | cron `0 8 * * *` | `ci-operator/jobs/openshift-online/rosa-gap-analysis/openshift-online-rosa-gap-analysis-main-periodics.yaml`:399 |
-| `periodic-ci-openshift-aws-account-operator-master-hive-e2e-promotion-int` | sre-operator-e2e | AAO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/aws-account-operator/openshift-aws-account-operator-master-periodics.yaml`:24 |
-| `periodic-ci-openshift-aws-account-operator-master-hive-e2e-promotion-stage` | sre-operator-e2e | AAO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/aws-account-operator/openshift-aws-account-operator-master-periodics.yaml`:141 |
-| `periodic-ci-openshift-certman-operator-master-hive-e2e-promotion-int` | sre-operator-e2e | Certman Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/certman-operator/openshift-certman-operator-master-periodics.yaml`:24 |
-| `periodic-ci-openshift-certman-operator-master-hive-e2e-promotion-stage` | sre-operator-e2e | Certman Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/certman-operator/openshift-certman-operator-master-periodics.yaml`:141 |
-| `periodic-ci-openshift-cloud-ingress-operator-master-rosa-osd-aws-e2e-promotion-int` | sre-operator-e2e | CIO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/cloud-ingress-operator/openshift-cloud-ingress-operator-master-periodics.yaml`:255 |
-| `periodic-ci-openshift-cloud-ingress-operator-master-rosa-osd-aws-e2e-promotion-stage` | sre-operator-e2e | CIO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/cloud-ingress-operator/openshift-cloud-ingress-operator-master-periodics.yaml`:371 |
-| `periodic-ci-openshift-configure-alertmanager-operator-master-osd-gcp-e2e-promotion-int` | sre-operator-e2e | CAMO GCP INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/configure-alertmanager-operator/openshift-configure-alertmanager-operator-master-periodics.yaml`:23 |
-| `periodic-ci-openshift-configure-alertmanager-operator-master-osd-gcp-e2e-promotion-stage` | sre-operator-e2e | CAMO GCP STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/configure-alertmanager-operator/openshift-configure-alertmanager-operator-master-periodics.yaml`:139 |
-| `periodic-ci-openshift-configure-alertmanager-operator-master-rosa-sts-e2e-promotion-int` | sre-operator-e2e | CAMO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/configure-alertmanager-operator/openshift-configure-alertmanager-operator-master-periodics.yaml`:255 |
-| `periodic-ci-openshift-configure-alertmanager-operator-master-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | CAMO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/configure-alertmanager-operator/openshift-configure-alertmanager-operator-master-periodics.yaml`:371 |
-| `periodic-ci-openshift-managed-cluster-validating-webhooks-master-rosa-sts-e2e-promotion-int` | sre-operator-e2e | MCVW Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/managed-cluster-validating-webhooks/openshift-managed-cluster-validating-webhooks-master-periodics.yaml`:23 |
-| `periodic-ci-openshift-managed-cluster-validating-webhooks-master-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | MCVW Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/managed-cluster-validating-webhooks/openshift-managed-cluster-validating-webhooks-master-periodics.yaml`:139 |
-| `periodic-ci-openshift-managed-upgrade-operator-master-osd-gcp-e2e-promotion-int` | sre-operator-e2e | MUO GCP INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/managed-upgrade-operator/openshift-managed-upgrade-operator-master-periodics.yaml`:23 |
-| `periodic-ci-openshift-managed-upgrade-operator-master-osd-gcp-e2e-promotion-stage` | sre-operator-e2e | MUO GCP STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/managed-upgrade-operator/openshift-managed-upgrade-operator-master-periodics.yaml`:139 |
-| `periodic-ci-openshift-managed-upgrade-operator-master-rosa-sts-e2e-promotion-int` | sre-operator-e2e | MUO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/managed-upgrade-operator/openshift-managed-upgrade-operator-master-periodics.yaml`:255 |
-| `periodic-ci-openshift-managed-upgrade-operator-master-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | MUO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/managed-upgrade-operator/openshift-managed-upgrade-operator-master-periodics.yaml`:371 |
-| `periodic-ci-openshift-ocm-agent-operator-master-osd-gcp-e2e-promotion-int` | sre-operator-e2e | OAO GCP INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/ocm-agent-operator/openshift-ocm-agent-operator-master-periodics.yaml`:23 |
-| `periodic-ci-openshift-ocm-agent-operator-master-osd-gcp-e2e-promotion-stage` | sre-operator-e2e | OAO GCP STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/ocm-agent-operator/openshift-ocm-agent-operator-master-periodics.yaml`:139 |
-| `periodic-ci-openshift-ocm-agent-operator-master-rosa-sts-e2e-promotion-int` | sre-operator-e2e | OAO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/ocm-agent-operator/openshift-ocm-agent-operator-master-periodics.yaml`:255 |
-| `periodic-ci-openshift-ocm-agent-operator-master-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | OAO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/ocm-agent-operator/openshift-ocm-agent-operator-master-periodics.yaml`:371 |
-| `periodic-ci-openshift-osd-metrics-exporter-main-rosa-sts-e2e-promotion-int` | sre-operator-e2e | OME Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/osd-metrics-exporter/openshift-osd-metrics-exporter-main-periodics.yaml`:23 |
-| `periodic-ci-openshift-osd-metrics-exporter-main-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | OME Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/osd-metrics-exporter/openshift-osd-metrics-exporter-main-periodics.yaml`:139 |
-| `periodic-ci-openshift-rbac-permissions-operator-master-rosa-sts-e2e-promotion-int` | sre-operator-e2e | RPO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/rbac-permissions-operator/openshift-rbac-permissions-operator-master-periodics.yaml`:23 |
-| `periodic-ci-openshift-rbac-permissions-operator-master-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | RPO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/rbac-permissions-operator/openshift-rbac-permissions-operator-master-periodics.yaml`:139 |
-| `periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-int` | sre-operator-e2e | RMO GCP INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/route-monitor-operator/openshift-route-monitor-operator-master-periodics.yaml`:23 |
-| `periodic-ci-openshift-route-monitor-operator-master-osd-gcp-e2e-promotion-stage` | sre-operator-e2e | RMO GCP STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/route-monitor-operator/openshift-route-monitor-operator-master-periodics.yaml`:139 |
-| `periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-int` | sre-operator-e2e | RMO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/route-monitor-operator/openshift-route-monitor-operator-master-periodics.yaml`:592 |
-| `periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | RMO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/route-monitor-operator/openshift-route-monitor-operator-master-periodics.yaml`:708 |
-| `periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-int` | sre-operator-e2e | SFO GCP INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/splunk-forwarder-operator/openshift-splunk-forwarder-operator-master-periodics.yaml`:23 |
-| `periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-stage` | sre-operator-e2e | SFO GCP STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/splunk-forwarder-operator/openshift-splunk-forwarder-operator-master-periodics.yaml`:139 |
-| `periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-int` | sre-operator-e2e | SFO Promotion INT | null | true | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/splunk-forwarder-operator/openshift-splunk-forwarder-operator-master-periodics.yaml`:255 |
-| `periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-stage` | sre-operator-e2e | SFO Promotion STG | true (job override) | — | **unschedulable cron `0 0 31 2 *`** (not cron-scheduled; trigger not determined from source) | `ci-operator/jobs/openshift/splunk-forwarder-operator/openshift-splunk-forwarder-operator-master-periodics.yaml`:371 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-classic-full-resource-f7` | terraform-provider-rhcs-jobs | STS Classic Full Resources | null | — | cron `38 5 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:23 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-day1-supplemental-f3` | terraform-provider-rhcs-jobs | Day-1 Supplemental | null | — | cron `38 2 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:141 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-advanced-f3` | terraform-provider-rhcs-jobs | HCP Advanced | null | — | cron `'@yearly'` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:259 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-arm-f7` | terraform-provider-rhcs-jobs | HCP Arm | null | — | cron `38 4 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:377 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-encryption-f7` | terraform-provider-rhcs-jobs | HCP Encryption | null | — | cron `38 4 3,10,17,20,31 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:495 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-full-resource-f7` | terraform-provider-rhcs-jobs | HCP Full Resources | null | — | cron `38 7 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:613 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-network-f7` | terraform-provider-rhcs-jobs | HCP Network | null | — | cron `38 2 3,10,17,20,31 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:731 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-private-f3` | terraform-provider-rhcs-jobs | HCP Private | null | — | cron `08 5 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:849 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-upgrade-y-f7` | terraform-provider-rhcs-jobs | HCP Upgrade Y-Stream | null | — | cron `38 8 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:967 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-upgrade-z-f7` | terraform-provider-rhcs-jobs | HCP Upgrade Z-Stream | null | — | cron `38 9 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1085 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-advanced-day1-negative-f7` | terraform-provider-rhcs-jobs | STS Advanced (Day-1 Negative) | null | — | cron `38 6 1,8,15,22,29 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1203 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-advanced-f3` | terraform-provider-rhcs-jobs | STS Advanced | null | — | cron `38 11 3,6,9,12,15,18,21,23,27,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1321 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-private-day1-negative-f7` | terraform-provider-rhcs-jobs | STS Private (Day-1 Negative) | null | — | cron `38 2 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1439 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-private-f3` | terraform-provider-rhcs-jobs | STS Private | null | — | cron `08 3 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1557 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-shared-vpc-f3` | terraform-provider-rhcs-jobs | STS Shared VPC | null | — | cron `26 8 1,4,7,10,13,16,19,22,25,28 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1675 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-upgrade-y-f7` | terraform-provider-rhcs-jobs | STS Upgrade Y-Stream | null | — | cron `38 8 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1793 |
-| `periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-upgrade-z-f7` | terraform-provider-rhcs-jobs | STS Upgrade Z-Stream | null | — | cron `38 3 2,9,16,23,30 * *` | `ci-operator/jobs/terraform-redhat/terraform-provider-rhcs/terraform-redhat-terraform-provider-rhcs-main-periodics.yaml`:1911 |
+All 62 in-scope-directory candidates are classified below; every one is accounted for (21+14+9+8+4+3+1 = 60
+excluded, plus the 2 additions in §5a = 62). No candidate was left unclassified.
 
----
-
-## 5. Comparable source inventory — untracked candidates
-
-### 5.1 Method and scope definition
-
-"Comparable" was derived from the data, not from a pre-chosen family list. Procedure:
-
-1. Take the 17 files that define the 208 tracked jobs (section 4) — these *are* the registry's families.
-2. Enumerate **every** periodic declared in those files: **3,840** jobs → 208 tracked, 3,632 untracked.
-3. 3,608 of those 3,632 are in `openshift/release`'s own `openshift-release-main-periodics.yaml`, which
-   holds the entire OCP nightly/release fleet. Only 10 jobs from it are tracked (the `nightly-*-e2e-rosa-hcp-ovn`
-   / `-e2e-rosa-sts-ovn` conformance family). For that one file the comparable set was narrowed by
-   name-family filter (`rosa|osd|hcp|hypershift`) → 29 candidates, of which 10 are tracked.
-4. Then, to avoid a fixed-family blind spot, three **additional cross-cutting sweeps** were run over all
-   20,156 periodics in the pinned tree, independent of the 17 files:
-   a. every `*-promotion-{int,stage}` / `*rosa-sts-e2e*` / `*hive-e2e*` / `*osd-gcp-e2e*` job (48 total);
-   b. every repo named in the registry's `component_prow_filters` or in `.chai-bot/rosa_ci_daily_remediation.md`;
-   c. every `*seaplane*` job, since the lean registry header names Seaplane as its canonical
-      `informing: true` example.
-5. Each candidate's `cron`/`interval` was read from its own Prow block.
-
-Every category's family was covered. Sibling periodics files in the same directories were checked and are
-listed with their tracked counts; the `openshift-release-release-4.1x`-`5.1` periodics files and
-`openshift-release-infra-periodics.yaml` contain **zero** periodic declarations at this SHA.
-
-### 5.2 Untracked candidates, classified
-
-#### A. Operational utilities — not health-report test signal
-
-| Job | Evidence file | Trigger |
+| Group | Count | Exclusion rationale |
 |---|---|---|
-| `periodic-ci-openshift-online-rosa-e2e-main-cloud-resource-cleanup-profile01-us-east-1` | `ci-operator/jobs/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main-periodics.yaml`:19 | cron `0 6 * * 0` |
-| `…-cloud-resource-cleanup-profile01-us-east-2` | same file:121 | cron `0 8 * * 0` |
-| `…-cloud-resource-cleanup-profile01-us-west-1` | same file:223 | cron `0 7 * * 0` |
-| `…-cloud-resource-cleanup-profile01-us-west-2` | same file:325 | cron `0 9 * * 0` |
-| `periodic-ci-openshift-online-rosa-e2e-main-rosa-cluster-lease-rosa-cluster-lease-controller` | same file:13095 | cron `*/15 * * * *` |
-| `periodic-ci-openshift-online-rosa-e2e-main-rosa-cluster-lease-rosa-cluster-lease-health` | same file:13203 | cron `7,37 * * * *` |
-| `periodic-rosa-seaplane-pr-close` | `ci-operator/jobs/infra-periodics.yaml` (manually maintained) | cron `45 3,11 * * *` |
-| `periodic-rosa-seaplane-pr-stale` | `ci-operator/jobs/infra-periodics.yaml` (manually maintained) | cron `15 3,11 * * *` |
+| Unschedulable placeholders, cron `0 0 31 2 *` (31 February — never fires) | 21 | Playbook excludes unschedulable placeholders. Includes all 10 `ocm-fvt-gating-osdfm-*` jobs, 3 `ocm-fvt-...-ocp5-staging-main` GCP jobs, both `aws-vpce-operator` `rosa-hcp-mc-e2e-promotion-*`, both `managed-node-metadata-operator` and both `ocm-agent` `rosa-sts-e2e-promotion-*`, `configuration-anomaly-detection` `rosa-stage-e2e`, and the HyperShift `rosa-hcp-e2e-staging-stable-4-22` mirror. **A `gating` or `promotion` substring in a name is not proof of a deployed gate**, and neither is a cron that cannot fire. |
+| Different product — not ROSA | 14 | HyperShift `e2e-aro-hcp` (3, Azure ARO), `mce-e2e-ibmz-multi-mgmt-*` (2, IBM Z/MCE), `e2e-telco5g-hcp-cnftests` (4) and `e2e-agent-ha-dualstack-dhcp-install` (5). These match only on an `hcp` substring. |
+| New environment / product scope — **pending support decision, not silently added** | 9 | `ocm-fvt-periodic-cs-osd-ccs-gcp-ad-production-main` (weekly; no OSD GCP *production* category exists), `ocm-fvt-periodic-cs-rosa-sts-ad-production-main` (weekly; no Classic *production* category exists), 4 `openshift-online/gcp-hcp-infra` jobs (new repo/family), 3 `openshift-online/rosa-seaplane` nightly jobs (new family). Adding any would extend supported environments or topologies. |
+| Operational cleanup / lease utilities | 8 | Explicitly excluded from E2E denominators: 4 `cloud-resource-cleanup-profile01-*`, `rosa-cluster-lease-controller`, `rosa-cluster-lease-health`, HyperShift `arohcp-cleanup-*` and `equinix-cleanup-*`. |
+| Adjacent repo / separate ownership — pending scope decision | 4 | HyperShift `e2e-rosa-seaplane` on `release-5.0/5.1/5.2` (3) and `openshift/hive` `e2e-ote-sd-rosa` (weekly). |
+| Documentation / release-monitoring publishers | 3 | `rosa-boundary` and `rosa-cora-agent` `openwiki-update`, `rosa-marketplace-release-generator` `monitor`. Not E2E tests. |
+| Older than the tracked version floor — **pending support decision** | 1 | `periodic-ci-openshift-release-main-nightly-4.18-e2e-rosa-sts-ovn` (daily, active). `classic-conformance` tracks 4.19–4.22; 4.18 is below the floor, so adding it would extend supported versions downward. |
 
-Rationale for the classification: AWS resource garbage collection, lease-pool lifecycle/health control
-loops, and PR housekeeping bots. They test no ROSA product surface, so their pass rate is not release or
-component signal. The lease controller/health pair is deployed infrastructure — `clusters/hosted-mgmt/rosa-cluster-lease/README.md`
-documents `rosa-cluster-lease-controller` as the "full lifecycle controller", and the step exists at
-`ci-operator/step-registry/rosa/cluster-lease/controller/rosa-cluster-lease-controller-ref.yaml`.
-This is a classification of *function*, offered as a recommendation; it is **not** a claim that the
-registry owners intend to exclude them.
+Additionally excluded outside those directories: 6 `periodic-rosa-*-pr-close` / `-pr-stale` GitHub-housekeeping
+bots in `ci-operator/jobs/infra-periodics.yaml` (operational, not E2E), and 268 name-signal hits in
+`openshift/openshift-tests-private` plus smaller hits in unrelated QE repositories (3scale, camel-k, mtc-qe,
+oadp-qe, perfscale, openshift-pipelines, cluster-nfd, olm, devspaces, web-terminal, claire, sso-test,
+interop-tests, skupper) — all outside documented registry scope.
 
-#### B. Event-only candidates — defined, not cron-scheduled, promotion/event driven
+No candidate was treated as a duplicate or a rename merely because its name resembles a tracked job:
+simultaneous STS/GCP/HCP-MC definitions in distinct repositories are distinct jobs.
 
-These are directly comparable to tracked `sre-operator-e2e` entries: same repos or same job-name family,
-same unschedulable `cron: 0 0 31 2 *` pattern that 58 **tracked** jobs already use (section 4.1). They are
-the strongest additions, because the registry's own precedent does not exclude this trigger mode.
+## 6. Gating evidence
 
-| Job | Evidence file | Cron | Comparable tracked sibling |
-|---|---|---|---|
-| `periodic-ci-openshift-cloud-ingress-operator-master-osd-gcp-e2e-promotion-int` | `ci-operator/jobs/openshift/cloud-ingress-operator/openshift-cloud-ingress-operator-master-periodics.yaml` | `0 0 31 2 *` | `…-rosa-osd-aws-e2e-promotion-int` (tracked, "CIO Promotion INT") |
-| `periodic-ci-openshift-cloud-ingress-operator-master-osd-gcp-e2e-promotion-stage` | same file | `0 0 31 2 *` | `…-rosa-osd-aws-e2e-promotion-stage` (tracked, "CIO Promotion STG") |
-| `periodic-ci-openshift-route-monitor-operator-master-rosa-hcp-mc-e2e-promotion-int` | `ci-operator/jobs/openshift/route-monitor-operator/openshift-route-monitor-operator-master-periodics.yaml` | `0 0 31 2 *` | `…-rosa-sts-e2e-promotion-int` (tracked, "RMO Promotion INT") |
-| `periodic-ci-openshift-route-monitor-operator-master-rosa-hcp-mc-e2e-promotion-stage` | same file | `0 0 31 2 *` | `…-rosa-sts-e2e-promotion-stage` (tracked, "RMO Promotion STG") |
-| `periodic-ci-openshift-aws-vpce-operator-main-rosa-hcp-mc-e2e-promotion-int` | `ci-operator/jobs/openshift/aws-vpce-operator/openshift-aws-vpce-operator-main-periodics.yaml` | `0 0 31 2 *` | none tracked for this repo — **but `aws-vpce-operator` has a `component_prow_filters` entry in the registry while contributing zero jobs** |
-| `periodic-ci-openshift-aws-vpce-operator-main-rosa-hcp-mc-e2e-promotion-stage` | same file | `0 0 31 2 *` | as above |
-| `periodic-ci-openshift-pagerduty-operator-master-hive-e2e-promotion-int` | `ci-operator/jobs/openshift/pagerduty-operator/openshift-pagerduty-operator-master-periodics.yaml` | `0 0 31 2 *` | `certman-operator`/`aws-account-operator` `hive-e2e-promotion-*` (tracked) |
-| `periodic-ci-openshift-pagerduty-operator-master-hive-e2e-promotion-stage` | same file | `0 0 31 2 *` | as above |
-| `periodic-ci-openshift-ocm-agent-master-rosa-sts-e2e-promotion-int` | `ci-operator/jobs/openshift/ocm-agent/openshift-ocm-agent-master-periodics.yaml` | `0 0 31 2 *` | `ocm-agent-operator` promotion jobs (tracked) — note `ocm-agent` ≠ `ocm-agent-operator` |
-| `periodic-ci-openshift-ocm-agent-master-rosa-sts-e2e-promotion-stage` | same file | `0 0 31 2 *` | as above |
-| `periodic-ci-openshift-ocm-agent-master-osd-gcp-e2e-promotion-int` | same file | `0 0 31 2 *` | as above |
-| `periodic-ci-openshift-ocm-agent-master-osd-gcp-e2e-promotion-stage` | same file | `0 0 31 2 *` | as above |
-| `periodic-ci-openshift-managed-node-metadata-operator-main-rosa-sts-e2e-promotion-int` | `ci-operator/jobs/openshift/managed-node-metadata-operator/openshift-managed-node-metadata-operator-main-periodics.yaml` | `0 0 31 2 *` | `rosa-sts-e2e-promotion-*` family (tracked for 8 other operators) |
-| `periodic-ci-openshift-managed-node-metadata-operator-main-rosa-sts-e2e-promotion-stage` | same file | `0 0 31 2 *` | as above |
-| `periodic-ci-openshift-hypershift-main-rosa-e2e-rosa-hcp-e2e-staging-stable-4-22` | `ci-operator/jobs/openshift/hypershift/openshift-hypershift-main-periodics.yaml` | `0 0 31 2 *` | `hypershift-ci` category's two tracked jobs are the rosa-e2e-repo side of the same pairing |
+Authoritative gate consumers were checked in the pinned `openshift/release` tree
+(`core-services/release-controller/_releases/*.json`, `core-services/testgrid-config-generator/_allow-list.yaml`).
 
-#### C. Unschedulable placeholders — defined, not cron-scheduled, no tracked sibling precedent
-
-The ten `ocm-fvt-gating-osdfm-*` jobs. All carry `cron: 0 0 31 2 *`. Unlike group B they are not a
-promotion family; their ci-operator test names begin `ocm-fvt-gating-` rather than `ocm-fvt-periodic-`,
-and the registry's single tracked `ocm-fvt-osdfm-stg` job and three tracked `ocm-fvt-osdfm-int` jobs all
-come from the `ocm-fvt-periodic-` family instead.
-
-| Job | ci-operator config (`--target`) |
+| Finding | Evidence |
 |---|---|
-| `…-ocm-fvt-osdfm-integration-ocm-fvt-gating-osdfm-integration-canary` | `ci-operator/config/openshift-online/rosa-e2e/openshift-online-rosa-e2e-main__ocm-fvt-osdfm-integration.yaml`:36 |
-| `…-ocm-fvt-osdfm-integration-ocm-fvt-gating-osdfm-integration-main` | same file:66 |
-| `…-ocm-fvt-osdfm-staging-ocm-fvt-gating-osdfm-stage-canary` | `…__ocm-fvt-osdfm-staging.yaml`:25 |
-| `…-ocm-fvt-osdfm-staging-ocm-fvt-gating-osdfm-stage-main` | `…__ocm-fvt-osdfm-staging.yaml`:58 |
-| `…-ocm-fvt-osdfm-production-ocm-fvt-gating-osdfm-prod-canary` | `…__ocm-fvt-osdfm-production.yaml`:25 |
-| `…-ocm-fvt-osdfm-production-ocm-fvt-gating-osdfm-prod-ap-southeast-3` | `…__ocm-fvt-osdfm-production.yaml`:58 |
-| `…-ocm-fvt-osdfm-production-ocm-fvt-gating-osdfm-prod-ap-southeast-4` | `…__ocm-fvt-osdfm-production.yaml`:91 |
-| `…-ocm-fvt-osdfm-production-ocm-fvt-gating-osdfm-prod-ap-southeast-1` | `…__ocm-fvt-osdfm-production.yaml`:124 |
-| `…-ocm-fvt-osdfm-production-ocm-fvt-gating-osdfm-prod-ap-southeast-2` | `…__ocm-fvt-osdfm-production.yaml`:157 |
-| `…-ocm-fvt-osdfm-production-ocm-fvt-gating-osdfm-prod-ap-northeast-1` | `…__ocm-fvt-osdfm-production.yaml`:190 |
+| Registry jobs wired into a release-controller `verify` block | 5 entries across OCP 4.19–4.22, all conformance jobs, **every one `"optional": true, "disabled": true`** — i.e. not gating. The registry marks all 10 conformance jobs `gating: false`. **Consistent.** |
+| CAPA jobs | Present in the testgrid allow-list as `informing` (a dashboard class, distinct from the registry's pre-GA `informing` field). Registry marks them non-gating. Consistent. |
+| The 91 jobs marked `gating: true` | **No independent wiring evidence found in public `openshift/release`.** Their gate role rests on the registry marker alone. |
 
-Their trigger wiring is addressed in section 6; it could not be verified, so per the lean registry header
-("Placeholder schedules and event-only candidates need verified trigger wiring before inclusion") they
-remain placeholders for the purpose of this audit.
+**Conclusion:** actual gate wiring for the 91 `gating: true` jobs is **UNVERIFIED** in this run. Their authoritative
+consumers (OCM/app-interface deployment manifests) are outside this workspace's access grants. Per policy the
+existing gating classification is **preserved unchanged**; no gate was added, removed or inferred, and no
+successor gate inheritance was assumed anywhere.
 
-#### D. Scope-ambiguous candidates — real ROSA/OSD signal, registry intent not determinable from source
+## 7. Remediation candidate status
 
-| Job | Evidence | Trigger | Why ambiguous |
-|---|---|---|---|
-| `periodic-ci-openshift-route-monitor-operator-master-rosa-sts-e2e-coverage` | `…/route-monitor-operator/…-master-periodics.yaml` | cron `0 6 * * 0` | Weekly *coverage* job, not a promotion gate; `sre-operator-e2e` tracks only `promotion-{int,stage}` pairs. |
-| `…-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-ocp5-staging-main` | `…/rosa-e2e/…-main-periodics.yaml` | `0 0 31 2 *` | Same `ocm-fvt-periodic-` family and same OCP5 cohort as the tracked `ocm-fvt-gcp-stg` jobs that carry `gating: false`; three GCP OCP5 siblings tracked, these three not. |
-| `…-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-nx-y-upgrade-ocp5-staging-main` | same | `0 0 31 2 *` | as above |
-| `…-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-ocp5-staging-main` | same | `0 0 31 2 *` | as above |
-| `periodic-ci-openshift-online-rosa-seaplane-main-nightly-ephemeral` | `ci-operator/jobs/openshift-online/rosa-seaplane/openshift-online-rosa-seaplane-main-periodics.yaml` | cron `0 4 * * *` | **The lean registry header names "Seaplane regional jobs" as its canonical `informing: true` example, yet no Seaplane job is in the registry at all.** Scheduled daily, real signal, pre-GA. |
-| `periodic-ci-openshift-online-rosa-seaplane-main-nightly-integration` | same file | cron `0 4 * * *` | as above |
-| `periodic-ci-openshift-online-rosa-seaplane-main-nightly-stage` | same file | cron `0 4 * * *` | as above |
-| `periodic-ci-openshift-hypershift-release-5.0-periodics-e2e-rosa-seaplane` | `ci-operator/jobs/openshift/hypershift/openshift-hypershift-release-5.0-periodics.yaml` | cron `0 8 * * *` | as above, HyperShift-repo side |
-| `periodic-ci-openshift-hypershift-release-5.1-periodics-e2e-rosa-seaplane` | `ci-operator/jobs/openshift/hypershift/openshift-hypershift-release-5.1-periodics.yaml` | cron `0 8 * * *` | as above |
-| `periodic-ci-openshift-release-main-nightly-4.18-e2e-rosa-sts-ovn` | `ci-operator/jobs/openshift/release/openshift-release-main-periodics.yaml` | scheduled | `classic-conformance` tracks 4.19–4.22 only; 4.18 exists. Could be deliberate EOL scoping — **not asserted**. |
-| `periodic-ci-openshift-release-main-nightly-{4.18,4.19,4.20,4.21,4.22,4.23,5.0}-e2e-osd-ccs-gcp` | same file | scheduled | OSD-on-GCP conformance; registry's GCP coverage is FVT-based (`ocm-fvt-gcp-stg`) with no conformance counterpart. 7 jobs. |
-| `periodic-ci-openshift-release-main-osd-conformance-aws-k8s-conformance` | same file | scheduled | OSD AWS k8s-conformance; no conformance category covers OSD AWS. |
-| `periodic-ci-openshift-release-main-hypershift-{4.19,4.20,4.21}-periodic-ci-openshift-hypershift-hosted` | same file | scheduled | Upstream HyperShift hosted; `hcp-conformance` scope is `upstream`, so arguably in scope. 3 jobs. |
+All 12 open PRs against `openshift-online/rosa-e2e` `main` were listed (complete, untruncated).
+One touches the registry — a human-authored team-routing change to `configs/ci-status-jobs.yaml`
+(PR #337, `chore: route OSDFM CI status alerts…`, branch `chore/osdfm-ci-status-slack-hcp-platform`,
+labels `needs-rebase`, `lgtm`). It changes `team:` blocks only, not job coverage, so it neither
+duplicates nor conflicts with §5a. **It is human work and was left untouched.**
 
-#### E. Explicit exclusions — enumerated and matched, deliberately not candidates
+**No reconciliation PR exists to reuse, and none was opened:** this scheduled run is authorized to prepare
+safe candidates only. The two §5a additions are recorded here as a ready, evidence-backed patch awaiting
+the coordinator's approval workflow.
 
-- **3,579 non-ROSA periodics** in `openshift-release-main-periodics.yaml` (3,608 untracked minus the 29
-  name-family matches). OCP payload/nightly/upgrade fleet for unrelated platforms; outside any registry category.
-- **Layered-product interop jobs whose names merely contain `rosa-hypershift`** — 31 jobs across
-  `mtc-qe/mtc-e2e-qev2`, `openshift/cluster-nfd-operator`, `openshift-pipelines/release-tests`,
-  `redhat-developer/devspaces-interop-tests`, `rhbk/sso-test`, `rhpit/interop-tests`. These use ROSA/HCP
-  as a *substrate* to test a layered product; their failures are layered-product signal owned by other
-  teams, not ROSA platform health. Excluded on ownership, and the name match is incidental.
-- **`openshift/must-gather-operator` periodics** (`multi-e2e-*-weekly`, `tls-pqc-readiness-periodic`,
-  `tls-scanner-periodic`, `release-4.22-e2e-gcp-operator-art-fbc-weekly`). The repo is named in
-  `.chai-bot/rosa_ci_daily_remediation.md`, but none of its periodics is in the
-  `*-promotion-{int,stage}` SRE-operator-promotion family the `sre-operator-e2e` category tracks.
-- **`deadmanssnitch-operator`, `managed-velero-operator`, `dedicated-admin-operator`, `osd-fleet-manager`** —
-  named in `.chai-bot/rosa_ci_daily_remediation.md` but have **zero** periodics files in the pinned tree.
-  Nothing to track; not a registry gap.
-- **Presubmits and postsubmits** (`…-main-presubmits.yaml`, `…-main-postsubmits.yaml`). The registry is a
-  periodic-job health registry; every one of its 208 entries is a `periodic-*`.
+## 8. Limits and unverified coverage (explicit)
 
----
-
-## 6. Gate and trigger consumers — evidence and precise unverified claims
-
-### 6.1 What was verified
-
-- **The registry's own gate semantics are fully verified in source.** `configs/ci-status-jobs.yaml`
-  (lean header, line 30 ff.) defines `gating: true` as "staging results block promotion of the release
-  bundle (`bundle.yaml`) to production", with job-level override precedence. The consuming logic is
-  specified in `.chai-bot/rosa_ci_daily_health_report.md`:67. The gate target `configs/bundle.yaml` exists
-  in the pinned rosa-e2e tree.
-- **Gating is explicit on all 19 categories** and enforced by a blocking unit test:
-  `pkg/config/ci_status_jobs_lint_test.go` `TestLeanRegistrySourceRules` fails when any category omits
-  `gating`. Verified by reading the test; **not executed** (no code change was made).
-- **Generated-vs-lean consistency is enforced** by `TestGeneratedRegistryIsUpToDate` and
-  `TestEmbeddedRegistryMatchesGenerated` (byte comparison against `pkg/config/generated/ci-status-jobs.yaml`).
-- **A deployed external-trigger consumer exists for the ROSA CI tenant.** At the pinned release SHA,
-  `clusters/app.ci/prow/03_deployment/gangway.yaml`:346 binds ServiceAccount `periodic-job-bot` in
-  namespace `hp-sre-rosa-ci` into Prow's Gangway (API-triggered ProwJob) permissions, and
-  `clusters/app.ci/gangway-tokens/hp-sre-rosa-ci/admin_rbac.yaml` provisions that ServiceAccount and its
-  API token secret. This establishes that the ROSA CI tenant **has** a deployed mechanism for triggering
-  periodics outside cron — which is the kind of mechanism the 58 tracked jobs with the unschedulable cron and the group-B/C
-  candidates would rely on.
-
-### 6.2 What could NOT be verified — stated precisely, not guessed
-
-- **UNVERIFIED: which specific Prow jobs the `hp-sre-rosa-ci` Gangway ServiceAccount is allowed to
-  trigger.** The Gangway RBAC in the pinned tree is namespace/ServiceAccount-scoped and contains **no
-  per-job allowlist**. A whole-tree grep for each of the ten `ocm-fvt-gating-osdfm-*` names outside
-  `ci-operator/jobs/` returned **only** their own ci-operator config `as:` stanzas — no deployed trigger
-  manifest, no cluster config, no automation reference binds them. Whether they are wired to a real
-  trigger therefore **cannot be established from these two repositories**, and the lean header's
-  precondition ("need verified trigger wiring before inclusion") is **not met**. I make no claim either way.
-- **UNVERIFIED: the actual promotion trigger for the 58 tracked jobs with the unschedulable cron and the group-B
-  candidates.** Their `0 0 31 2 *` cron plus the `-promotion-` naming is strong circumstantial evidence of
-  image-promotion-event triggering, but the triggering controller is not configured in either pinned
-  repository. The existence of these jobs is verified; their firing is not.
-- **UNVERIFIED: whether the ROSA release bundle gate is actually enforced anywhere outside the registry's
-  own declaration.** `configs/bundle.yaml` and the `gating` field are verified to exist and to be
-  consumed by the documented report logic; a deployed promotion-blocking controller reading them was not
-  found in either pinned repository. Where such a controller is configured, if one exists, was not
-  determined and is not guessed here.
-- **UNVERIFIED (deliberately not attempted): all run history, pass rates, informing-in-practice status,
-  and whether any job has ever fired.** No Prow history, Sippy, or GCS query was run, per the task's
-  no-history-jobs constraint. Every statement here is a source-definition statement.
-- **NOT CLAIMED: removals and renames.** Depth-1 checkouts carry no history (section 1). No job is
-  asserted to have been removed, renamed, added recently, or deprecated.
-
----
-
-## 7. Phase-map validation — `.chai-bot/rosa_ci_step_phases.yaml` — VALID
-
-Requirements taken from the consumer specification,
-`.chai-bot/rosa_ci_daily_health_report.md`:340 — *"validate `schema_version: 1`, the three phase keys
-`setup`, `test-execution`, and `cleanup`, unique refs, and positive analysis limits"* — plus the file's own
-header constraint, *"Exact executed leaf refs only"*, and :344 *"Match the canonical executed leaf ref
-exactly against the mapping."*
-
-| Requirement | Expected | Found | Verdict |
-|---|---|---|---|
-| `schema_version` | `1` | `1` | **PASS** |
-| Phase keys | exactly `setup`, `test-execution`, `cleanup` | exactly those three, in that order | **PASS** |
-| Unique refs | no ref in more than one phase, none repeated | 113 refs, 113 distinct, zero duplicates | **PASS** |
-| **Exact-ref** | every ref is a real leaf ref | **113 / 113** resolve to an `as:` value in a `*-ref.yaml` under `ci-operator/step-registry/` at the pinned release SHA; **0 missing**; 0 non-`rosa-*` entries | **PASS** |
-| Positive limits | all analysis limits > 0 | `budget_seconds: 1200`, `max_concurrent_artifact_requests: 4`, `artifact_request_timeout_seconds: 60` | **PASS** |
-
-Phase sizes: `setup` 38, `test-execution` 52, `cleanup` 23 = 113. All three lists are alphabetically sorted.
-Exact-ref checking used the full set of 3,191 leaf refs extracted from `*-ref.yaml` files in the pinned
-step registry — chains and workflows were deliberately excluded from the comparison set, so the check
-proves these are **leaf** refs, as the header requires.
-
-**Overall: the phase map is valid against its specification at the pinned SHAs.** The daily report's
-fallback path (treat mapping as unavailable, classify all failures `Unknown (mapping_unavailable)`) is
-therefore not triggered.
-
-### 7.1 Phase-map coverage limitation (not a validity failure)
-
-The pinned step registry contains **132** `rosa-*` leaf refs; the map covers **113**. The 19 uncovered
-`rosa-*` leaf refs are:
-
-`rosa-cluster-wait-ready-external-oidc`, `rosa-conf-aws-vpc-cni`, `rosa-conf-aws-vpc-cni-cleanup`,
-`rosa-e2e-hcp-shared-vpc-cleanup`, `rosa-e2e-hcp-shared-vpc-dnsdomain-create`,
-`rosa-e2e-hcp-shared-vpc-operator-roles-create`, `rosa-e2e-hcp-shared-vpc-prepare`,
-`rosa-e2e-hcp-shared-vpc-trust`, `rosa-e2e-ocm-fvt-prepare`, `rosa-e2e-validate-shared-vpc-teardown`,
-`rosa-operator-override-cpo-image`, `rosa-operator-push-cpo-image`, `rosa-seaplane-e2e`,
-`rosa-seaplane-e2e-env`, `rosa-seaplane-e2e-run`, `rosa-seaplane-image-push`, `rosa-seaplane-provision`,
-`rosa-seaplane-resolve-ocp-image`, `rosa-seaplane-teardown`.
-
-Per the spec this is **correct behaviour, not a bug**: an unmapped ref yields `Unknown`, and the spec
-forbids inferring a phase from name substrings. Recorded as a coverage limitation: a failure in any of
-these 19 steps will be attributed `Unknown` rather than to Setup/Test-execution/Cleanup. Nine of the
-nineteen are `rosa-seaplane-*` and `rosa-e2e-hcp-shared-vpc-*`, which is consistent with Seaplane having
-no registry presence at all (section 5.2 D). **Whether any tracked job actually executes these 19 refs was
-not determined** — establishing it would require resolving every tracked job's workflow/chain expansion,
-which was outside the discovery budget. Stated as unverified rather than estimated.
-
----
-
-## 8. Completeness limitations — full list
-
-1. **No commit history.** Depth-1 checkouts (section 1). Working trees are complete and unfiltered at the
-   pinned SHAs; history is absent. No removal/rename/recency claim is made.
-2. **Discovery budget exceeded.** The task set a 10-minute discovery budget; actual discovery ran
-   approximately 20 minutes. The overrun bought the three cross-cutting sweeps in section 5.1 step 4
-   (promotion family, docs-named repos, Seaplane), without which the `aws-vpce-operator`, `pagerduty-operator`,
-   `ocm-agent`, `managed-node-metadata-operator`, HyperShift and Seaplane candidates would all have been
-   missed. Recorded as a deviation.
-3. **Scope limited to two repositories.** Only `openshift-online/rosa-e2e` and `openshift/release` at the
-   pinned SHAs were read. For team identity only the registry's own vendored snapshot
-   `configs/generated/org-teams.yaml` was available. No other repository, dashboard, Sippy data or live
-   Prow deployment state was accessed, so anything not present in these two trees is reported as
-   unverified rather than located elsewhere (section 6.2).
-4. **No run history consulted.** Deliberate, per task constraints. Nothing here depends on whether a job
-   has ever run.
-5. **Candidate classification in section 5.2 is analytic, not authoritative.** Groups A–E reflect what the
-   source shows plus the registry's own documented criteria. Registry owners' intent for any individual
-   candidate was not established and is not asserted.
-6. **No tests executed.** `pkg/config/*_test.go` lint rules were read and their logic reported; they were
-   not run, since no code was changed and running them is not required to validate a read-only audit.
-7. **Phase-map ref *execution* not traced** (section 7.1).
-8. **`openshift-release-main-periodics.yaml` narrowing.** Its 3,608 untracked periodics were filtered by
-   the name family `rosa|osd|hcp|hypershift` rather than individually adjudicated. A ROSA-relevant job in
-   that file whose name contains none of those four tokens would be missed. All other 16 source files
-   were enumerated exhaustively with no filter.
-
----
-
-## 9. Summary
-
-- Registry snapshot: **byte-for-byte identical** to the pinned file (SHA-256 `693c4024…e30aea5`, 43,391 bytes, 858 lines).
-- Tracked jobs: **208 / 208 resolved** to an exact definition in the pinned `openshift/release` tree, each
-  with file and line evidence. **Zero stale, dangling, duplicated, or ambiguous entries.**
-- **No verified discrepancy exists between the registry and its source definitions.**
-- Untracked comparable candidates: **54**, classified as 8 operational utilities, 15 event-only,
-  10 unschedulable placeholders, and 21 scope-ambiguous (section 5.2).
-- Most notable gaps: **`aws-vpce-operator` has a `component_prow_filters` entry but contributes zero jobs**;
-  **Seaplane is the lean registry's own canonical `informing: true` example yet has no registry entry**
-  despite 5 cron-scheduled jobs.
-- Structural observation: **58 of 208 tracked jobs use the unschedulable `0 0 31 2 *` cron**, so that
-  trigger mode is not an exclusion criterion in this registry's practice.
-- Phase map: **valid** — schema_version 1, three phase keys, 113 unique refs, 113/113 exact leaf-ref
-  matches, all analysis limits positive. 19 `rosa-*` leaf refs are unmapped and will classify as `Unknown`.
-- Gate consumers: registry-internal gate semantics and a deployed Gangway trigger tenant are verified;
-  per-job trigger wiring and the deployed promotion gate are **explicitly unverified** (section 6.2).
+| Area | Status |
+|---|---|
+| Registry → source disposition | **Complete** — 209/209 exact matches |
+| Source file inventory | **Complete** — 51,102/51,102 YAML files read, 0 unreadable |
+| Open-PR duplicate search | **Complete** — 12/12 listed |
+| Commit-history rename evidence | **Not available** — shallow history; not needed, since no rename or removal is claimed |
+| Gate wiring for 91 `gating: true` jobs | **Unverified** — consumers outside access grants |
+| Prow execution history for 2 jobs | **Unverified** — HTTP 500, recorded as `fetch_error`, never as zero runs |

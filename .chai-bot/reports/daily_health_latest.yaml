@@ -1,13 +1,13 @@
-report_date: '2026-11-26'
-generated_at: '2026-11-26T15:24:00Z'
-overall_pass_rate: -1
-gating_pass_rate: 58
-non_gating_pass_rate: -1
+report_date: '2026-11-27'
+generated_at: '2026-11-27T14:51:29Z'
+overall_pass_rate: 60
+gating_pass_rate: 67
+non_gating_pass_rate: 52
 job_registry_url: https://raw.githubusercontent.com/openshift-online/rosa-e2e/main/configs/generated/ci-status-jobs.yaml
 categories:
 - id: rosa-e2e-stg
   name: ROSA E2E STG
-  pass_rate: 86
+  pass_rate: 89
   trend: stable
   health: green
   jobs:
@@ -21,12 +21,13 @@ categories:
     pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-19/2125416832348196864
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-cluster-wait-ready-hosted-cp (Setup)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
+    failing_tests:
+    - rosa-cluster-wait-ready-hosted-cp
+    failure_summary: 'Most recent failed build 2125416832348196864 failed at confirmed leaf step(s): rosa-cluster-wait-ready-hosted-cp; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-cluster-wait-ready-hosted-cp. Phase=Setup (confirmed). No log content copied.'
+    team: &id001
       id: 97412673-7d28-430b-bdee-ce3d1eb702b2
       name: ROSA CI
       slack_channel: wg-rosa-cicd
@@ -39,22 +40,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-staging-stable-4-20/2125786997296467968
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_classification: 'step failure: rosa-e2e-test (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-e2e-test
+    failure_summary: 'Most recent failed build 2125786997296467968 failed at confirmed leaf step(s): rosa-e2e-test; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-test. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -74,11 +72,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -98,11 +92,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -122,11 +112,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -141,16 +127,13 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-4-19/2124775438822674432
     last_failure_date: '2026-11-23'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-cluster-wait-ready-cluster (Setup)'
     consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failing_tests:
+    - rosa-cluster-wait-ready-cluster
+    failure_summary: 'Most recent failed build 2124775438822674432 failed at confirmed leaf step(s): rosa-cluster-wait-ready-cluster; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/1 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-cluster-wait-ready-cluster. Phase=Setup (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -170,11 +153,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -194,11 +173,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -213,16 +188,14 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-4-22/2124797755703431168
     last_failure_date: '2026-11-23'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_classification: 'step failure: aws-deprovision-stacks (Setup)'
+    consecutive_failures: 1
+    failing_tests:
+    - aws-deprovision-stacks
+    - rosa-cluster-wait-ready-cluster
+    failure_summary: 'Most recent failed build 2124797755703431168 failed at confirmed leaf step(s): aws-deprovision-stacks, rosa-cluster-wait-ready-cluster; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/1 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: aws-deprovision-stacks, rosa-cluster-wait-ready-cluster. Phase=Setup (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -237,16 +210,13 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-fips-rosa-hcp-fips-e2e-staging-stable-5-0/2124805506190020608
     last_failure_date: '2026-11-23'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-cluster-wait-ready-cluster (Setup)'
     consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failing_tests:
+    - rosa-cluster-wait-ready-cluster
+    failure_summary: 'Most recent failed build 2124805506190020608 failed at confirmed leaf step(s): rosa-cluster-wait-ready-cluster; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/1 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-cluster-wait-ready-cluster. Phase=Setup (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -266,11 +236,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -290,11 +256,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -314,11 +276,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -338,11 +296,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -362,11 +316,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -386,11 +336,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -410,11 +356,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -434,11 +376,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -458,11 +396,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -482,11 +416,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -495,22 +425,20 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-e2e-staging-stable-4-22
     gating: true
     informing: false
-    pass_count: 4
-    fail_count: 3
+    pass_count: 5
+    fail_count: 2
     total: 7
-    pass_rate: 57
+    pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-osd-gcp-e2e-staging-stable-4-22/2124405160443645952
     last_failure_date: '2026-11-22'
-    failure_classification: ''
+    failure_classification: unattributed (ordering_ambiguous_unmapped_ref)
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failing_tests:
+    - osd-ccs-cluster-provision-gcp
+    - rosa-gap-analysis-cluster-install-delete-metrics
+    failure_summary: Most recent failed build 2124405160443645952 could not be attributed to a mapped phase (ordering_ambiguous_unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 5/7 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: osd-ccs-cluster-provision-gcp, rosa-gap-analysis-cluster-install-delete-metrics. Phase=Unknown (ordering_ambiguous_unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -530,11 +458,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -554,11 +478,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -578,11 +498,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -602,11 +518,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -626,11 +538,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -650,11 +558,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -674,11 +578,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -698,11 +598,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -722,11 +618,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -746,11 +638,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -759,22 +647,23 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-staging
     gating: false
     informing: false
-    pass_count: 1
-    fail_count: 6
+    pass_count: 2
+    fail_count: 5
     total: 7
-    pass_rate: 14
+    pass_rate: 29
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-staging/2125439933198897152
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: 'step failure: gather-audit-logs (Setup)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failing_tests:
+    - gather-audit-logs
+    - gather-must-gather
+    - rosa-cluster-wait-ready-cluster
+    - rosa-gap-analysis-api-resources-and-crd
+    - rosa-gap-analysis-cluster-install-delete-metrics
+    failure_summary: 'Most recent failed build 2125439933198897152 failed at confirmed leaf step(s): gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 2/7 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics. Phase=Setup (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -783,7 +672,7 @@ categories:
   name: ROSA E2E INT
   pass_rate: null
   trend: unavailable
-  health: white
+  health: none
   jobs:
   - name: HCP 4.20
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-20
@@ -795,16 +684,13 @@ categories:
     pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-20/2125137730563215360
     last_failure_date: '2026-11-24'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-test (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failing_tests:
+    - rosa-e2e-test
+    failure_summary: 'Most recent failed build 2125137730563215360 failed at confirmed leaf step(s): rosa-e2e-test; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-test. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id001
     labels: []
     components: []
   - name: HCP 4.21
@@ -817,16 +703,13 @@ categories:
     pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-4-21/2125869811392057344
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_classification: 'step failure: rosa-e2e-test (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-e2e-test
+    failure_summary: 'Most recent failed build 2125869811392057344 failed at confirmed leaf step(s): rosa-e2e-test; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-test. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id001
     labels: []
     components: []
   - name: HCP 4.22
@@ -844,11 +727,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels: []
     components: []
   - name: HCP 5.0
@@ -861,43 +740,41 @@ categories:
     pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-e2e-integration-stable-5-0/2124797758220013568
     last_failure_date: '2026-11-23'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-cluster-wait-ready-operators (Setup)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failing_tests:
+    - rosa-cluster-wait-ready-operators
+    failure_summary: 'Most recent failed build 2124797758220013568 failed at confirmed leaf step(s): rosa-cluster-wait-ready-operators; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-cluster-wait-ready-operators. Phase=Setup (confirmed). No log content copied.'
+    team: *id001
     labels: []
     components: []
   - name: HCP Hosted Operator Upgrade
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-integration
     gating: false
     informing: true
-    pass_count: 1
-    fail_count: 6
+    pass_count: 2
+    fail_count: 5
     total: 7
-    pass_rate: 14
+    pass_rate: 29
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ho-upgrade-rosa-hcp-ho-upgrade-integration/2125424568448323584
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: 'step failure: gather-audit-logs (Setup)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failing_tests:
+    - gather-audit-logs
+    - gather-must-gather
+    - rosa-cluster-wait-ready-cluster
+    - rosa-gap-analysis-api-resources-and-crd
+    - rosa-gap-analysis-cluster-install-delete-metrics
+    failure_summary: 'Most recent failed build 2125424568448323584 failed at confirmed leaf step(s): gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 2/7 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics. Phase=Setup (confirmed). No log content copied.'
+    team: *id001
     labels: []
     components: []
 - id: rosa-cx-e2e
   name: ROSA CX E2E
-  pass_rate: -1
+  pass_rate: 64
   trend: unavailable
   health: yellow
   jobs:
@@ -905,22 +782,18 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-external-oidc-e2e-staging
     gating: false
     informing: false
-    pass_count: 4
-    fail_count: 3
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 57
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-external-oidc-e2e-staging/2125937879862480896
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 3
+    pass_rate: 43
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-external-oidc-e2e-staging/2126300406463074304
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (artifacts_unavailable)
+    consecutive_failures: 4
     failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_summary: Most recent failed build 2126300406463074304 could not be attributed to a mapped phase (artifacts_unavailable).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=4. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: none confirmed. Phase=Unknown (artifacts_unavailable). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -940,11 +813,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -964,11 +833,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -988,11 +853,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -1001,22 +862,18 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-shared-vpc-e2e-staging
     gating: false
     informing: false
-    pass_count: 0
-    fail_count: 1
+    pass_count: 1
+    fail_count: 0
     total: 1
-    pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-periodics-rosa-hcp-shared-vpc-e2e-staging/2123446416297693184
-    last_failure_date: '2026-11-19'
+    pass_rate: 100
+    last_failure_url: ''
+    last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -1035,12 +892,8 @@ categories:
     consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: Prow job-history returned HTTP 500 on three separate attempts; execution availability for this window is unverified. Not zero runs. Remediation must skip this job.
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    diagnosis: Prow job-history retrieval failed (HTTP 500); current and previous windows unverified. Not a confirmed failure and not zero runs.
+    team: *id001
     labels:
     - ci-failure
     - rosa-e2e
@@ -1066,7 +919,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
+    team: &id002
       id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
       name: '[ROSA] CAPA'
       slack_channel: team-rosa-capa
@@ -1091,11 +944,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
-      name: '[ROSA] CAPA'
-      slack_channel: team-rosa-capa
-      slack_alias: rosa-capa-team
+    team: *id002
     labels:
     - ci-failure
     - capa-e2e
@@ -1116,11 +965,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
-      name: '[ROSA] CAPA'
-      slack_channel: team-rosa-capa
-      slack_alias: rosa-capa-team
+    team: *id002
     labels:
     - ci-failure
     - capa-e2e
@@ -1141,11 +986,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
-      name: '[ROSA] CAPA'
-      slack_channel: team-rosa-capa
-      slack_alias: rosa-capa-team
+    team: *id002
     labels:
     - ci-failure
     - capa-e2e
@@ -1166,11 +1007,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
-      name: '[ROSA] CAPA'
-      slack_channel: team-rosa-capa
-      slack_alias: rosa-capa-team
+    team: *id002
     labels:
     - ci-failure
     - capa-e2e
@@ -1191,11 +1028,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
-      name: '[ROSA] CAPA'
-      slack_channel: team-rosa-capa
-      slack_alias: rosa-capa-team
+    team: *id002
     labels:
     - ci-failure
     - capa-e2e
@@ -1216,11 +1049,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
-      name: '[ROSA] CAPA'
-      slack_channel: team-rosa-capa
-      slack_alias: rosa-capa-team
+    team: *id002
     labels:
     - ci-failure
     - capa-e2e
@@ -1236,16 +1065,13 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main_capa-e2e-capa-e2e-stable-5-0-full/2125862594848755712
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 47afa339-b9ce-44bc-bd25-3e5b7e0808dd
-      name: '[ROSA] CAPA'
-      slack_channel: team-rosa-capa
-      slack_alias: rosa-capa-team
+    failure_classification: 'step failure: rosa-e2e-capa (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-e2e-capa
+    failure_summary: 'Most recent failed build 2125862594848755712 failed at confirmed leaf step(s): rosa-e2e-capa; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/1 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-capa. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id002
     labels:
     - ci-failure
     - capa-e2e
@@ -1265,19 +1091,15 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19/2125832229174120448
-    last_failure_date: '2026-11-26'
-    failure_classification: Test bug
-    consecutive_failures: 9
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-19/2126194582390575104
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 7
     failing_tests:
-    - 4-19-gap-analysis (step)
-    failure_summary: Same ga_dates parsing abort as nightly-5-0.
-    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-19-gap-analysis | phase: Unknown'
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    - 4-19-gap-analysis
+    failure_summary: Most recent failed build 2126194582390575104 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-19-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - gap-analysis
@@ -1290,19 +1112,15 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20/2125839615498653696
-    last_failure_date: '2026-11-26'
-    failure_classification: Test bug
-    consecutive_failures: 9
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-20/2126201999945895936
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 7
     failing_tests:
-    - 4-20-gap-analysis (step)
-    failure_summary: Same ga_dates parsing abort as nightly-5-0.
-    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-20-gap-analysis | phase: Unknown'
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    - 4-20-gap-analysis
+    failure_summary: Most recent failed build 2126201999945895936 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-20-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - gap-analysis
@@ -1315,19 +1133,15 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21/2125847303653691392
-    last_failure_date: '2026-11-26'
-    failure_classification: Test bug
-    consecutive_failures: 9
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-21/2126209688029630464
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 7
     failing_tests:
-    - 4-21-gap-analysis (step)
-    failure_summary: Same ga_dates parsing abort as nightly-5-0.
-    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-21-gap-analysis | phase: Unknown'
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    - 4-21-gap-analysis
+    failure_summary: Most recent failed build 2126209688029630464 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-21-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - gap-analysis
@@ -1340,19 +1154,15 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22/2125854738523099136
-    last_failure_date: '2026-11-26'
-    failure_classification: Test bug
-    consecutive_failures: 9
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-4-22/2126217129458929664
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 7
     failing_tests:
-    - 4-22-gap-analysis (step)
-    failure_summary: Same ga_dates parsing abort as nightly-5-0.
-    diagnosis: 'GA version resolution failed: could not read ga_dates ...: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 4-22-gap-analysis | phase: Unknown'
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    - 4-22-gap-analysis
+    failure_summary: Most recent failed build 2126217129458929664 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 4-22-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - gap-analysis
@@ -1365,26 +1175,22 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0/2125862597084319744
-    last_failure_date: '2026-11-26'
-    failure_classification: Test bug
-    consecutive_failures: 20
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-gap-analysis-main-periodics-nightly-5-0/2126225711034273792
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 7
     failing_tests:
-    - 5-0-gap-analysis (step)
-    failure_summary: 'GAP harness aborts resolving the GA baseline: it requires every key of Sippy''s ga_dates map to parse as a numeric version, and the upstream payload now contains a non-numeric key.'
-    diagnosis: 'GA version resolution failed: could not read ga_dates from https://sippy.dptools.openshift.org/api/releases: ga_dates holds 20 key(s), at least one of which is not a numeric version | leaf ref: 5-0-gap-analysis | phase: Unknown'
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    - 5-0-gap-analysis
+    failure_summary: Most recent failed build 2126225711034273792 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: 5-0-gap-analysis. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - gap-analysis
     components: []
 - id: ocm-fvt-hcp-stg
   name: OCM FVT HCP STG
-  pass_rate: -1
+  pass_rate: 55
   trend: unavailable
   health: yellow
   jobs:
@@ -1396,15 +1202,15 @@ categories:
     fail_count: 9
     total: 10
     pass_rate: 10
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main/2125786992259108864
-    last_failure_date: '2026-11-26'
-    failure_classification: Product bug
-    consecutive_failures: 7
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-ad-staging-main/2126149375737466880
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 8
     failing_tests:
-    - HCP Creation Positive Validation - Test support of Windows LI for CNV on ROSA-HCP [day2, High]
-    failure_summary: 'Node-pool node never became ready in 60 minutes: the backing Machine entered deletion (WaitingForInfrastructureDeletion) after the kubelet stopped posting node status and the Ready condition went Unknown for >8m. Data-plane node lifecycle defect, not a test timing issue.'
-    diagnosis: 'timeout error. Nodes not started totally after 60 mins. desired=1 current=0 | Deleting: Machine deletion in progress, stage: WaitingForInfrastructureDeletion | InfrastructureReady: 1 of 2 completed | Node.AllConditions: Kubelet stopped posting node status | Condition Ready on Node is reporting status Unknown with reason NodeStatusUnknown for more than 8m0s | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
-    team:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126149375737466880 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/10 passed, 9 failed, consecutive_failures=8. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: &id003
       id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
       name: ROSA Cluster Service Focaccia
       slack_channel: rosa-coffee-focaccia
@@ -1419,23 +1225,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-adobe-staging-main/2125791774751330304
     last_failure_date: '2026-11-26'
-    failure_classification: Test bug
-    consecutive_failures: 3
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
     failing_tests:
-    - CMS Testing Break glass credential Testing - Create/List/Retrieve/Delete HCP cluster with break_glass_credentials can work well [Critical, day2]
-    failure_summary: The spec fails on a bare boolean assertion with no captured API response or reason, so the product-side cause cannot be determined from the artifacts. The demonstrated defect is the missing diagnostic context; a log/artifact improvement is the prerequisite for real root-cause analysis.
-    diagnosis: 'Expected <bool>: false to be true (hcp_external_auth_test.go:166) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution | Product-side cause UNDETERMINED. Classified on the evidence that exists (unactionable bare-bool assertion); re-classify once the spec records the break-glass API response.'
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125791774751330304 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1446,22 +1248,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 6
+    pass_count: 4
+    fail_count: 5
     total: 9
-    pass_rate: 33
+    pass_rate: 44
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-staging-main/2125419312872165376
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125419312872165376 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/9 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1472,22 +1271,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-upgrade-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-amd64-upgrade-staging-main/2123999979805609984
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2123999979805609984 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1498,22 +1294,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-staging-main
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 4
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 43
+    pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-arm-staging-main/2125459565402132480
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125459565402132480 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/7 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1524,23 +1317,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main
     gating: true
     informing: false
-    pass_count: 1
-    fail_count: 6
-    total: 7
-    pass_rate: 14
+    pass_count: 4
+    fail_count: 5
+    total: 9
+    pass_rate: 44
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-autonode-staging-main/2125817149602664448
     last_failure_date: '2026-11-26'
-    failure_classification: Resilience / de-flake
-    consecutive_failures: 3
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
     failing_tests:
-    - HCP Autoscale Testing - Karpenter/AutoNode - Deploy a stress test pod and check it scales on Karpenter spot nodes [Medium, day2]
-    failure_summary: Karpenter NodeClaim for the spot NodePool did not reach Ready inside the test's fixed 900s Eventually budget. Spot provisioning latency varies; the wait is brittle rather than the behaviour being wrong.
-    diagnosis: 'Timed out after 900.000s. NodeClaim for NodePool ''spot-<id>'' should be ready. Expected <bool>: false to be true (hcp_autonode_test.go:339) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125817149602664448 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/9 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1551,23 +1340,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-hcp-e2e-staging-main/2125832218927435776
     last_failure_date: '2026-11-26'
-    failure_classification: Env/config issue
-    consecutive_failures: 3
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
     failing_tests:
-    - HCP Spot Instances Spot NodePool E2E - Lifecycle - should create spot node pool and verify EC2 InstanceLifecycle is spot [Critical, day2]
-    failure_summary: 'Spot node pool never produced an instance: AWSMachine never reported spec.providerID and InfrastructureReady stayed 0 of 2 for 45 minutes. Consistent with AWS spot capacity unavailability in the CI region rather than a ROSA defect.'
-    diagnosis: 'timeout error. Nodes not started totally after 45 mins. desired=1, current=0 | InfrastructureReady: 0 of 2 completed | NodeHealthy: Waiting for AWSMachine to report spec.providerID (hcp_spot_instances_test.go:651) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125832218927435776 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1578,22 +1363,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-staging-main
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 4
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 43
+    pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-pl-staging-main/2125444467115692032
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125444467115692032 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/7 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1604,23 +1386,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-shared-vpc-staging-main/2125802326336737280
     last_failure_date: '2026-11-26'
-    failure_classification: Env/config issue
-    consecutive_failures: 3
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
     failing_tests:
-    - CreateClusterByYAMLProfile [feature-cluster-creation, critical] (pre-cluster-creation step)
-    failure_summary: 'Shared-VPC setup cannot create the AWS RAM resource share: RAM rejects sharing the listed resources outside the AWS organization. An AWS account/RAM policy configuration problem in the CI account; the job fails 6 minutes in, before any cluster exists.'
-    diagnosis: 'operation error RAM: CreateResourceShare, https response error StatusCode: 400, OperationNotPermittedException: The resource share includes one or more resources that cannot be shared with accounts outside of your AWS organization. (profile_handler.go:906) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125802326336737280 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1631,22 +1409,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-upgrade-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-upgrade-staging-main/2123964704534564864
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2123964704534564864 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1657,22 +1432,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-y-upgrade-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-y-upgrade-staging-main/2123959897988009984
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2123959897988009984 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1693,12 +1465,8 @@ categories:
     consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
-    diagnosis: Prow job-history returned HTTP 500 on three separate attempts; execution availability for this window is unverified. Not zero runs. Remediation must skip this job.
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    diagnosis: Prow job-history retrieval failed (HTTP 500); current and previous windows unverified. Not a confirmed failure and not zero runs.
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1709,22 +1477,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-staging-main/2125826990534561792
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 3
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125826990534561792 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1735,22 +1500,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-upgrade-staging-main
     gating: true
     informing: false
-    pass_count: 4
-    fail_count: 3
+    pass_count: 5
+    fail_count: 2
     total: 7
-    pass_rate: 57
+    pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-zero-egress-upgrade-staging-main/2125071953969549312
     last_failure_date: '2026-11-24'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125071953969549312 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 5/7 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1761,22 +1523,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-access-request-staging-main
     gating: true
     informing: false
-    pass_count: 3
-    fail_count: 4
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 43
+    pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-rosa-hcp-access-request-staging-main/2124749888599101440
     last_failure_date: '2026-11-23'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124749888599101440 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/7 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1787,22 +1546,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-cs-sanity-staging-main/2123974931090771968
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2123974931090771968 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1820,15 +1576,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 4
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1850,11 +1602,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1872,15 +1620,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 8
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1898,15 +1642,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 20
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1924,15 +1664,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 5
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1950,15 +1686,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 4
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -1976,15 +1708,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 4
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2002,15 +1730,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 6
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2032,11 +1756,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2054,15 +1774,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 20
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2080,15 +1796,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 6
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2106,15 +1818,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 5
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2132,15 +1840,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2151,22 +1855,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-ocp5-resource-cleaner
     gating: false
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-staging-ocm-fvt-periodic-ocp5-resource-cleaner/2125047023123042304
     last_failure_date: '2026-11-24'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-resource-cleaner (Cleanup)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-resource-cleaner
+    failure_summary: 'Most recent failed build 2125047023123042304 failed at confirmed leaf step(s): rosa-e2e-ocm-resource-cleaner; attributed phase Cleanup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-resource-cleaner. Phase=Cleanup (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2184,15 +1885,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 5
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2210,15 +1907,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2236,15 +1929,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 4
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2262,15 +1951,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 6
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2288,15 +1973,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 4
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2307,28 +1988,25 @@ categories:
   name: OCM FVT HCP INT
   pass_rate: null
   trend: unavailable
-  health: white
+  health: none
   jobs:
   - name: HCP Autonode
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-autonode-integration-main
     gating: false
     informing: true
-    pass_count: 0
-    fail_count: 7
+    pass_count: 1
+    fail_count: 6
     total: 7
-    pass_rate: 0
+    pass_rate: 14
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-autonode-integration-main/2125862572757356544
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 12
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125862572757356544 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2339,22 +2017,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-rest-integration-main
     gating: false
     informing: true
-    pass_count: 4
-    fail_count: 3
+    pass_count: 5
+    fail_count: 2
     total: 7
-    pass_rate: 57
+    pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-rest-integration-main/2124412939325673472
     last_failure_date: '2026-11-22'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124412939325673472 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 5/7 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2369,18 +2044,15 @@ categories:
     fail_count: 3
     total: 7
     pass_rate: 57
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-scale-integration-main/2125500232098648064
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-scale-integration-main/2126225702654054400
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126225702654054400 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/7 passed, 3 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2391,22 +2063,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main
     gating: false
     informing: true
-    pass_count: 4
-    fail_count: 3
+    pass_count: 5
+    fail_count: 2
     total: 7
-    pass_rate: 57
+    pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cp-up-ip-integration-main/2125862576091828224
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125862576091828224 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 5/7 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2417,22 +2086,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cpupzfin-integration-main
     gating: false
     informing: true
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-backup-cpupzfin-integration-main/2124050482467966976
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124050482467966976 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2447,18 +2113,15 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main/2125862569380941824
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 20
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-integration-ocm-fvt-periodic-cs-rosa-hcp-ad-integration-regional-main/2126225690075336704
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 7
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126225690075336704 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2467,7 +2130,7 @@ categories:
     - clusters-service
 - id: ocm-fvt-hcp-prd
   name: OCM FVT HCP PROD
-  pass_rate: 0
+  pass_rate: 25
   trend: degrading
   health: red
   jobs:
@@ -2475,27 +2138,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-production-ocm-fvt-periodic-cs-rosa-hcp-ad-production-main
     gating: false
     informing: false
-    pass_count: 0
-    fail_count: 2
-    total: 2
-    pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-production-ocm-fvt-periodic-cs-rosa-hcp-ad-production-main/2125308006915641344
-    last_failure_date: '2026-11-24'
-    failure_classification: Env/config issue
-    consecutive_failures: 2
+    pass_count: 1
+    fail_count: 3
+    total: 4
+    pass_rate: 25
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-hcp-production-ocm-fvt-periodic-cs-rosa-hcp-ad-production-main/2126017412200402944
+    last_failure_date: '2026-11-26'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
     failing_tests:
-    - HCP Spot Instances Spot NodePool Update - Max Price should update node pool spot max price only when the organization toggle allows it
-    - HCP Spot Instances - should reject adding spot_market_options to an existing on-demand node pool
-    - HCP Spot Instances - should reject removing spot_market_options from a spot node pool
-    - HCP Node Pools Node Pools Creation - Create/edit nodepool with tags and autorepair set will work
-    - (5th failure in the same Day2 suite)
-    failure_summary: The production organization is not entitled to the spot-instances feature-review API, so the suite's spot specs fail on an HTTP 403 where they expect 200. Scope/entitlement differs between staging and production, not a code defect.
-    diagnosis: 'organization feature review status Expected <int>: 403 to equal <int>: 200 (hcp_spot_instances_test.go:507) | leaf ref: rosa-e2e-ocm-fvt | phase: test-execution'
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126017412200402944 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/4 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2504,7 +2159,7 @@ categories:
     - clusters-service
 - id: ocm-fvt-classic-stg
   name: OCM FVT Classic STG
-  pass_rate: 41
+  pass_rate: 48
   trend: stable
   health: yellow
   jobs:
@@ -2516,18 +2171,15 @@ categories:
     fail_count: 4
     total: 7
     pass_rate: 43
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main/2125419310355582976
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-ad-staging-main/2126144106462711808
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126144106462711808 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2542,18 +2194,15 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-staging-main/2125424570134433792
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-ad-staging-main/2126149372386217984
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126149372386217984 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2568,18 +2217,15 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-staging-main/2125429366497218560
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-staging-main/2126154149895606272
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126154149895606272 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2594,18 +2240,15 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shared-vpc-staging-main/2125796791415738368
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 4
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-shared-vpc-staging-main/2126159183416922112
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 5
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126159183416922112 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=5. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2616,22 +2259,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-classic-cust-chan-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-classic-cust-chan-staging-main/2124050474813362176
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124050474813362176 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2642,22 +2282,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-upgrade-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-upgrade-staging-main/2123964704496816128
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2123964704496816128 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2679,11 +2316,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2694,22 +2327,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-ocm-resources-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-ocm-resources-staging-main/2123994904169287680
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2123994904169287680 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2720,22 +2350,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-staging-main
     gating: true
     informing: false
-    pass_count: 2
-    fail_count: 5
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 29
+    pass_rate: 43
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-osd-rh-aws-staging-main/2125802323811766272
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125802323811766272 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2753,15 +2380,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 4
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2779,15 +2402,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 4
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2805,15 +2424,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 7
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2831,15 +2446,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 1
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2856,16 +2467,13 @@ categories:
     pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-staging-ocm-fvt-periodic-cs-rosa-sts-pl-ocp5-latest-rc-staging-main/2124965418773778432
     last_failure_date: '2026-11-23'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124965418773778432 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/2 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2883,15 +2491,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 2
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2902,28 +2506,25 @@ categories:
   name: OCM FVT Classic INT
   pass_rate: null
   trend: unavailable
-  health: white
+  health: none
   jobs:
   - name: STS AD
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main
     gating: false
     informing: true
-    pass_count: 1
-    fail_count: 6
+    pass_count: 2
+    fail_count: 5
     total: 7
-    pass_rate: 14
+    pass_rate: 29
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-sts-ad-integration-main/2125862565220192256
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 3
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125862565220192256 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 2/7 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2934,22 +2535,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-classic-cust-chan-integration-main
     gating: false
     informing: true
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-rosa-classic-integration-ocm-fvt-periodic-cs-rosa-classic-cust-chan-integration-main/2124050470623252480
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124050470623252480 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2964,18 +2562,15 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-aws-integration-ocm-fvt-periodic-cs-osd-ccs-aws-ad-integration-main/2125500196027633664
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-aws-integration-ocm-fvt-periodic-cs-osd-ccs-aws-ad-integration-main/2126225676645175296
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126225676645175296 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -2984,7 +2579,7 @@ categories:
     - clusters-service
 - id: ocm-fvt-gcp-stg
   name: OCM FVT GCP STG
-  pass_rate: 50
+  pass_rate: 60
   trend: improving
   health: yellow
   jobs:
@@ -2992,22 +2587,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 3
+    pass_count: 6
+    fail_count: 2
     total: 8
-    pass_rate: 62
+    pass_rate: 75
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-ad-staging-main/2125152635622264832
     last_failure_date: '2026-11-24'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125152635622264832 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/8 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3022,18 +2614,15 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main/2125500198544216064
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-ccs-gcp-marketplace-staging-main/2126225679157563392
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126225679157563392 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3044,22 +2633,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-non-cross-proj-wif-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 3
+    pass_count: 6
+    fail_count: 2
     total: 8
-    pass_rate: 62
+    pass_rate: 75
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-non-cross-proj-wif-staging-main/2125152638151430144
     last_failure_date: '2026-11-24'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125152638151430144 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/8 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3070,22 +2656,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main
     gating: true
     informing: false
-    pass_count: 4
-    fail_count: 4
+    pass_count: 5
+    fail_count: 3
     total: 8
-    pass_rate: 50
+    pass_rate: 62
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-root-disk-staging-main/2125228958336159744
     last_failure_date: '2026-11-24'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125228958336159744 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 5/8 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3096,22 +2679,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main
     gating: true
     informing: false
-    pass_count: 5
-    fail_count: 3
+    pass_count: 6
+    fail_count: 2
     total: 8
-    pass_rate: 62
+    pass_rate: 75
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-sv-staging-main/2125152644866510848
     last_failure_date: '2026-11-24'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2125152644866510848 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/8 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3126,18 +2706,15 @@ categories:
     fail_count: 7
     total: 7
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-psc-wif-sv-staging-main/2125892617790033920
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 20
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-psc-wif-sv-staging-main/2126255098605604864
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
+    consecutive_failures: 7
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2126255098605604864 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3148,22 +2725,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-version-pruning-staging-main
     gating: false
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-wif-version-pruning-staging-main/2124095671404335104
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124095671404335104 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3174,22 +2748,19 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-firewall-rules-staging-main
     gating: false
     informing: false
-    pass_count: 5
-    fail_count: 2
+    pass_count: 6
+    fail_count: 1
     total: 7
-    pass_rate: 71
+    pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osd-gcp-staging-ocm-fvt-periodic-cs-osd-gcp-firewall-rules-staging-main/2124110851697807360
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt (Test-execution)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 461df7eb-f4e2-4492-84f4-b24ad53f3201
-      name: ROSA Cluster Service Focaccia
-      slack_channel: rosa-coffee-focaccia
-      slack_alias: team-rosa-coffee
+    failing_tests:
+    - rosa-e2e-ocm-fvt
+    failure_summary: 'Most recent failed build 2124110851697807360 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id003
     labels:
     - ci-failure
     - ocm-fvt
@@ -3200,15 +2771,15 @@ categories:
   name: OCM FVT OSDFM INT
   pass_rate: null
   trend: unavailable
-  health: white
+  health: none
   jobs:
   - name: OSDFM Basic Periodic
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-integration-ocm-fvt-periodic-osdfm-basic-periodic-integration
     gating: false
     informing: true
-    pass_count: 2
+    pass_count: 1
     fail_count: 0
-    total: 2
+    total: 1
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -3217,7 +2788,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
+    team: &id004
       id: bd8a0aae-863d-4ea3-a697-028b5043fc08
       name: ROSA Fleet Manager
       slack_channel: team-rosa-fleet-manager
@@ -3243,11 +2814,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: bd8a0aae-863d-4ea3-a697-028b5043fc08
-      name: ROSA Fleet Manager
-      slack_channel: team-rosa-fleet-manager
-      slack_alias: team-rosa-fleet-manager
+    team: *id004
     labels:
     - ci-failure
     - ocm-fvt
@@ -3269,11 +2836,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: bd8a0aae-863d-4ea3-a697-028b5043fc08
-      name: ROSA Fleet Manager
-      slack_channel: team-rosa-fleet-manager
-      slack_alias: team-rosa-fleet-manager
+    team: *id004
     labels:
     - ci-failure
     - ocm-fvt
@@ -3296,17 +2859,13 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-ocm-fvt-osdfm-staging-ocm-fvt-periodic-osdfm-basic-periodic-stage/2125629878135951360
     last_failure_date: '2026-11-25'
-    failure_classification: Resilience / de-flake
+    failure_classification: 'step failure: rosa-e2e-ocm-fvt-longrunning (Test-execution)'
     consecutive_failures: 3
     failing_tests:
-    - OSD Fleet Manager Testing @cluster_cleanup Cleanup bootstrapped clusters Cleanup phase deprovisions management cluster [feature-cleanup, ExcludeGating]
-    failure_summary: MC deprovision was accepted (http_2xx) and reached state 'deprovisioning', but the cleanup acknowledgement never arrived inside the spec's fixed ~1200s budget; the matcher wanted cleanup_ack_pending or empty.
-    diagnosis: 'osdfm_cleanup elapsed_s=1201 last_successful_state=deprovisioning state_age_s=1199 path=deprovision_management,delete,delete,http_2xx,wait_ack read_errors=0 cause=unknown | leaf ref: rosa-e2e-ocm-fvt-longrunning | phase: test-execution'
-    team:
-      id: bd8a0aae-863d-4ea3-a697-028b5043fc08
-      name: ROSA Fleet Manager
-      slack_channel: team-rosa-fleet-manager
-      slack_alias: team-rosa-fleet-manager
+    - rosa-e2e-ocm-fvt-longrunning
+    failure_summary: 'Most recent failed build 2125629878135951360 failed at confirmed leaf step(s): rosa-e2e-ocm-fvt-longrunning; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/3 passed, 3 failed, consecutive_failures=3. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-e2e-ocm-fvt-longrunning. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id004
     labels:
     - ci-failure
     - ocm-fvt
@@ -3315,26 +2874,31 @@ categories:
     - osd-fleet-manager
 - id: hypershift-ci
   name: HyperShift CI
-  pass_rate: 14
-  trend: stable
+  pass_rate: 29
+  trend: improving
   health: red
   jobs:
   - name: INT HCP 4.22
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-integration-stable-4-22
     gating: false
     informing: true
-    pass_count: 1
-    fail_count: 6
+    pass_count: 2
+    fail_count: 5
     total: 7
-    pass_rate: 14
+    pass_rate: 29
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-integration-stable-4-22/2125454767000915968
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: 'step failure: gather-audit-logs (Setup)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
+    failing_tests:
+    - gather-audit-logs
+    - gather-must-gather
+    - rosa-cluster-wait-ready-cluster
+    - rosa-gap-analysis-api-resources-and-crd
+    - rosa-gap-analysis-cluster-install-delete-metrics
+    failure_summary: 'Most recent failed build 2125454767000915968 failed at confirmed leaf step(s): gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 2/7 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics. Phase=Setup (confirmed). No log content copied.'
+    team: &id005
       id: a5267ed5-eaa8-4cd6-90e3-d0ce145dbfbf
       name: ROSA HCP Platform
       slack_channel: team-rosa-hcp-platform
@@ -3348,23 +2912,23 @@ categories:
     prow_job: periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22
     gating: false
     informing: false
-    pass_count: 1
-    fail_count: 6
+    pass_count: 2
+    fail_count: 5
     total: 7
-    pass_rate: 14
+    pass_rate: 29
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-online-rosa-e2e-main-hypershift-ci-rosa-hcp-e2e-staging-stable-4-22/2125469916046823424
     last_failure_date: '2026-11-25'
-    failure_classification: Env/config issue
+    failure_classification: 'step failure: gather-audit-logs (Setup)'
     consecutive_failures: 0
     failing_tests:
-    - rosa-cluster-wait-ready-cluster (step)
-    failure_summary: 'Cluster provisioning stalled in staging: state stayed ''installing'' for the full 60-minute stall timeout; the install breakdown shows validating=140s and pending=34s with no progress afterwards.'
-    diagnosis: 'ERROR: Cluster state ''installing'' has not changed for 60 minutes (stall timeout: 60 minutes) / Cluster appears to be stalled. Failing early. / {"status":"installing","install":{"claim":"1","validating":"140","pending":"34"}} | leaf ref: rosa-cluster-wait-ready-cluster | phase: setup'
-    team:
-      id: a5267ed5-eaa8-4cd6-90e3-d0ce145dbfbf
-      name: ROSA HCP Platform
-      slack_channel: team-rosa-hcp-platform
-      slack_alias: team-rosa-hcp-platform
+    - gather-audit-logs
+    - gather-must-gather
+    - rosa-cluster-wait-ready-cluster
+    - rosa-gap-analysis-api-resources-and-crd
+    - rosa-gap-analysis-cluster-install-delete-metrics
+    failure_summary: 'Most recent failed build 2125469916046823424 failed at confirmed leaf step(s): gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 2/7 passed, 5 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: gather-audit-logs, gather-must-gather, rosa-cluster-wait-ready-cluster, rosa-gap-analysis-api-resources-and-crd, rosa-gap-analysis-cluster-install-delete-metrics. Phase=Setup (confirmed). No log content copied.'
+    team: *id005
     labels:
     - ci-failure
     - hypershift-ci
@@ -3372,7 +2936,7 @@ categories:
     - hypershift
 - id: hcp-conformance
   name: HCP Conformance
-  pass_rate: 44
+  pass_rate: 42
   trend: stable
   health: yellow
   jobs:
@@ -3386,16 +2950,12 @@ categories:
     pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-hcp-ovn/2125396650003271680
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: unattributed (artifacts_unavailable)
     consecutive_failures: 0
     failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_summary: Most recent failed build 2125396650003271680 could not be attributed to a mapped phase (artifacts_unavailable).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: none confirmed. Phase=Unknown (artifacts_unavailable). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3408,18 +2968,15 @@ categories:
     fail_count: 8
     total: 8
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn/2125769126080155648
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 13
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-hcp-ovn/2126131506156933120
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 8
+    failing_tests:
+    - conformance-tests
+    failure_summary: Most recent failed build 2126131506156933120 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/8 passed, 8 failed, consecutive_failures=8. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: conformance-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3428,22 +2985,19 @@ categories:
     prow_job: periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn
     gating: false
     informing: false
-    pass_count: 1
-    fail_count: 6
+    pass_count: 0
+    fail_count: 7
     total: 7
-    pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn/2125779211057631232
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 6
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    pass_rate: 0
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-hcp-ovn/2126141604438740992
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 7
+    failing_tests:
+    - conformance-tests
+    failure_summary: Most recent failed build 2126141604438740992 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/7 passed, 7 failed, consecutive_failures=7. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: conformance-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3458,16 +3012,12 @@ categories:
     pass_rate: 86
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-hcp-ovn/2125386640594571264
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: unattributed (artifacts_unavailable)
     consecutive_failures: 0
     failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_summary: Most recent failed build 2125386640594571264 could not be attributed to a mapped phase (artifacts_unavailable).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 6/7 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: none confirmed. Phase=Unknown (artifacts_unavailable). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3480,18 +3030,15 @@ categories:
     fail_count: 6
     total: 7
     pass_rate: 14
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn/2125792513196298240
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 4
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.0-e2e-rosa-hcp-ovn/2126154904895492096
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-cluster-wait-ready-operators (Setup)'
+    consecutive_failures: 5
+    failing_tests:
+    - rosa-cluster-wait-ready-operators
+    failure_summary: 'Most recent failed build 2126154904895492096 failed at confirmed leaf step(s): rosa-cluster-wait-ready-operators; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/7 passed, 6 failed, consecutive_failures=5. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-cluster-wait-ready-operators. Phase=Setup (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3506,16 +3053,12 @@ categories:
     pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-5.1-e2e-rosa-hcp-ovn/2125381047238529024
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: unattributed (artifacts_unavailable)
     consecutive_failures: 0
     failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_summary: Most recent failed build 2125381047238529024 could not be attributed to a mapped phase (artifacts_unavailable).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 5/7 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: none confirmed. Phase=Unknown (artifacts_unavailable). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3536,16 +3079,13 @@ categories:
     pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.19-e2e-rosa-sts-ovn/2125764124783677440
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_classification: 'step failure: rosa-aws-sts-conformance-test (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-aws-sts-conformance-test
+    failure_summary: 'Most recent failed build 2125764124783677440 failed at confirmed leaf step(s): rosa-aws-sts-conformance-test; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/7 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-aws-sts-conformance-test. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3560,16 +3100,13 @@ categories:
     pass_rate: 71
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.20-e2e-rosa-sts-ovn/2125774156761927680
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_classification: 'step failure: rosa-aws-sts-conformance-test (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-aws-sts-conformance-test
+    failure_summary: 'Most recent failed build 2125774156761927680 failed at confirmed leaf step(s): rosa-aws-sts-conformance-test; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 5/7 passed, 2 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-aws-sts-conformance-test. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3578,22 +3115,19 @@ categories:
     prow_job: periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn
     gating: false
     informing: false
-    pass_count: 3
-    fail_count: 4
+    pass_count: 4
+    fail_count: 3
     total: 7
-    pass_rate: 43
+    pass_rate: 57
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.21-e2e-rosa-sts-ovn/2125743943025954816
     last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 3
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    failure_classification: 'step failure: rosa-aws-sts-conformance-test (Test-execution)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-aws-sts-conformance-test
+    failure_summary: 'Most recent failed build 2125743943025954816 failed at confirmed leaf step(s): rosa-aws-sts-conformance-test; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 4/7 passed, 3 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-aws-sts-conformance-test. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
@@ -3602,29 +3136,26 @@ categories:
     prow_job: periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn
     gating: false
     informing: false
-    pass_count: 4
-    fail_count: 3
+    pass_count: 3
+    fail_count: 4
     total: 7
-    pass_rate: 57
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn/2125754008902569984
-    last_failure_date: '2026-11-26'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: 97412673-7d28-430b-bdee-ce3d1eb702b2
-      name: ROSA CI
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    pass_rate: 43
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-release-main-nightly-4.22-e2e-rosa-sts-ovn/2126116400702427136
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-aws-sts-conformance-test (Test-execution)'
+    consecutive_failures: 3
+    failing_tests:
+    - rosa-aws-sts-conformance-test
+    failure_summary: 'Most recent failed build 2126116400702427136 failed at confirmed leaf step(s): rosa-aws-sts-conformance-test; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 3/7 passed, 4 failed, consecutive_failures=3. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-aws-sts-conformance-test. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id001
     labels:
     - ci-failure
     - conformance
     components: []
 - id: rosa-cli-jobs
   name: ROSA CLI E2E
-  pass_rate: 54
+  pass_rate: 57
   trend: improving
   health: yellow
   jobs:
@@ -3633,17 +3164,17 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 1
-    total: 1
-    pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-day1-negative-f7/2123753570460241920
-    last_failure_date: '2026-11-20'
+    fail_count: 0
+    total: 0
+    pass_rate: null
+    last_failure_url: ''
+    last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 9
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
+    team: &id006
       id: a23288d3-e663-4c68-8580-ce719fc78cfc
       name: ROSA CLI/Terraform
       slack_channel: ocm-qe-prow-ci-jobs
@@ -3668,11 +3199,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3688,16 +3215,13 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-arm-f7/2124657277095907328
     last_failure_date: '2026-11-23'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failure_classification: 'step failure: rosa-tests-runtime-check-failures (Test-execution)'
+    consecutive_failures: 1
+    failing_tests:
+    - rosa-tests-runtime-check-failures
+    failure_summary: 'Most recent failed build 2124657277095907328 failed at confirmed leaf step(s): rosa-tests-runtime-check-failures; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/1 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-tests-runtime-check-failures. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3708,21 +3232,18 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 3
-    total: 3
+    fail_count: 2
+    total: 2
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-advanced-f3/2125643026486267904
     last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 6
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failure_classification: 'step failure: rosa-tests-runtime-check-failures (Test-execution)'
+    consecutive_failures: 2
+    failing_tests:
+    - rosa-tests-runtime-check-failures
+    failure_summary: 'Most recent failed build 2125643026486267904 failed at confirmed leaf step(s): rosa-tests-runtime-check-failures; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/2 passed, 2 failed, consecutive_failures=2. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-tests-runtime-check-failures. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3739,15 +3260,11 @@ categories:
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
-    consecutive_failures: 20
+    consecutive_failures: 0
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3758,21 +3275,18 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 3
-    total: 3
+    fail_count: 2
+    total: 2
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-external-auth-f3/2125613353798733824
     last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 10
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failure_classification: 'step failure: rosa-tests-runtime-check-failures (Test-execution)'
+    consecutive_failures: 2
+    failing_tests:
+    - rosa-tests-runtime-check-failures
+    failure_summary: 'Most recent failed build 2125613353798733824 failed at confirmed leaf step(s): rosa-tests-runtime-check-failures; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/2 passed, 2 failed, consecutive_failures=2. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-tests-runtime-check-failures. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3783,21 +3297,18 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 2
-    total: 2
+    fail_count: 4
+    total: 4
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-private-link-f3/2124947946217672704
-    last_failure_date: '2026-11-23'
-    failure_classification: ''
-    consecutive_failures: 7
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-private-link-f3/2126299049169522688
+    last_failure_date: '2026-11-27'
+    failure_classification: 'step failure: rosa-tests-runtime-check-failures (Test-execution)'
+    consecutive_failures: 4
+    failing_tests:
+    - rosa-tests-runtime-check-failures
+    failure_summary: 'Most recent failed build 2126299049169522688 failed at confirmed leaf step(s): rosa-tests-runtime-check-failures; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/4 passed, 4 failed, consecutive_failures=4. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-tests-runtime-check-failures. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3813,16 +3324,13 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-hcp-shared-vpc-f3/2125379407060144128
     last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 14
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failure_classification: 'step failure: rosa-tests-runtime-check-failures (Test-execution)'
+    consecutive_failures: 2
+    failing_tests:
+    - rosa-tests-runtime-check-failures
+    failure_summary: 'Most recent failed build 2125379407060144128 failed at confirmed leaf step(s): rosa-tests-runtime-check-failures; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/2 passed, 2 failed, consecutive_failures=2. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-tests-runtime-check-failures. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3843,11 +3351,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3857,9 +3361,9 @@ categories:
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-hcp-upgrade-z-stream-f3
     gating: false
     informing: false
-    pass_count: 2
+    pass_count: 3
     fail_count: 0
-    total: 2
+    total: 3
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -3868,11 +3372,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3882,22 +3382,19 @@ categories:
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-advanced-critical-high-f3
     gating: false
     informing: false
-    pass_count: 1
+    pass_count: 2
     fail_count: 1
-    total: 2
-    pass_rate: 50
+    total: 3
+    pass_rate: 67
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-advanced-critical-high-f3/2125108696643014656
     last_failure_date: '2026-11-24'
-    failure_classification: ''
-    consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failure_classification: 'step failure: rosa-setup (Setup)'
+    consecutive_failures: 0
+    failing_tests:
+    - rosa-setup
+    failure_summary: 'Most recent failed build 2125108696643014656 failed at confirmed leaf step(s): rosa-setup; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 2/3 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-setup. Phase=Setup (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3907,10 +3404,10 @@ categories:
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-non-sts-upgrade-y-stream-f7
     gating: false
     informing: false
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
+    total: 0
+    pass_rate: null
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -3918,11 +3415,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3932,9 +3425,9 @@ categories:
     prow_job: periodic-ci-openshift-rosa-master-e2e-rosa-ocm-resources-f3
     gating: false
     informing: false
-    pass_count: 2
+    pass_count: 3
     fail_count: 0
-    total: 2
+    total: 3
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -3943,11 +3436,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3968,11 +3457,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -3993,11 +3478,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -4013,16 +3494,13 @@ categories:
     pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-private-link-f3/2124283559702171648
     last_failure_date: '2026-11-21'
-    failure_classification: ''
+    failure_classification: 'step failure: rosa-setup-readiness-cluster (Setup)'
     consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failing_tests:
+    - rosa-setup-readiness-cluster
+    failure_summary: 'Most recent failed build 2124283559702171648 failed at confirmed leaf step(s): rosa-setup-readiness-cluster; attributed phase Setup.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/2 passed, 1 failed, consecutive_failures=0. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-setup-readiness-cluster. Phase=Setup (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -4043,11 +3521,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -4068,11 +3542,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -4083,21 +3553,18 @@ categories:
     gating: false
     informing: false
     pass_count: 0
-    fail_count: 2
-    total: 2
+    fail_count: 3
+    total: 3
     pass_rate: 0
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-y-stream-f3/2124902404519366656
-    last_failure_date: '2026-11-23'
-    failure_classification: ''
-    consecutive_failures: 9
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-openshift-rosa-master-e2e-rosa-sts-upgrade-y-stream-f3/2125989563754090496
+    last_failure_date: '2026-11-26'
+    failure_classification: 'step failure: rosa-tests (Test-execution)'
+    consecutive_failures: 3
+    failing_tests:
+    - rosa-tests
+    failure_summary: 'Most recent failed build 2125989563754090496 failed at confirmed leaf step(s): rosa-tests; attributed phase Test-execution.'
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/3 passed, 3 failed, consecutive_failures=3. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rosa-tests. Phase=Test-execution (confirmed). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -4118,11 +3585,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - rosa-cli
@@ -4131,7 +3594,7 @@ categories:
 - id: sre-operator-e2e
   name: SRE Operator E2E
   pass_rate: 100
-  trend: improving
+  trend: stable
   health: green
   jobs:
   - name: RMO Promotion INT
@@ -4149,7 +3612,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
+    team: &id007
       id: a0f44498-f22b-4cd4-a98f-f298cc375a94
       name: MCS Rocket
       slack_channel: wg-rosa-cicd
@@ -4184,11 +3647,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - route-monitor-operator
     components:
@@ -4219,11 +3678,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - configure-alertmanager-operator
     components:
@@ -4254,11 +3709,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - configure-alertmanager-operator
     components:
@@ -4289,11 +3740,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - managed-upgrade-operator
     components:
@@ -4324,11 +3771,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - managed-upgrade-operator
     components:
@@ -4359,11 +3802,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - ocm-agent-operator
     components:
@@ -4394,11 +3833,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - ocm-agent-operator
     components:
@@ -4429,11 +3864,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - osd-metrics-exporter
     components:
@@ -4464,11 +3895,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - osd-metrics-exporter
     components:
@@ -4488,9 +3915,9 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-int
     gating: false
     informing: true
-    pass_count: 1
+    pass_count: 2
     fail_count: 0
-    total: 1
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -4499,11 +3926,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - splunk-forwarder-operator
     components:
@@ -4523,9 +3946,9 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-rosa-sts-e2e-promotion-stage
     gating: true
     informing: false
-    pass_count: 1
+    pass_count: 2
     fail_count: 0
-    total: 1
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -4534,11 +3957,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - splunk-forwarder-operator
     components:
@@ -4569,11 +3988,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - certman-operator
     components:
@@ -4604,11 +4019,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - certman-operator
     components:
@@ -4639,11 +4050,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - cloud-ingress-operator
     components:
@@ -4674,11 +4081,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - cloud-ingress-operator
     components:
@@ -4709,11 +4112,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - rbac-permissions-operator
     components:
@@ -4744,11 +4143,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - rbac-permissions-operator
     components:
@@ -4779,11 +4174,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - aws-account-operator
     components:
@@ -4814,11 +4205,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - aws-account-operator
     components:
@@ -4849,11 +4236,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - managed-cluster-validating-webhooks
     components:
@@ -4884,11 +4267,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - managed-cluster-validating-webhooks
     components:
@@ -4919,11 +4298,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - route-monitor-operator
     components:
@@ -4954,11 +4329,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - route-monitor-operator
     components:
@@ -4989,11 +4360,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - configure-alertmanager-operator
     components:
@@ -5024,11 +4391,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - configure-alertmanager-operator
     components:
@@ -5059,11 +4422,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - managed-upgrade-operator
     components:
@@ -5094,11 +4453,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - managed-upgrade-operator
     components:
@@ -5129,11 +4484,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - ocm-agent-operator
     components:
@@ -5164,11 +4515,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - ocm-agent-operator
     components:
@@ -5188,9 +4535,9 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-int
     gating: false
     informing: true
-    pass_count: 1
+    pass_count: 2
     fail_count: 0
-    total: 1
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -5199,11 +4546,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - splunk-forwarder-operator
     components:
@@ -5223,9 +4566,9 @@ categories:
     prow_job: periodic-ci-openshift-splunk-forwarder-operator-master-osd-gcp-e2e-promotion-stage
     gating: true
     informing: false
-    pass_count: 1
+    pass_count: 2
     fail_count: 0
-    total: 1
+    total: 2
     pass_rate: 100
     last_failure_url: ''
     last_failure_date: ''
@@ -5234,11 +4577,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a0f44498-f22b-4cd4-a98f-f298cc375a94
-      name: MCS Rocket
-      slack_channel: wg-rosa-cicd
-      slack_alias: rosa-release-assurance-team
+    team: *id007
     labels:
     - splunk-forwarder-operator
     components:
@@ -5256,9 +4595,9 @@ categories:
     - managed-cluster-validating-webhooks
 - id: terraform-provider-rhcs-jobs
   name: ROSA TF E2E
-  pass_rate: 85
+  pass_rate: 75
   trend: improving
-  health: green
+  health: yellow
   jobs:
   - name: Day-1 Supplemental
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-day1-supplemental-f3
@@ -5270,16 +4609,13 @@ categories:
     pass_rate: 0
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-day1-supplemental-f3/2124694020109111296
     last_failure_date: '2026-11-23'
-    failure_classification: ''
-    consecutive_failures: 2
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 1
+    failing_tests:
+    - rhcs-e2e-general-tests
+    failure_summary: Most recent failed build 2124694020109111296 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 0/1 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rhcs-e2e-general-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5300,11 +4636,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5325,11 +4657,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5339,10 +4667,10 @@ categories:
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-encryption-f7
     gating: false
     informing: false
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
+    total: 0
+    pass_rate: null
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -5350,11 +4678,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5375,11 +4699,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5389,10 +4709,10 @@ categories:
     prow_job: periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-network-f7
     gating: false
     informing: false
-    pass_count: 1
+    pass_count: 0
     fail_count: 0
-    total: 1
-    pass_rate: 100
+    total: 0
+    pass_rate: null
     last_failure_url: ''
     last_failure_date: ''
     failure_classification: ''
@@ -5400,11 +4720,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5415,21 +4731,18 @@ categories:
     gating: false
     informing: false
     pass_count: 1
-    fail_count: 1
-    total: 2
-    pass_rate: 50
-    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-private-f3/2125456555234037760
-    last_failure_date: '2026-11-25'
-    failure_classification: ''
-    consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    fail_count: 2
+    total: 3
+    pass_rate: 33
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-hcp-private-f3/2126295067575455744
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 2
+    failing_tests:
+    - rhcs-e2e-tests
+    failure_summary: Most recent failed build 2126295067575455744 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/3 passed, 2 failed, consecutive_failures=2. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rhcs-e2e-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5450,11 +4763,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5475,11 +4784,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5490,21 +4795,18 @@ categories:
     gating: false
     informing: false
     pass_count: 2
-    fail_count: 0
-    total: 2
-    pass_rate: 100
-    last_failure_url: ''
-    last_failure_date: ''
-    failure_classification: ''
-    consecutive_failures: 0
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    fail_count: 1
+    total: 3
+    pass_rate: 67
+    last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-advanced-f3/2126279592074285056
+    last_failure_date: '2026-11-27'
+    failure_classification: unattributed (unmapped_ref)
+    consecutive_failures: 1
+    failing_tests:
+    - rhcs-e2e-tests
+    failure_summary: Most recent failed build 2126279592074285056 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 2/3 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rhcs-e2e-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5525,11 +4827,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5550,11 +4848,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5575,11 +4869,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5600,11 +4890,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5620,16 +4906,13 @@ categories:
     pass_rate: 50
     last_failure_url: https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-terraform-redhat-terraform-provider-rhcs-main-e2e-rosa-sts-shared-vpc-f3/2125506374342283264
     last_failure_date: '2026-11-25'
-    failure_classification: ''
+    failure_classification: unattributed (unmapped_ref)
     consecutive_failures: 1
-    failing_tests: []
-    failure_summary: ''
-    diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    failing_tests:
+    - rhcs-e2e-tests
+    failure_summary: Most recent failed build 2125506374342283264 could not be attributed to a mapped phase (unmapped_ref).
+    diagnosis: 'Window 2026-11-20..2026-11-27: 1/2 passed, 1 failed, consecutive_failures=1. Phase attribution from artifacts/junit_operator.xml leaf step results; failed leaf refs on latest failure: rhcs-e2e-tests. Phase=Unknown (unmapped_ref). No log content copied.'
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5650,11 +4933,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
@@ -5675,11 +4954,7 @@ categories:
     failing_tests: []
     failure_summary: ''
     diagnosis: ''
-    team:
-      id: a23288d3-e663-4c68-8580-ce719fc78cfc
-      name: ROSA CLI/Terraform
-      slack_channel: ocm-qe-prow-ci-jobs
-      slack_alias: rosa-cli-tf-team
+    team: *id006
     labels:
     - ci-failure
     - terraform-provider-rhcs
